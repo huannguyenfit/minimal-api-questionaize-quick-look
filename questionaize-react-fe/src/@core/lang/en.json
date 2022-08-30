@@ -1,0 +1,35 @@
+{
+  "menu": {
+    "questionList": "Questions",
+    "myTesting": "My Testing",
+    "assessmentList": "Assessment"
+  },
+  "questions": {
+    "lblTitle": "Title",
+    "lblSubTitle": "Sub Title",
+    "lblTypeInput": "Type",
+    "lblStatus": "Status",
+    "action": "Action",
+    "singleSelection": "Single Selection",
+    "multipleSelection": "Multiple Selection",
+    "IsCorrect": "Correct?",
+    "lblDisplayName": "Display Name",
+    "lblKeyId": "Key Id"
+  },
+  "common": {
+    "details": "Detail",
+    "addNew": "Add New",
+    "cancel": "Cancel",
+    "saveChanges": "Save change",
+    "perform": "Perform",
+    "action":"Action",
+    "select": "Perform"
+  },
+  "assessments": {
+    "lblTitle": "Title",
+    "lblDescription": "Description",
+    "lblResult": "Result",
+    "lblNumberOfQuestion": "Number Of Questions"
+
+  }
+}
