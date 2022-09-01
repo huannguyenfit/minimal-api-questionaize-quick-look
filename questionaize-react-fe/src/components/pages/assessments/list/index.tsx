@@ -11,7 +11,7 @@ interface Props extends RouteChildrenProps {}
 
 export default function AssesmentsListComponent(props: Props) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [questions, setQuestions] = useState([]);
+  const [assessments, setAssessments] = useState([]);
   const [skipPage, setSkipPage] = useState(0);
   const [total, setTotal] = useState(0);
   const $destroy = new Subject();
@@ -30,9 +30,8 @@ export default function AssesmentsListComponent(props: Props) {
       .getAll(skip, take)
       .pipe(takeUntil($destroy))
       .subscribe((res: any) => {
-        setQuestions(res.data.results);
+        setAssessments(res.data.results);
         setTotal(res.data.total);
-        console.log(res.data);
       });
   };
 
@@ -106,7 +105,7 @@ export default function AssesmentsListComponent(props: Props) {
         </div>
         <Table
           columns={columns}
-          dataSource={questions}
+          dataSource={assessments}
           onChange={onGridChange}
           style={{ height: '400px' }}
           scroll={{ y: 400 }}

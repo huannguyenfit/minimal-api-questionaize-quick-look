@@ -6,12 +6,17 @@ import questionsService from '../../../../@core/services/questions.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PlusOutlined } from '@ant-design/icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { getQuestionAction } from '../../../../@core/+state/actions/question-action';
+// import { AppState } from '../../../../@core/+state/store';
 
 export default function QuestionsSelectionComponent(props: any) {
   const { currentQuestionSelected } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const [questions, setQuestions] = useState([]);
+  // const [questions, setQuestions] = useState([]);
+  const { questions } = useSelector((state: any) => state.questions);
   const [questionSelected, setQuestionSelected] = useState<any>([]);
+  const dispatch = useDispatch();
   const [skipPage, setSkipPage] = useState(0);
   const [visible, setVisible] = useState(false);
   const [total, setTotal] = useState(0);
@@ -32,14 +37,15 @@ export default function QuestionsSelectionComponent(props: any) {
   }, [currentQuestionSelected]);
 
   const getQuestions = async (skip: number, take: number) => {
-    questionsService
-      .getAll(skip, take)
-      .pipe(takeUntil($destroy))
-      .subscribe((res: any) => {
-        setQuestions(res.data.results);
-        setTotal(res.data.total);
-        console.log(res.data);
-      });
+    dispatch(getQuestionAction(skip, take));
+    // questionsService
+    //   .getAll(skip, take)
+    //   .pipe(takeUntil($destroy))
+    //   .subscribe((res: any) => {
+    //     setQuestions(res.data.results);
+    //     setTotal(res.data.total);
+    //     console.log(res.data);
+    //   });
   };
   const onClose = () => {
     setVisible(false);
@@ -138,7 +144,6 @@ export default function QuestionsSelectionComponent(props: any) {
         visible={visible}
         onCancel={onClose}
         width={768}
-       
         centered={true}
         className='assessment-create'
         footer={
@@ -156,12 +161,12 @@ export default function QuestionsSelectionComponent(props: any) {
           <Col span={24}>
             <Table
               columns={columns}
-              dataSource={questions}
+              dataSource={questions.results}
               onChange={onGridChange}
               style={{ height: '400px' }}
               scroll={{ y: 400 }}
               rowKey='Id'
-              pagination={{ current: currentPage, showSizeChanger: false, pageSize: pageSize, total: total }}
+              pagination={{ current: currentPage, showSizeChanger: false, pageSize: pageSize, total: questions.total }}
             />
           </Col>
         </Row>

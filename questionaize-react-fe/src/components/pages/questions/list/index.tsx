@@ -10,12 +10,18 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PlusOutlined } from '@ant-design/icons';
 import QuestionsCreateComponent from '../create/question-create';
+// import { AppState } from '../../../../@core/+state/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { getQuestionAction } from '../../../../@core/+state/actions/question-action';
 
 interface Props extends RouteChildrenProps {}
 
 export default function QuestionsListComponent(props: Props) {
+  const { questions } = useSelector((state: any) => state.questions);
+  const dispatch = useDispatch();
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [questions, setQuestions] = useState([]);
+  // const [questions, setQuestions] = useState([]);
   const [skipPage, setSkipPage] = useState(0);
   const [total, setTotal] = useState(0);
   const $destroy = new Subject();
@@ -23,22 +29,26 @@ export default function QuestionsListComponent(props: Props) {
   const pageSize = 50;
   useEffect(() => {
     getQuestions(skipPage, pageSize);
-    return () => {
-      $destroy.next(true);
-      $destroy.complete();
-    };
+    // return () => {
+    //   $destroy.next(true);
+    //   $destroy.complete();
+    // };
   }, []);
 
-  const getQuestions = async (skip: number, take: number) => {
-    questionsService
-      .getAll(skip, take)
-      .pipe(takeUntil($destroy))
-      .subscribe((res: any) => {
-        setQuestions(res.data.results);
-        setTotal(res.data.total);
-        console.log(res.data);
-      });
-  };
+  const getQuestions = (skip: number, take: number) => {
+    console.log(skip, take)
+    dispatch(getQuestionAction(skip, take))
+  }
+  // const getQuestions = async (skip: number, take: number) => {
+  //   questionsService
+  //     .getAll(skip, take)
+  //     .pipe(takeUntil($destroy))
+  //     .subscribe((res: any) => {
+  //       setQuestions(res.data.results);
+  //       setTotal(res.data.total);
+  //       console.log(res.data);
+  //     });
+  // };
 
   const columns = [
     {
@@ -132,10 +142,10 @@ export default function QuestionsListComponent(props: Props) {
           style={{ height: '400px' }}
           scroll={{ y: 400 }}
           columns={columns}
-          dataSource={questions}
+          dataSource={questions.results}
           onChange={onGridChange}
           rowKey='Id'
-          pagination={{ current: currentPage, showSizeChanger: false, pageSize: pageSize, total: total }}
+          pagination={{ current: currentPage, showSizeChanger: false, pageSize: pageSize, total: questions.total }}
         />
       </div>
     </>
