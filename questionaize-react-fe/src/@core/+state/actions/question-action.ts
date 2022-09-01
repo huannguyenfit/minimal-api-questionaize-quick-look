@@ -26,8 +26,6 @@ export const getQuestionEpic = (action$: any) => {
   return action$.pipe(
     ofType(QUESTION_ACTION_TYPES.GET_ALL_QUESTION),
     mergeMap((action: any) => {
-      console.log(action);
-
       return questionsService.getAll(action.payload.skip, action.payload.take).pipe(
         map(({ data }: any) => {
           return {
