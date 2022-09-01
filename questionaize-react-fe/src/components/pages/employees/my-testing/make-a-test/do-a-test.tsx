@@ -4,12 +4,12 @@ import { RouteChildrenProps, useHistory, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import myTestingService from '../../../../../@core/services/my-testing.service';
+import myTestingService from '@core/services/my-testing.service';
 import './do-a-test.scss';
-import { TypeInputEnum } from '../../../../../@core/utils/enums';
+import { TypeInputEnum } from '@core/utils/enums';
 import classNames from 'classnames';
-import { toggleMessage } from '../../../../../@core/utils/loading/loading';
-import { ROUTE_PATHS } from '../../../../../@core/constants/url-config';
+import { toggleMessage } from '@core/utils/loading/loading';
+import { ROUTE_PATHS } from '@core/constants/url-config';
 export default function DoATestComponent(props: any) {
   const [assessment, setAssessments] = useState<any>({});
   const [question, setQuestion] = useState<any>({});

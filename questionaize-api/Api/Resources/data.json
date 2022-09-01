@@ -720,7 +720,7 @@
       "EmployeeId": 2,
       "Title": "Exam 2",
       "Description": "Exam 2",
-      "Result": null,
+      "Result": "2/9",
       "StatusId": 1,
       "Id": 3
     }
@@ -1082,7 +1082,7 @@
       "SubTitle": "Please select an option",
       "TypeInputId": 1,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "2",
       "Anwser": "1",
       "Id": 35
     },
@@ -1092,7 +1092,7 @@
       "SubTitle": null,
       "TypeInputId": 1,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "1",
       "Anwser": "1",
       "Id": 36
     },
@@ -1102,7 +1102,7 @@
       "SubTitle": null,
       "TypeInputId": 1,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "2",
       "Anwser": "1",
       "Id": 37
     },
@@ -1112,7 +1112,7 @@
       "SubTitle": "Multiple choice",
       "TypeInputId": 2,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "2",
       "Anwser": "1,2",
       "Id": 38
     },
@@ -1122,7 +1122,7 @@
       "SubTitle": "Multiple choice",
       "TypeInputId": 2,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "3",
       "Anwser": "1,2",
       "Id": 39
     },
@@ -1132,7 +1132,7 @@
       "SubTitle": null,
       "TypeInputId": 1,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "1",
       "Anwser": "1",
       "Id": 40
     },
@@ -1142,7 +1142,7 @@
       "SubTitle": "Multiple choice",
       "TypeInputId": 2,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "2,3",
       "Anwser": "1,2",
       "Id": 41
     },
@@ -1152,7 +1152,7 @@
       "SubTitle": null,
       "TypeInputId": 1,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "1",
       "Anwser": "2",
       "Id": 42
     },
@@ -1162,7 +1162,7 @@
       "SubTitle": null,
       "TypeInputId": 1,
       "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"}]",
-      "YourAnwser": null,
+      "YourAnwser": "2",
       "Anwser": "1",
       "Id": 43
     }

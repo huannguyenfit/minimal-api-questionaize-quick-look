@@ -1,18 +1,16 @@
-import { Badge, Breadcrumb, Button, Col, Form, Input, Row, Select, Space, Table } from 'antd';
-import { useEffect, useState } from 'react';
+import { Badge, Breadcrumb, Button, Col,  Row, Select, Space, Table } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { RouteChildrenProps } from 'react-router';
-import { ROUTE_PATHS } from '../../../../@core/constants/url-config';
+import { ROUTE_PATHS } from '@core/constants/url-config';
 import { useTranslation } from 'react-i18next';
 import './questions.scss';
-import { TypeInputEnum } from '../../../../@core/utils/enums';
-import questionsService from '../../../../@core/services/questions.service';
+import { TypeInputEnum } from '@core/utils/enums';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { PlusOutlined } from '@ant-design/icons';
-import QuestionsCreateComponent from '../create/question-create';
 // import { AppState } from '../../../../@core/+state/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { getQuestionAction } from '../../../../@core/+state/actions/question-action';
+import { getQuestionAction } from '@core/+state/actions/question-action';
+import QuestionsCreateComponent from '../create/question-create';
+
 
 interface Props extends RouteChildrenProps {}
 
@@ -23,7 +21,6 @@ export default function QuestionsListComponent(props: Props) {
   const [currentPage, setCurrentPage] = useState(1);
   // const [questions, setQuestions] = useState([]);
   const [skipPage, setSkipPage] = useState(0);
-  const [total, setTotal] = useState(0);
   const $destroy = new Subject();
   const { t } = useTranslation();
   const pageSize = 50;

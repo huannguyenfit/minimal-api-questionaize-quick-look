@@ -1,14 +1,14 @@
 import { Badge, Breadcrumb, Button, Col, Form, Input, Modal, Row, Select, Space, Table } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TypeInputEnum } from '../../../../@core/utils/enums';
-import questionsService from '../../../../@core/services/questions.service';
+import { TypeInputEnum } from '@core/utils/enums';
+import questionsService from '@core/services/questions.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PlusOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { getQuestionAction } from '../../../../@core/+state/actions/question-action';
-// import { AppState } from '../../../../@core/+state/store';
+import { getQuestionAction } from '@core/+state/actions/question-action';
+// import { AppState } from '@core/+state/store';
 
 export default function QuestionsSelectionComponent(props: any) {
   const { currentQuestionSelected } = props;

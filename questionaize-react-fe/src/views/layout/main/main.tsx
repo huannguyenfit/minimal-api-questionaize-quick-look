@@ -4,10 +4,10 @@ import { Avatar, Badge, Col, Dropdown, Layout, Menu, Popover, Row } from 'antd';
 import { default as React, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { authorizedPage } from '../../../App';
- import ModuleIcon from '../../../assets/icon/module-icon.svg';
+import { authorizedPage } from 'App';
+ import ModuleIcon from 'assets/icon/module-icon.svg';
 // import Logo from '../../../../assets/images/logo.svg';
-import { ROUTE_PATHS } from '../../../@core/constants/url-config';
+import { ROUTE_PATHS } from '@core/constants/url-config';
 
 import './main.scss';
 

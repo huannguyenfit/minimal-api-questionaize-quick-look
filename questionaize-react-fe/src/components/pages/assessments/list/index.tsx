@@ -4,7 +4,7 @@ import { RouteChildrenProps } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import assessmentService from '../../../../@core/services/assessment.service';
+import assessmentService from '@core/services/assessment.service';
 import AssessmentCreateComponent from '../assessment-create/assessment-create';
 
 interface Props extends RouteChildrenProps {}

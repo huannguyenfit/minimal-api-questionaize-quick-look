@@ -1,8 +1,8 @@
 import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
-import { ToggleMessage } from '../../models/common/response-message';
-import LoadingLogo from '../../../assets/images/logo.svg';
+import { ToggleMessage } from '@core/models/common/response-message';
+import LoadingLogo from 'assets/images/logo.svg';
 import './loading.scss';
 
 // handle loading

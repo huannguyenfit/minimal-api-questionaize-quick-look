@@ -1,12 +1,12 @@
 import { Badge, Button, Checkbox, Col, Drawer, Form, Input, InputNumber, Row, Select, Space, Table } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import questionsService from '../../../../@core/services/questions.service';
+import questionsService from '@core/services/questions.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PlusOutlined } from '@ant-design/icons';
-import { TYPE_INPUTS } from '../../../../@core/constants/common';
-import { AddIcon, ClearIcon } from '../../../../@core/shared/icon';
+import { TYPE_INPUTS } from '@core/constants/common';
+import { AddIcon, ClearIcon } from '@core/shared/icon';
 import './question-create.scss';
 const { Option } = Select;
 

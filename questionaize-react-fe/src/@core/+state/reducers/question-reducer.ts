@@ -1,4 +1,3 @@
-import { StatusCodes } from 'http-status-codes';
 import { QuestionActions, QUESTION_ACTION_TYPES } from '../actions/types';
 
 export interface IQuestionState {

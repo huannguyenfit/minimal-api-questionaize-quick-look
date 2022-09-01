@@ -1,9 +1,7 @@
-import { Dispatch } from 'react';
 import { ofType } from 'redux-observable';
-import { Observable } from 'rxjs';
-import { map, mergeMap, catchError } from 'rxjs/operators';
-import questionsService from '../../services/questions.service';
-import { QuestionActions, QUESTION_ACTION_TYPES } from './types';
+import { map, mergeMap } from 'rxjs/operators';
+import questionsService from '@core/services/questions.service';
+import { QUESTION_ACTION_TYPES } from './types';
 
 // export const getQuestionAction = (skip: number, take: number) => {
 //   return async (dispatch: Dispatch<QuestionActions>) => {

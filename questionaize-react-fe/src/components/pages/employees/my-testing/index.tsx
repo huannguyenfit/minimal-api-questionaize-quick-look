@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { RouteChildrenProps, useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import SelectAssessmentComponent from './select-assessment/select-assessment';
-import myTestingService from '../../../../@core/services/my-testing.service';
+import myTestingService from '@core/services/my-testing.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { ROUTE_PATHS } from '../../../../@core/constants/url-config';
+import { ROUTE_PATHS } from '@core/constants/url-config';
 
 interface Props extends RouteChildrenProps {}
 

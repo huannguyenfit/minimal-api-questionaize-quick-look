@@ -1,14 +1,13 @@
 import { Badge, Breadcrumb, Button, Col, Form, Input, InputNumber, Modal, Row, Select, Space, Table } from 'antd';
 import { useEffect, useState } from 'react';
 import { RouteChildrenProps } from 'react-router';
-import { ROUTE_PATHS } from '../../../../@core/constants/url-config';
+import { ROUTE_PATHS } from '@core/constants/url-config';
 import { useTranslation } from 'react-i18next';
-import { TypeInputEnum } from '../../../../@core/utils/enums';
+import { TypeInputEnum } from '@core/utils/enums';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PlusOutlined } from '@ant-design/icons';
-import questionsService from '../../../../@core/services/questions.service';
-import assessmentService from '../../../../@core/services/assessment.service';
+import assessmentService from '@core/services/assessment.service';
 import QuestionsSelectionComponent from './question-selection';
 
 export default function AssessmentCreateComponent(props: any) {

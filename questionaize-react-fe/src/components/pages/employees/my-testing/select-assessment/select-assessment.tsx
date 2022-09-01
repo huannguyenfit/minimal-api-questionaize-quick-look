@@ -4,10 +4,10 @@ import { RouteChildrenProps, useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import assessmentService from '../../../../../@core/services/assessment.service';
+import assessmentService from '@core/services/assessment.service';
 import { EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import myTestingService from '../../../../../@core/services/my-testing.service';
-import { ROUTE_PATHS } from '../../../../../@core/constants/url-config';
+import myTestingService from '@core/services/my-testing.service';
+import { ROUTE_PATHS } from '@core/constants/url-config';
 const { confirm } = Modal;
 
 export default function SelectAssessmentComponent(props: any) {
