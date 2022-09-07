@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '@progress/kendo-theme-material/dist/all.css';
 import './scss/index.scss';
 import App from './App';
 import $ from 'jquery';

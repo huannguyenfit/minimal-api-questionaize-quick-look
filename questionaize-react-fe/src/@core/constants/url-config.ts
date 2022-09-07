@@ -4,11 +4,7 @@ enum ROUTE_PATHS {
   Home = '/home',
   Login = '/login',
   QuestionList = '/questions',
-
-  EmployeeList = '/employee',
-  AssessmentList = '/assessments',
-  MyTesting = '/my-testing',
-  DoATest = '/do-a-test'
+  KendoGrid = '/kendo-grid'
 }
 
 //this variable is using for params url

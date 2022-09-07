@@ -5,6 +5,7 @@ import { ROUTE_DYNAMIC_VARIABLE, ROUTE_PATHS } from './@core/constants/url-confi
 import Loading from './@core/utils/loading/loading';
 import RouteLayout from './@layout/route-layout';
 import { lazy } from 'react'
+import { KendoGridComponent } from 'pages/questions/kendo-grid-example';
 
 const QuestionsListComponent = lazy(() =>
   import('pages/questions')
@@ -37,6 +38,14 @@ export const authorizedPage = [
     href: `${ROUTE_PATHS.QuestionList}`,
     component: QuestionsListComponent,
     title: 'menu.questionList',
+    loginRequired: true,
+    permissions: [],
+    hidden: false,
+  },
+  {
+    href: `${ROUTE_PATHS.KendoGrid}`,
+    component: KendoGridComponent,
+    title: 'menu.kendo Grid',
     loginRequired: true,
     permissions: [],
     hidden: false,
