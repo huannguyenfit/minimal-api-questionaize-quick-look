@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse, ResponseType } from 'axios';
 import HttpStatus from 'http-status-codes';
 import qs from 'qs';
 import cookie from 'react-cookies';
-import { from, Observable, throwError } from 'rxjs';
+import { from, throwError } from 'rxjs';
 import API_URL from '../constants/url-config';
 import { ToggleMessage } from '../models/common/response-message';
 import i18n from './i18n';
@@ -62,7 +62,7 @@ const axiosInstance = (
           if (error.response.data.Errors && error.response.data.Errors.length > 0) {
             error.response.data.Errors.forEach((item: any, index: number) => {
               message.message += index + 1 + '. ' + item.Message + '\n';
-              console.log(message.message )
+              console.log(message.message)
             });
           } else {
             message.message = error.response.data.Message;
@@ -86,15 +86,13 @@ export const getAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, undefined, 'application/json', 'json', isShowLoading, isShowMessage).get(url, {
-      params: params,
-      paramsSerializer: function (params) {
-        return qs.stringify(params, { arrayFormat: 'repeat' });
-      },
-    })
-  );
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, undefined, 'application/json', 'json', isShowLoading, isShowMessage).get(url, {
+    params: params,
+    paramsSerializer: function (params) {
+      return qs.stringify(params, { arrayFormat: 'repeat' });
+    },
+  })
 };
 
 export const getFileAsync = (
@@ -103,15 +101,13 @@ export const getFileAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, undefined, 'application/json', 'blob', isShowLoading, isShowMessage).get(url, {
-      params: params,
-      paramsSerializer: function (params) {
-        return qs.stringify(params, { arrayFormat: 'repeat' });
-      },
-    })
-  );
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, undefined, 'application/json', 'blob', isShowLoading, isShowMessage).get(url, {
+    params: params,
+    paramsSerializer: function (params) {
+      return qs.stringify(params, { arrayFormat: 'repeat' });
+    },
+  });
 };
 
 export const postAsync = (
@@ -121,10 +117,8 @@ export const postAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).post(url, json)
-  );
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).post(url, json)
 };
 
 export const postXFormAsync = (
@@ -134,17 +128,9 @@ export const postXFormAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(
-      handleErrorAutomatic,
-      successMessage,
-      'application/x-www-form-urlencoded',
-      'json',
-      isShowLoading,
-      isShowMessage
-    ).post(url, json)
-  );
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/x-www-form-urlencoded', 'json', isShowLoading, isShowMessage
+  ).post(url, json)
 };
 
 export const putAsync = (
@@ -154,10 +140,10 @@ export const putAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).put(url, json)
-  );
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage)
+    .put(url, json)
+
 };
 
 export const deleteAsync = (
@@ -166,10 +152,9 @@ export const deleteAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).delete(url)
-  );
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).delete(url)
+
 };
 
 export const postWithUrlencoded = (
@@ -180,14 +165,12 @@ export const postWithUrlencoded = (
   isShowMessage: boolean = true
 ) => {
   axios.defaults.withCredentials = true;
-  return from(
-    axiosInstance(true, successMessage, 'application/x-www-form-urlencoded', 'json', isShowLoading, isShowMessage).post(
-      url,
-      model,
-      {
-        headers: { 'content-Type': 'application/x-www-form-urlencoded' },
-      }
-    )
+  return axiosInstance(true, successMessage, 'application/x-www-form-urlencoded', 'json', isShowLoading, isShowMessage).post(
+    url,
+    model,
+    {
+      headers: { 'content-Type': 'application/x-www-form-urlencoded' },
+    }
   );
 };
 
@@ -198,12 +181,10 @@ export const postFormDataAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, successMessage, 'multipart/form-data', 'json', isShowLoading, isShowMessage).post(
-      url,
-      parseFormdata(json)
-    )
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, successMessage, 'multipart/form-data', 'json', isShowLoading, isShowMessage).post(
+    url,
+    parseFormdata(json)
   );
 };
 
@@ -214,23 +195,21 @@ export const putFormDataAsync = (
   isShowLoading: boolean = true,
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
-): Observable<AxiosResponse> => {
-  return from(
-    axiosInstance(handleErrorAutomatic, successMessage, 'multipart/form-data', 'json', isShowLoading, isShowMessage).put(
-      url,
-      parseFormdata(json)
-    )
+): Promise<AxiosResponse> => {
+  return axiosInstance(handleErrorAutomatic, successMessage, 'multipart/form-data', 'json', isShowLoading, isShowMessage).put(
+    url,
+    parseFormdata(json)
   );
 };
 
-export const downloadAsync = (url: string, params?: object): Observable<AxiosResponse> => {
+export const downloadAsync = (url: string, params?: object): Promise<AxiosResponse> => {
   // const instance = axios.create({
   //   baseURL: process.env.REACT_APP_API_ENDPOINT,
   //   responseType: 'blob',
   //   withCredentials: true,
   // });
   // return instance.get(url);
-  return from(axiosInstance(true, undefined, 'application/json', 'blob', true, false).get(url, { params }));
+  return axiosInstance(true, undefined, 'application/json', 'blob', true, false).get(url, { params });
 };
 
 const parseFormdata = (model: any) => {

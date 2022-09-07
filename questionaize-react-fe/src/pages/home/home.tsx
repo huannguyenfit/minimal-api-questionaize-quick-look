@@ -1,6 +1,5 @@
 
 import { Col, Row } from 'antd/lib/grid';
-import { RouteChildrenProps } from 'react-router';
 import './home.scss';
 
 export default function HomePage() {

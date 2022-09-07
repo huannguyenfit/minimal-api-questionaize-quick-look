@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { RouteChildrenProps } from 'react-router';
 import './login.scss';
 import { useState, useEffect } from 'react';
+import authService from '@core/services/auth.service';
 
-interface Props extends RouteChildrenProps {}
+interface Props extends RouteChildrenProps { }
 
 const tailLayout = {
   wrapperCol: { span: 24 },
@@ -12,10 +13,22 @@ const tailLayout = {
 };
 
 export default function Login(props: Props) {
-  const [redirectPath, setRedirectPath] = useState('');
-
+  
   const onFinish = async (values: any) => {
-    //Login and set cookie
+    //Login
+    const payload = {
+
+
+    }
+    const response = await authService.getToken(payload)
+    if (response) {
+      //dosomething
+
+      //GetProvider
+
+      //Redirect to Main Page
+    }
+
   };
 
   const onFinishFailed = (errorInfo: any) => {

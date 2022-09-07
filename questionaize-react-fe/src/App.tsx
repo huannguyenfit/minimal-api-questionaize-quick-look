@@ -1,17 +1,16 @@
-import cookie from 'react-cookies';
 import { BrowserRouter, Redirect, Switch } from 'react-router-dom';
-import HomePage from './components/pages/home/home';
-import Login from './components/pages/login/login';
-import QuestionsListComponent from './components/pages/questions/list';
-
+import HomePage from './pages/home/home';
+import Login from './pages/login/login';
 import { ROUTE_DYNAMIC_VARIABLE, ROUTE_PATHS } from './@core/constants/url-config';
-
 import Loading from './@core/utils/loading/loading';
+import RouteLayout from './@layout/route-layout';
+import { lazy } from 'react'
 
-import RouteLayout from './views/layout/route-layout';
-import AssesmentsListComponent from './components/pages/assessments/list';
-import MyTestingListComponent from './components/pages/employees/my-testing';
-import DoATestComponent from './components/pages/employees/my-testing/make-a-test/do-a-test';
+const QuestionsListComponent = lazy(() =>
+  import('pages/questions')
+    .then(({ QuestionsListComponent }) => ({ default: QuestionsListComponent })),
+);
+
 
 const authPage = [
   {
@@ -40,38 +39,19 @@ export const authorizedPage = [
     title: 'menu.questionList',
     loginRequired: true,
     permissions: [],
-  },
-  {
-    href: `${ROUTE_PATHS.AssessmentList}`,
-    component: AssesmentsListComponent,
-    title: 'menu.assessmentList',
-    loginRequired: true,
-    permissions: [],
-  },
-  {
-    href: `${ROUTE_PATHS.MyTesting}`,
-    component: MyTestingListComponent,
-    title: 'menu.myTesting',
-    loginRequired: true,
-    permissions: [],
-  },
-  {
-    href: `${ROUTE_PATHS.DoATest}/${ROUTE_DYNAMIC_VARIABLE.testId}`,
-    component: DoATestComponent,
-    title: 'menu.doATest',
-    hidden: true,
-    loginRequired: true,
-    permissions: [],
+    hidden: false,
   },
 ];
 
+
+export const routings = [...authPage, ...homePage, ...authorizedPage]
 function App() {
   return (
     <div className='App'>
       <Loading />
       <BrowserRouter>
         <Switch>
-          {authorizedPage.map(({ href, component, title, loginRequired, permissions }) => (
+          {routings.map(({ href, component, title, loginRequired, permissions }) => (
             <RouteLayout
               key={href ?? ''}
               path={href ?? ''}
@@ -81,7 +61,7 @@ function App() {
               loginRequired={loginRequired}
             />
           ))}
-
+{/* 
           {homePage.map(({ href, component, title, loginRequired, permissions }) => (
             <RouteLayout
               key={href ?? ''}
@@ -102,9 +82,8 @@ function App() {
               permissions={[]}
               loginRequired={loginRequired}
             />
-          ))}
-          <Redirect to={ROUTE_PATHS.QuestionList} />
-
+          ))} */}
+          <Redirect to={ROUTE_PATHS.Login} />
         </Switch>
       </BrowserRouter>
     </div>

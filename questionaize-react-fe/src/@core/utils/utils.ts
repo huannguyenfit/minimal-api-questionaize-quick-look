@@ -9,7 +9,7 @@ const download = async (url?: string, fileName?: string) => {
   let name = fileName;
   if (!name) name = url.split('/')[url.split('/').length - 1];
 
-  const res = await downloadAsync(url).toPromise();
+  const res = await downloadAsync(url);
   const newUrl = window.URL.createObjectURL(new Blob([res.data]));
   const link = document.createElement('a');
   link.href = newUrl;

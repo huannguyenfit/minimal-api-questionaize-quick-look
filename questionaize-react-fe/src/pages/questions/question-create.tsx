@@ -1,23 +1,18 @@
-import { Badge, Button, Checkbox, Col, Drawer, Form, Input, InputNumber, Row, Select, Space, Table } from 'antd';
+import {  Button, Checkbox, Col, Drawer, Form, Input, InputNumber, Row, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import questionsService from '@core/services/questions.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { PlusOutlined } from '@ant-design/icons';
 import { TYPE_INPUTS } from '@core/constants/common';
 import { AddIcon, ClearIcon } from '@core/shared/icon';
-import './question-create.scss';
+import './@styles/question-create.scss';
 const { Option } = Select;
 
 export default function QuestionsCreateComponent(props: any) {
-  const [currentPage, setCurrentPage] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState({});
-  const [questions, setQuestions] = useState([]);
   const [visible, setVisible] = useState(false);
   const [createForm] = Form.useForm();
 
-  const $destroy = new Subject();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -50,16 +45,14 @@ export default function QuestionsCreateComponent(props: any) {
       payload.Value = JSON.stringify(payload.Values);
       delete payload.Values;
 
-      questionsService
-        .add(payload)
-        .pipe(takeUntil($destroy))
-        .subscribe((res: any) => {
-          resetFrom();
-          props.refreshGridView();
-          setVisible(false);
-        });
+      const response = await questionsService.add(payload);
+      if (response) {
+        resetFrom();
+        props.refreshGridView();
+        setVisible(false);
+      }
     });
-  };
+  }
 
   const addNewOption = () => {
     let values = createForm.getFieldValue('Values') as any[];
@@ -189,7 +182,7 @@ export default function QuestionsCreateComponent(props: any) {
               <Form.Item
                 name='SubTitle'
                 label={t('questions.lblSubTitle')}
-               
+
               >
                 <Input placeholder={t('questions.lblSubTitle')} />
               </Form.Item>

@@ -1,35 +1,28 @@
-import { Badge, Breadcrumb, Button, Col,  Row, Select, Space, Table } from 'antd';
+import { Badge, Breadcrumb, Col,  Row,  Space, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { RouteChildrenProps } from 'react-router';
-import { ROUTE_PATHS } from '@core/constants/url-config';
 import { useTranslation } from 'react-i18next';
-import './questions.scss';
+import './@styles/question-list.scss';
 import { TypeInputEnum } from '@core/utils/enums';
 import { Subject } from 'rxjs';
 // import { AppState } from '../../../../@core/+state/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestionAction } from '@core/+state/actions/question-action';
-import QuestionsCreateComponent from '../create/question-create';
+import QuestionsCreateComponent from './question-create';
 
 
 interface Props extends RouteChildrenProps {}
 
-export default function QuestionsListComponent(props: Props) {
+export function QuestionsListComponent(props: Props) {
   const { questions } = useSelector((state: any) => state.questions);
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
-  // const [questions, setQuestions] = useState([]);
   const [skipPage, setSkipPage] = useState(0);
-  const $destroy = new Subject();
   const { t } = useTranslation();
   const pageSize = 50;
   useEffect(() => {
     getQuestions(skipPage, pageSize);
-    // return () => {
-    //   $destroy.next(true);
-    //   $destroy.complete();
-    // };
   }, []);
 
   const getQuestions = (skip: number, take: number) => {

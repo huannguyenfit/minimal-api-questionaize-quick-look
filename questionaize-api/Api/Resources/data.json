@@ -723,6 +723,14 @@
       "Result": "2/9",
       "StatusId": 1,
       "Id": 3
+    },
+    {
+      "EmployeeId": 2,
+      "Title": "Exam 3",
+      "Description": "Exam 3",
+      "Result": null,
+      "StatusId": 1,
+      "Id": 4
     }
   ],
   "EmployeeAssessmentQuestion": [
@@ -1165,6 +1173,206 @@
       "YourAnwser": "2",
       "Anwser": "1",
       "Id": 43
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 1",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"}]",
+      "YourAnwser": null,
+      "Anwser": "2",
+      "Id": 44
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 2",
+      "SubTitle": "Multiple choice",
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
+      "YourAnwser": null,
+      "Anwser": "1,2",
+      "Id": 45
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 18",
+      "SubTitle": "Multiple choice",
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
+      "YourAnwser": null,
+      "Anwser": "1,2",
+      "Id": 46
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 8",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 47
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 12",
+      "SubTitle": "Multiple choice",
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
+      "YourAnwser": null,
+      "Anwser": "1,2",
+      "Id": 48
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 16",
+      "SubTitle": "Multiple choice",
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
+      "YourAnwser": null,
+      "Anwser": "1,2",
+      "Id": 49
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 11",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 50
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 4",
+      "SubTitle": null,
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
+      "YourAnwser": null,
+      "Anwser": "1,3",
+      "Id": 51
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 13",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 52
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 20",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 53
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 21",
+      "SubTitle": "Please select an option",
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 54
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 9",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"}]",
+      "YourAnwser": null,
+      "Anwser": "2",
+      "Id": 55
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 14",
+      "SubTitle": "Multiple choice",
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"}]",
+      "YourAnwser": null,
+      "Anwser": "1,2",
+      "Id": 56
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 7",
+      "SubTitle": null,
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"},{\"KeyId\":4,\"DisplayName\":\"Option #4\"}]",
+      "YourAnwser": null,
+      "Anwser": "3,4",
+      "Id": 57
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 6",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"}]",
+      "YourAnwser": null,
+      "Anwser": "2",
+      "Id": 58
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 19",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 59
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 5",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "2",
+      "Id": 60
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 3",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 61
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 22",
+      "SubTitle": null,
+      "TypeInputId": 2,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Option #1\"},{\"KeyId\":2,\"DisplayName\":\"Option #2\"},{\"KeyId\":3,\"DisplayName\":\"Option #3\"},{\"KeyId\":4,\"DisplayName\":\"Option #4\"}]",
+      "YourAnwser": null,
+      "Anwser": "2,3",
+      "Id": 62
+    },
+    {
+      "EmployeeAssessmentId": 4,
+      "Title": "Question 15",
+      "SubTitle": null,
+      "TypeInputId": 1,
+      "Value": "[{\"KeyId\":1,\"DisplayName\":\"Yes\"},{\"KeyId\":2,\"DisplayName\":\"No\"}]",
+      "YourAnwser": null,
+      "Anwser": "1",
+      "Id": 63
     }
   ]
 }

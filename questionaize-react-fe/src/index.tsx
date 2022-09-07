@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './scss/index.scss';
 import App from './App';
 import $ from 'jquery';
 import './@core/utils/i18n';

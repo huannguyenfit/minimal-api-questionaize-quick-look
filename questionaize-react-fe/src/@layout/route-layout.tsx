@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import cookie from 'react-cookies';
 import { Redirect, Route } from 'react-router-dom';
-import { ROUTE_PATHS } from '../../@core/constants/url-config';
+import { ROUTE_PATHS } from '../@core/constants/url-config';
 import AuthLayout from './auth/auth';
 import MainLayout from './main/main';
 
@@ -29,7 +29,9 @@ const RouteLayout = ({ component: Component, history, ...rest }: any) => {
           <Redirect to={{ pathname: ROUTE_PATHS.Login, search: `url=${redirectPath}` }} />
         ) : isLoggedIn && isLoginRequired ? (
           <MainLayout>
-            <Component {...props} pageTitle={pageTitle} setPageTitle={setPageTitle} />
+            <Suspense fallback="loading">
+              <Component {...props} pageTitle={pageTitle} setPageTitle={setPageTitle} />
+            </Suspense>
           </MainLayout>
         ) : (
           <AuthLayout>

@@ -16,7 +16,7 @@ export const initialState: IQuestionState = {
 
 export const questionReducer = (states = initialState, action: QuestionActions): IQuestionState => {
   switch (action.type) {
-    case QUESTION_ACTION_TYPES.GET_ALL_QUESTION_SUCCESS:
+    case QUESTION_ACTION_TYPES.GET_ALL_QUESTION:
       return {
         ...states,
         questions: action.payload,

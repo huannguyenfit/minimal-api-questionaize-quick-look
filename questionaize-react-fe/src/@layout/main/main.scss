@@ -16,7 +16,7 @@ $breakpoint-lg: 992px !default;
 $breakpoint-xl: 1200px !default;
 
 $heightHeaderLoginAsUser: 64px !default;
-@import "src/App";
+@import "scss/App";
 
 .max-height-popup {
 	max-height: 300px;

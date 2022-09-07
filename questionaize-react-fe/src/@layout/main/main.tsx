@@ -21,7 +21,6 @@ const MainLayout = ({ children }: any) => {
   const path = window.location.pathname;
   //get current menu
   const currentModule = authorizedPage;
-  console.log(currentModule);
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [children]);
