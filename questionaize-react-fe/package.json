@@ -1,5 +1,5 @@
 {
-  "name": "questionaire",
+  "name": "td-emr",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -14,61 +14,48 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.6.2",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
-    "@types/jquery": "^3.5.1",
     "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
+    "@types/react": "^18.0.8",
     "@types/react-cookies": "^0.1.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react-dom": "^18.0.6",
     "@types/react-redux": "^7.1.16",
-    "antd": "^4.16.2",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "env-cmd": "^10.1.0",
     "http-status-codes": "^2.1.4",
     "i18next": "^19.8.7",
     "i18next-browser-languagedetector": "^6.0.1",
-    "jquery": "^3.5.1",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "qrcode.react": "^1.0.1",
+    "moment": "^2.29.4",
     "qs": "^6.9.6",
-    "react": "^17.0.1",
+    "react": "^18.2.0",
     "react-cookies": "^0.1.1",
-    "react-dom": "^17.0.1",
+    "react-dom": "^18.2.0",
     "react-i18next": "^11.8.5",
     "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.2",
     "react-toastify": "^7.0.3",
     "redux-devtools-extension": "^2.13.9",
-    "redux-observable": "^2.0.0",
     "redux-thunk": "^2.3.0",
     "rxjs": "^6.6.3",
     "sass": "^1.51.0",
-    "typescript": "^4.1.2",
-    "@progress/kendo-data-query": "^1.5.3",
-    "@progress/kendo-drawing": "^1.6.0",
-    "@progress/kendo-react-common": "5.5.0",
-    "@progress/kendo-react-data-tools": "5.5.0",
-    "@progress/kendo-react-dateinputs": "5.5.0",
-    "@progress/kendo-react-dropdowns": "5.5.0",
-    "@progress/kendo-react-grid": "5.5.0",
-    "@progress/kendo-react-inputs": "5.5.0",
-    "@progress/kendo-react-intl": "5.5.0",
-    "@progress/kendo-react-tooltip": "5.5.0",
-    "@progress/kendo-theme-default": "5.5.0",
-    "@progress/kendo-theme-material": "^5.7.0"
+    "typescript": "4.8.2"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@types/classnames": "^2.2.11",
+    "@types/file-saver": "^2.0.3",
+    "@types/qs": "^6.9.5",
+    "@types/react-beautiful-dnd": "^13.1.1",
+    "@types/react-router-dom": "^5.3.3",
+    "css-loader": "^5.2.4"
   },
   "browserslist": {
     "production": [
@@ -82,14 +69,10 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/classnames": "^2.2.11",
-    "@types/file-saver": "^2.0.3",
-    "@types/lodash": "^4.14.171",
-    "@types/qs": "^6.9.5",
-    "@types/react-beautiful-dnd": "^13.1.1",
-    "@types/react-router": "^5.1.11",
-    "@types/react-router-dom": "^5.1.7",
-    "css-loader": "^5.2.4"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }

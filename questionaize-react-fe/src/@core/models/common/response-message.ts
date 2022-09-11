@@ -4,7 +4,7 @@ export interface ToggleMessage {
   message: string;
 }
 
-export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'loading';
+export type MessageType = 'success' | 'error' | 'warning' | 'info' | 'default';
 
 // export interface ApiError {
 //   Message?: string;

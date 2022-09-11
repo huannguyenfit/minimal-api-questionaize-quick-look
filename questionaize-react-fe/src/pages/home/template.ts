@@ -1325,8 +1325,6 @@ export const templateHtml = `
     runScriptForECHOCARDIOGRAPHY();
 
     window.addEventListener('message', function (e) {
-      // Get the sent data
-      const data = e.data;
       GetRawHtmlAndDescriptionAndResult()
       window.parent.postMessage("excuteSave", '*');
   });

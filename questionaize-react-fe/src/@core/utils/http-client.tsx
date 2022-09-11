@@ -3,7 +3,7 @@ import HttpStatus from 'http-status-codes';
 import qs from 'qs';
 import cookie from 'react-cookies';
 import { from, throwError } from 'rxjs';
-import API_URL from '../constants/url-config';
+import API_URL from '../constants/route-config';
 import { ToggleMessage } from '../models/common/response-message';
 import i18n from './i18n';
 import { toggleLoading, toggleMessage } from './loading/loading';
