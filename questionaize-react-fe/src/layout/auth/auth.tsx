@@ -1,4 +1,5 @@
 import React from "react"
+import { Link, Outlet } from 'react-router-dom';
 import "./auth.scss"
 // import LoginImage from '../../../../assets/images/login-screen.png';
 
@@ -8,7 +9,9 @@ const AuthLayout = ({ children }: any) => {
 	}, [children])
 
 	return (
-		<></>
+		<>
+        <Outlet />
+		</>
 	)
 }
 

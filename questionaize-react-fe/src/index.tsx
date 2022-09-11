@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from "react-dom/client";
 import './scss/index.scss';
+import './scss/sidebar-custom.scss';
 import App from './App';
 // import $ from 'jquery';
 import './@core/utils/i18n';
+
 import { Provider } from 'react-redux';
 import { store } from './@core/+state/store';
 import { ToastContainer } from 'react-toastify';

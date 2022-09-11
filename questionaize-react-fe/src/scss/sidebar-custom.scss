@@ -1,0 +1,35 @@
+$sidebar-bg-color: #fff !default;
+$sidebar-color: #0b132b;
+$sidebar-width: 100% !default;
+$sidebar-collapsed-width: 80px !default;
+$highlight-color: #fff !default;
+$submenu-bg-color: #fff !default;
+$submenu-bg-color-collapsed: #2b2b2b !default;
+$icon-bg-color: hsl(0deg 0% 0% / 5%) !default;
+$icon-size: 35px !default;
+$submenu-indent: 24px !default;
+$breakpoint-xs: 480px !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
+$breakpoint-xxl: 1600px !default;
+
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
+
+ .pro-sidebar .pro-menu .pro-menu-item.active {
+    background: linear-gradient(14deg, #3a367b 0%, rgba(23,97,253,0.6));
+    box-shadow: 3px 3px 20px 0 rgb(23 97 253 / 40%);
+}
+
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:hover, .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus{
+    background: #e3e3e3;
+    color: #202342;
+    box-shadow: unset;
+}
+
+
+.pro-sidebar .pro-menu-item.active a {
+    color: #fff;
+}

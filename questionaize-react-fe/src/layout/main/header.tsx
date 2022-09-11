@@ -45,7 +45,7 @@ export const Header = () => {
                         <div className="dropdown">
                             <a
                                 className="dropdown-toggle no-arrow"
-                                href="javascript:;"
+                                href="#"
                                 onClick={() => setToggleRightPanel(!toggleRightPanel)}
                                 data-toggle="right-sidebar"
                             >

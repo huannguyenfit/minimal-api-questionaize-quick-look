@@ -39,16 +39,18 @@
     "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.8.5",
+    "react-icons": "^4.4.0",
+    "react-pro-sidebar": "0.7.1",
     "react-redux": "^7.2.4",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.2",
+    "react-scrollbars-custom": "^4.1.1",
     "react-toastify": "^7.0.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "rxjs": "^6.6.3",
     "sass": "^1.51.0",
-    "typescript": "4.8.2",
-    "react-pro-sidebar": "0.7.1"
+    "typescript": "4.8.2"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.11",

@@ -17,33 +17,27 @@ const RouteLayout = ({ routers, history, ...rest }: any) => {
 
   let isLoggedIn = true;
 
-
   return (
-
     <>
       <Routes>
-        {!isLoggedIn ? (
-          <Route element={<Navigate to={ROUTE_PATHS.Login} />} />
-        ) :
-          (
-            routers.map(({ element: Element, children }, index) => {
-              if (children && children.length > 0) {
-                return (
-                  <Route key={index } element={Element}>  {
-                    children.map(({ href, element: Element, children, loginRequired, permissions }) => {
-                      return (
-                        <>
-                          <Route path={href} key={href ?? ''} exact={true} {...rest} element={Element} />
-                        </>
-                      )
-                    })
-                  }
-                  </Route>
-                )
-              }
-            })
-          )}
-        <Route path="*" element={<Navigate to={ROUTE_PATHS.Home} />} />
+        <Route element={<Navigate to={ROUTE_PATHS.Login} />} />
+        <Route path='*' element={<Navigate to={ROUTE_PATHS.Home} />} />
+
+        {routers.map(({ element: Element, children }, index) => {
+          if (children && children.length > 0) {
+            return (
+              <Route path={'/'} key={index} element={Element}>
+                {children.map(({ href, element: ChildElement, children, loginRequired, permissions }) => {
+                  return (
+                    <>
+                      <Route path={href} key={href ?? ''} exact={true} {...rest} element={ChildElement} />
+                    </>
+                  );
+                })}
+              </Route>
+            );
+          }
+        })}
       </Routes>
     </>
   );

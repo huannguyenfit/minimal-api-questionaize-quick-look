@@ -1,0 +1,50 @@
+.paginator {
+	font-family: "Roboto Medium";
+	font-size: 16px;
+	color: #202020;
+
+	.content {
+		position: relative;
+		font-family: "Roboto Medium";
+
+		.current {
+			color: #675dc2;
+			border-bottom: 1px solid #675dc2;
+			cursor: pointer;
+			margin-left: 20px;
+
+			&.first-item {
+				margin-left: 0;
+			}
+		}
+
+		.point {
+			cursor: pointer;
+			margin-left: 20px;
+
+			&.first-item {
+				margin-left: 0;
+			}
+		}
+
+		svg {
+			cursor: pointer;
+			position: absolute;
+			top: 3px;
+
+			&.icon {
+				width: 20px !important;
+				height: 16px !important;
+				margin-bottom: 4px;
+			}
+
+			&.first {
+				left: -35px;
+			}
+
+			&.last {
+				right: -35px;
+			}
+		}
+	}
+}

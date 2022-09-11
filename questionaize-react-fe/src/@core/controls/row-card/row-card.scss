@@ -1,0 +1,15 @@
+.row-card {
+	position: relative;
+	.detail {
+		position: relative;
+		flex-grow: 1;
+		align-items: center;
+		padding: 21px 24px;;
+		background-color: #fff;
+		border-radius: 4px;
+		width: 100%;
+		border: 1px solid #ECECEC;
+
+		font-size: 14px;
+	}
+}
