@@ -49,3 +49,4 @@ bld/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+questionaize-react-fe/package-lock.json
