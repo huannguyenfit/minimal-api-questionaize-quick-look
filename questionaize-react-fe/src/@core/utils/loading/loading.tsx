@@ -1,9 +1,9 @@
-import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import { ToggleMessage } from '@core/models/common/response-message';
-import LoadingLogo from 'assets/images/logo.svg';
+// import LoadingLogo from 'assets/images/logo.svg';
 import './loading.scss';
+import { toast } from 'react-toastify';
 
 // handle loading
 const loadingSubject = new BehaviorSubject<boolean>(false);
@@ -54,14 +54,21 @@ const Loading = () => {
   useEffect(() => {
     const subscribe = handleMessageSubject.subscribe((msg) => {
       if (msg) {
-        message.open({
-          type: msg.type,
-          content: msg.message,
-          key: msg.code,
-          duration: msg.type === 'error' ? 4 : 1.5,
-          className: 'custom-ant-message',
-          
-        });
+        switch (msg.type) {
+          case 'error':
+            toast.error(msg.message);
+            break;
+          case 'success':
+            toast.success(msg.message);
+            break;
+          case 'warning':
+            toast.warning(msg.message);
+            break;
+          case 'info':
+            toast.info(msg.message);
+            break;
+          default: toast(msg.message);
+        }
       }
     });
     return () => {
@@ -73,7 +80,7 @@ const Loading = () => {
   return isLoading ? (
     <div className='loading-section'>
       <div className='overlay-background'></div>
-      <img src={LoadingLogo} style={{width: "80px", height: "80px"}} alt='logo' />
+      {/* <img src={LoadingLogo} style={{ width: "80px", height: "80px" }} alt='logo' /> */}
     </div>
   ) : null;
 };
