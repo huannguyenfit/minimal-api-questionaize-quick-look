@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from "react-dom/client";
 import './scss/index.scss';
 import './scss/sidebar-custom.scss';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+
 import App from './App';
 // import $ from 'jquery';
 import './@core/utils/i18n';

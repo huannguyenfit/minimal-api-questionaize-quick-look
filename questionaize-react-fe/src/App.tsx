@@ -1,5 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Login from './pages/login/login';
+import { BrowserRouter } from 'react-router-dom';
 import Loading from './@core/utils/loading/loading';
 import RouteLayout from './layout/route-layout';
 import { routings } from 'routings';

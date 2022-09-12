@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { Menu, MenuItem, ProSidebar, SidebarContent, SidebarFooter, SubMenu } from 'react-pro-sidebar';
 import { MenuConfigs } from '@core/constants/menu-config';
 import { toggleMenu$ } from './header';
-import { Scrollbar } from 'react-scrollbars-custom';
+import PerfectScrollbar from 'react-perfect-scrollbar'
+import { Typography } from '@mui/material';
 
 export default function LeftSideBar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -30,19 +31,20 @@ export default function LeftSideBar() {
 
   return (
     <>
-        <div className={`left-side-bar`}>
-          <div className='brand-logo'>
-            <a href='#'>
-              <img src='vendors/images/deskapp-logo.svg' alt='' className='dark-logo' />
-              <img src='vendors/images/deskapp-logo-white.svg' alt='' className='light-logo' />
-            </a>
-            <div className='close-sidebar' data-toggle='left-sidebar-close'>
-              <i className='ion-close-round'></i>
-            </div>
+      <div className={`left-side-bar`}>
+        <div className='brand-logo'>
+          <a href='#'>
+            <img src='vendors/images/deskapp-logo.svg' alt='' className='dark-logo' />
+            <img src='vendors/images/deskapp-logo-white.svg' alt='' className='light-logo' />
+          </a>
+          <div className='close-sidebar' data-toggle='left-sidebar-close'>
+            <i className='ion-close-round'></i>
           </div>
-          <div className='menu-block customscroll'>
-            <ProSidebar>
-              <SidebarContent>
+        </div>
+        <div className='menu-block'>
+          <ProSidebar>
+            <SidebarContent>
+              <PerfectScrollbar style={{ height: '768px' }}>
                 <Menu iconShape='circle'>
                   {sideBars.map((item, index) => {
                     return (
@@ -69,24 +71,25 @@ export default function LeftSideBar() {
                     );
                   })}
                 </Menu>
-              </SidebarContent>
-              <SidebarFooter>
-                <div
-                  className='sidebar-btn-wrapper'
-                  style={{
-                    padding: '20px 24px',
-                    textAlign: 'center',
-                  }}
-                >
-                  <a href='#' target='_blank' style={{ fontSize: '14px', fontWeight: 'bold' }}>
-                    &copy; TD Medical company
-                  </a>
-                </div>
-              </SidebarFooter>
-            </ProSidebar>
-          </div>
+              </PerfectScrollbar>
+            </SidebarContent>
+            <SidebarFooter>
+              <div
+                className='sidebar-btn-wrapper'
+                style={{
+                  padding: '20px 24px',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography mt={2}>
+                  &copy; TD Medical company
+                </Typography>
+              </div>
+            </SidebarFooter>
+          </ProSidebar>
         </div>
-        <div className='mobile-menu-overlay'></div>
+      </div>
+      <div className='mobile-menu-overlay'></div>
       ;
     </>
   );

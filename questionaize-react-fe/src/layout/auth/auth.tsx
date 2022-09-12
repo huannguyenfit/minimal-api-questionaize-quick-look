@@ -1,18 +1,22 @@
 import React from "react"
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import "./auth.scss"
-// import LoginImage from '../../../../assets/images/login-screen.png';
+ import LoginImage from 'assets/images/login.jpeg';
 
 const AuthLayout = ({ children }: any) => {
-	React.useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [children])
-
 	return (
 		<>
-        <Outlet />
+			<div className="row default-layout container-fluid align-items-center">
+				<div className="col-6"  >
+					<Outlet />
+				</div>
+				<div className="col-6 left-content"  >
+					<div className="left-background">
+						<img className="sign-up-img" src={LoginImage} alt="sign-up-background" />
+					</div>
+				</div>
+			</div>
 		</>
 	)
 }
-
 export default AuthLayout

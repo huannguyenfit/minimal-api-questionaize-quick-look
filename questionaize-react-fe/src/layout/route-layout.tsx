@@ -20,7 +20,7 @@ const RouteLayout = ({ routers, history, ...rest }: any) => {
   return (
     <>
       <Routes>
-        <Route element={<Navigate to={ROUTE_PATHS.Login} />} />
+        <Route index element={<Navigate to={ROUTE_PATHS.Login} />} />
         <Route path='*' element={<Navigate to={ROUTE_PATHS.Home} />} />
 
         {routers.map(({ element: Element, children }, index) => {

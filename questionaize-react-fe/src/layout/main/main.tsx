@@ -21,24 +21,12 @@ const MainLayout = ({ children }: any) => {
           subscribe.unsubscribe();
       };
   }, []);
- 
-  
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-
-  }, [children]);
-
-
-
   return (
     <div className={toggleMenu ? "sidebar-shrink" : ""}>
       <Header />
       <SideNav  />
       <div className="main-container">
-        <>
         <Outlet />
-        
-        </>
       </div>
     </div>
   );
