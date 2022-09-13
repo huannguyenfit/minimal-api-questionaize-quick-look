@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
-import { ToggleMessage } from '@core/models/common/response-message';
+import { ToggleMessage } from '@core/models/common/responseMessage';
 // import LoadingLogo from 'assets/images/logo.svg';
-import './loading.scss';
+import './Loading.scss';
 import { toast } from 'react-toastify';
 
 // handle loading

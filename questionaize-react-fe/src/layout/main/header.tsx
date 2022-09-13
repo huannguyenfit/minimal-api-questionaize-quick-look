@@ -1,5 +1,5 @@
 import { BehaviorSubject } from "rxjs";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -9,9 +9,21 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Link, Menu, MenuItem } from "@mui/material";
+import { AppBar, Avatar, Badge, Box, Button, IconButton, InputBase, Link, ListItemAvatar, Menu, MenuItem, Paper, Popover, Toolbar, Typography } from "@mui/material";
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { Trans, useTranslation } from "react-i18next";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import PersonIcon from '@mui/icons-material/Person';
+
+import { useSettings } from "@core/contexts/SettingsProvider";
+import { drawerCollapsedWidth, drawerWidth } from "@core/components/SettingsDrawer";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import { NavLink } from "react-router-dom";
+import notifications from './notification.json'
 // handle loading
 export const toggleMenu$ = new BehaviorSubject<boolean>(false);
 
@@ -20,197 +32,205 @@ export const toggleMenu = (value: boolean) => {
 };
 export const Header = () => {
     const [toggleRightPanel, setToggleRightPanel] = useState(false);
+    const { t } = useTranslation()
+    const { collapsed } = useSettings();
+    const width = collapsed ? drawerCollapsedWidth : drawerWidth;
+    const [anchorDropdownMenu, setAnchorDropdownMenu] = React.useState<null | HTMLElement>(null);
+    const notification = [...notifications]
+    const [anchorNotification, setAnchorNotification] = useState<null | HTMLElement>(null);
+    const openNotification = Boolean(anchorNotification);
+    const openDropdown = Boolean(anchorDropdownMenu);
 
-
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
     const openDropdownMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
+        setAnchorDropdownMenu(event.currentTarget);
     };
 
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorNotification(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorNotification(null);
+        setAnchorDropdownMenu(null);
+    };
 
     const renderDropdownMenu = () => {
         return (
             <>
-                <Link
-                    className="dropdown-toggle"
-                    onClick={(e: any) => openDropdownMenu(e)}
-                >
-                    <span className="user-icon">
-                        <img src={`https://i.pravatar.cc/150?img=44`} alt="" />
-                    </span>
-                    <span className="user-name">Trần Thị Ngọc Ánh</span>
-                </Link>
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center',
+                <Box >
+
+                    <Link sx={{
+                        display: "flex",
+                        gap: '10px',
+                        alignItems: 'center',
+                        cursor: 'pointer'
                     }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center',
-                    }}
-                    PaperProps={{
-                        style: {
-                            width: '180px',
-                        },
-                    }}
-                >
-                    <MenuItem sx={{height: 50}} onClick={handleClose}>
-                        <PermIdentityOutlinedIcon className="mr-3" /> Profile
-                    </MenuItem>
-                    <MenuItem sx={{height: 50}} onClick={handleClose}>
-                        <LogoutOutlinedIcon className="mr-3" /> Logout
-                    </MenuItem>
-                </Menu>
+                        color="inherit"
+                        onClick={(e: any) => openDropdownMenu(e)}
+                    >
+                        <Avatar src={`https://i.pravatar.cc/150?img=44`} />
+                        <span>Trần Thị Ngọc Ánh</span>
+                        <KeyboardArrowDownOutlinedIcon />
+                    </Link>
+                    <Menu id="basic-menu"
+                        anchorEl={anchorDropdownMenu}
+                        open={openDropdown}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'center',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                        }}
+                        PaperProps={{
+                            style: {
+                                width: '180px',
+                            },
+                        }}>
+                        <MenuItem sx={{ height: 50 }} onClick={handleClose}>
+                            <PermIdentityOutlinedIcon className="mr-3" /> {t('profile')}
+                        </MenuItem>
+                        <MenuItem sx={{ height: 50 }} onClick={handleClose}>
+                            <LogoutOutlinedIcon className="mr-3" />  {t('LogOut')}
+                        </MenuItem>
+                    </Menu>
+                </Box>
+
             </>
-
         )
-
     }
 
     const renderNotificationDropdown = () => {
         return (
             <>
-                <a
-                    className="dropdown-toggle no-arrow"
-                    href="#"
-                    role="button"
-                    data-toggle="dropdown"
-                >
-                    <i className="icon-copy dw dw-notification"></i>
-                    <span className="badge notification-active"></span>
-                </a>
-                <div className="dropdown-menu dropdown-menu-right">
-                    <div className="notification-list mx-h-350 customscroll">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <img src="vendors/images/img.jpg" alt="" />
-                                    <h3>John Doe</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit, sed...
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="vendors/images/photo1.jpg" alt="" />
-                                    <h3>Lea R. Frith</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit, sed...
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="vendors/images/photo2.jpg" alt="" />
-                                    <h3>Erik L. Richards</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit, sed...
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="vendors/images/photo3.jpg" alt="" />
-                                    <h3>John Doe</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit, sed...
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="vendors/images/photo4.jpg" alt="" />
-                                    <h3>Renee I. Hansen</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit, sed...
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="vendors/images/img.jpg" alt="" />
-                                    <h3>Vicki M. Coleman</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit, sed...
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <Box>
+                    <IconButton
+                        id="notifications-button"
+                        aria-controls="notifications-popover"
+                        aria-haspopup="true"
+                        aria-expanded={openNotification ? "true" : "false"}
+                        aria-label="show recent notifications"
+                        color="inherit"
+                        onClick={handleClick}
+                    >
+                        <Badge color="error" variant="dot" >
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <Popover
+                        id="notifications-popover"
+                        open={openNotification}
+                        anchorEl={anchorNotification}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                        }}
+                        transformOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                        }}
+                    >
+                        <Box sx={{ width: 360 }}>
+                            <List
+                                component="nav"
+                                aria-label="notifications popover"
+                                sx={{ px: 2 }}
+                            >
+                                {notification.map((notification) => (
+                                    <ListItem
+                                        button
+                                        component={NavLink}
+                                        key={notification.id}
+                                        to={""}
+                                    >
+                                        <ListItemAvatar>
+                                            <Avatar>
+                                                <PersonIcon />
+                                            </Avatar>
+                                        </ListItemAvatar>
+                                        <ListItemText
+                                            primary={
+                                                <Trans
+                                                    components={{ bold: <strong /> }}
+                                                    defaults="<bold>{{ user }}</bold> did someting <bold>{{ quantity }}</bold> times"
+                                                    values={notification.params}
+                                                />
+                                            }
+                                            secondary={new Date(notification.createdAt).toLocaleDateString()}
+                                        />
+                                    </ListItem>
+                                ))}
+                            </List>
+
+                            <Box sx={{ px: 2, pb: 2 }}>
+                                <Button
+                                    color="secondary"
+                                    fullWidth
+                                    sx={{ bgcolor: "background.default" }}
+                                    variant="contained"
+                                >
+                                    {t("admin.header.notifications.seeAll")}
+                                </Button>
+                            </Box>
+                        </Box>
+                    </Popover>
+                </Box>
             </>
         )
     }
+    const toggleDrawer = () => {
 
+    }
     return (
         <>
-            <div className="header">
-                <div className="header-left">
-                    <div className="menu-icon bi bi-list" onClick={() => toggleMenu(!toggleMenu$.value)}></div>
-                    <div
-                        className="search-toggle-icon bi bi-search"
-                        data-toggle="header_search"
-                    ></div>
-                    <div className="header-search">
-                        <form>
-                            <div className="form-group mb-0 header-search_group">
-                                <i className="fa fa-search c-search-icon"></i>
-                                <input
-                                    type="text"
-                                    className="form-control search-input"
-                                    placeholder="Search Here"
-                                />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div className="header-right">
-                    <div className="dashboard-setting user-notification">
-                        <div className="dropdown">
-                            <a
-                                className="dropdown-toggle no-arrow"
-                                href="#"
-                                onClick={() => setToggleRightPanel(!toggleRightPanel)}
-                                data-toggle="right-sidebar"
-                            >
-                                <i className="dw dw-settings2"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="user-notification">
-                        <div className="dropdown">
-                            {renderNotificationDropdown()}
-                        </div>
-                    </div>
-                    <div className="user-info-dropdown">
-                        <div className="dropdown">
-                            {renderDropdownMenu()}
-                        </div>
-                    </div>
+            <AppBar
+                color="default"
+                position="fixed"
+                sx={{
+                    width: { lg: `calc(100% - ${width}px)` },
+                    marginLeft: { lg: 280 },
+                }}
+            >
 
-
-                    <div className="cusstom-link">
-                        <img src="vendors/images/TD-background.svg" alt=""
-                        />
-                    </div>
-                </div>
-            </div>
+                <Toolbar sx={{ bgcolor: '#fff', px: { xs: 3, sm: 6 } }}>
+                    <Box sx={{ display: 'flex', flexGrow: 1 }}>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={toggleDrawer}
+                            sx={{
+                                marginRight: 2,
+                            }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Paper
+                            component="form"
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', border: '1px solid #d4d4d4', width: 250 }}
+                        >
+                            <InputBase
+                                sx={{ ml: 1, flex: 1, }}
+                                placeholder={t('common.search')}
+                                inputProps={{ 'aria-label': t('common.search') }}
+                            />
+                            <IconButton type="button" sx={{ p: '4px' }} aria-label="search">
+                                <SearchIcon />
+                            </IconButton>
+                        </Paper>
+                    </Box>
+                    <Box sx={{ display: 'flex', gap: '20px', alignItems: 'center', }}>
+                        <Link href="#" color="inherit" onClick={() => setToggleRightPanel(!toggleRightPanel)} >
+                            <SettingsOutlinedIcon />
+                        </Link>
+                        {renderNotificationDropdown()}
+                        {renderDropdownMenu()}
+                    </Box>
+                </Toolbar>
+            </AppBar>
 
             <Drawer
                 anchor={'right'}
@@ -242,13 +262,7 @@ export const Header = () => {
                         </ListItem>
                     ))}
                 </List>
-
             </Drawer>
-
-
-
-
         </>
-
     );
 }

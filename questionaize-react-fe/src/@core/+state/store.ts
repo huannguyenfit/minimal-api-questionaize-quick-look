@@ -1,17 +1,21 @@
-import { questionReducer } from './reducers/question-reducer';
+
 import { combineReducers } from 'redux';
 
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit'
 
 
 //combine Reducer
-export const rootReducer = combineReducers({
-  questions: questionReducer,
-});
+export const rootReducer = combineReducers({});
 
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+// export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: [thunkMiddleware],
+  
+})
+
 
 export type AppState = ReturnType<typeof rootReducer>;

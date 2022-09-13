@@ -5,20 +5,16 @@ import './scss/sidebar-custom.scss';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import App from './App';
-// import $ from 'jquery';
 import './@core/utils/i18n';
-
 import { Provider } from 'react-redux';
 import { store } from './@core/+state/store';
 import { ToastContainer } from 'react-toastify';
-// (window as any).jQuery = $;
-// (window as any).$ = $;
-// (global as any).jQuery = $;
+
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-  <Provider store={store}>
+    {/* <Provider store={store}> */}
     <App />
     <ToastContainer
       position="bottom-right"
@@ -31,7 +27,7 @@ root.render(
       draggable
       pauseOnHover
     />
-  </Provider>
-</React.StrictMode>,
+    {/* </Provider> */}
+  </React.StrictMode>,
 );
 

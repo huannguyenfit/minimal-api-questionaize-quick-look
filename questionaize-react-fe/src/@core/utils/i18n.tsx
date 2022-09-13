@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     interpolation: { escapeValue: false },
-    lng: localStorage.getItem("LANGUAGE") || "en",
+    lng: localStorage.getItem("i18nextLng") || "vi",
     resources: {
       en: { common: en },
       vi: { common: vi }
@@ -23,6 +23,6 @@ i18n
   });
 
 export const getCurrentLang = () =>
-  i18n.language || window.localStorage.i18nextLng || "en";
+  i18n.language || window.localStorage.i18nextLng || "vi";
 
 export default i18n;

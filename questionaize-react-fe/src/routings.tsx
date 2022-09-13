@@ -1,16 +1,17 @@
-import MainLayout from 'layout/main/main';
-import AuthLayout from 'layout/auth/auth';
-import { Home } from 'pages/home/home';
+import MainLayout from 'layout/main/MasterLayout';
+import AuthLayout from 'layout/auth/AuthLayout';
 import { lazy } from 'react';
-import { ROUTE_DYNAMIC_VARIABLE, ROUTE_PATHS } from '@core/constants/route-config';
-import Login from 'pages/login/login';
-import { MyTasks } from 'pages/my-tasks/my-task';
+import { ROUTE_DYNAMIC_VARIABLE, ROUTE_PATHS } from '@core/constants/routeConfig';
 
-// const HomePage = lazy(() => import('pages/home/home').then(({ Home }) => ({ default: Home })));
+const Home = lazy(() => import('pages/home/Home').then(({ Home }) => ({ default: Home })));
 
-// const MedicalExamList = lazy(() =>
-//   import('pages/medical-exam/medical-exam-list').then(({ MedicalExamList }) => ({ default: MedicalExamList }))
-// );
+const Login = lazy(() =>
+  import('pages/login/Login').then(({ Login }) => ({ default: Login }))
+);
+const MyTasks = lazy(() =>
+  import('pages/my-tasks/MyTask').then(({ MyTasks }) => ({ default: MyTasks }))
+);
+const Appoinment = lazy(() => import('pages/appoinment/Appoinment').then(({ Appoinment }) => ({ default: Appoinment })));
 
 const mainLayoutRoutings = [
   {
@@ -27,6 +28,13 @@ const mainLayoutRoutings = [
         href: ROUTE_PATHS.MyTasks,
         element: <MyTasks />,
         title: 'medicalExamList',
+        loginRequired: true,
+        permissions: [],
+      },
+      {
+        href: ROUTE_PATHS.Appoinment,
+        element: <Appoinment />,
+        title: 'appoinment',
         loginRequired: true,
         permissions: [],
       },

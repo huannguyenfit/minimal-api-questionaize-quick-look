@@ -1,35 +1,30 @@
 {
-  "menu": {
-    "questionList": "Questions",
-    "myTesting": "My Testing",
-    "assessmentList": "Assessment"
-  },
-  "questions": {
-    "lblTitle": "Title",
-    "lblSubTitle": "Sub Title",
-    "lblTypeInput": "Type",
-    "lblStatus": "Status",
-    "action": "Action",
-    "singleSelection": "Single Selection",
-    "multipleSelection": "Multiple Selection",
-    "IsCorrect": "Correct?",
-    "lblDisplayName": "Display Name",
-    "lblKeyId": "Key Id"
-  },
   "common": {
-    "details": "Detail",
-    "addNew": "Add New",
-    "cancel": "Cancel",
-    "saveChanges": "Save change",
-    "perform": "Perform",
-    "action":"Action",
-    "select": "Perform"
+    "myTask": "My Task",
+    "patientRegistration": "Patient Registration",
+    "patientAppointment": "Patient Appointment",
+    "medicalExamination": "Medical Examination",
+    "test": "Test",
+    "diagnostic": "Diagnostic",
+    "validations": {
+      "required": "Required",
+      "min": "Must be greater than "
+    }
   },
-  "assessments": {
-    "lblTitle": "Title",
-    "lblDescription": "Description",
-    "lblResult": "Result",
-    "lblNumberOfQuestion": "Number Of Questions"
-
+  "myTask": {
+    "title": "My Task",
+    "patientAwaitingLabel": "Patient Queue"
+  },
+  "profile": "My Profile",
+  "logout": "Log Out",
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Submit",
+      "newAccount": "Don't have an account? Sign Up!",
+      "forgotPassword": "Forgot Password?"
+    }
   }
 }

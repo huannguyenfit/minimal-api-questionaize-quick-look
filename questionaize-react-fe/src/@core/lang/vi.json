@@ -1,3 +1,30 @@
 {
-  
+  "common": {
+    "myTask": "Công Việc Của Tôi",
+    "patientRegistration": "Đăng Ký Khám Bệnh",
+    "patientAppointment": "Hẹn Bệnh",
+    "medicalExamination": "Khám Bệnh",
+    "test": "Xét Nghiệm",
+    "diagnostic": "Chẩn Đoán",
+    "validations": {
+      "required": "Yêu cầu nhập",
+      "min": "Cần nhập lớn hơn "
+    }
+  },
+  "myTask": {
+    "title": "Công Việc Của Tôi",
+    "patientAwaitingLabel": "Bệnh Nhân Chờ Khám"
+  },
+  "profile": "Tài khoản",
+  "logout": "Đăng xuất",
+  "auth": {
+    "login": {
+      "title": "Đăng nhập vào hệ thống",
+      "username": "Tên tài khoản",
+      "password": "Mật khẩu",
+      "submit": "Xác nhận",
+      "newAccount": "Bạn chưa có tài khoản?, Đăng ký",
+      "forgotPassword": "Quên mật khẩu?"
+    }
+  }
 }
