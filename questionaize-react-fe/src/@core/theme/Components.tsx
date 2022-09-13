@@ -71,11 +71,13 @@ export const createThemeComponents = (theme: Theme) => ({
       text: {
         padding: "16px 16px",
       },
-    },
+    }
   },
   MuiButtonBase: {
     defaultProps: {
-      disableRipple: true, // No more ripple, on the whole application
+      disableRipple: true, // No more ripple, on the whole application,
+      bgColor:'#217172'
+
     },
   },
   MuiCardActions: {

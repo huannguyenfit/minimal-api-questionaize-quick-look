@@ -1,21 +1,17 @@
-import MainLayout from 'layout/main/MasterLayout';
-import AuthLayout from 'layout/auth/AuthLayout';
+import MasterLayout from './MasterLayout';
 import { lazy } from 'react';
-import { ROUTE_DYNAMIC_VARIABLE, ROUTE_PATHS } from '@core/constants/routeConfig';
+import {  ROUTE_PATHS } from '@core/constants/routeConfig';
 
 const Home = lazy(() => import('pages/home/Home').then(({ Home }) => ({ default: Home })));
-
-const Login = lazy(() =>
-  import('pages/login/Login').then(({ Login }) => ({ default: Login }))
-);
 const MyTasks = lazy(() =>
   import('pages/my-tasks/MyTask').then(({ MyTasks }) => ({ default: MyTasks }))
 );
+
 const Appoinment = lazy(() => import('pages/appoinment/Appoinment').then(({ Appoinment }) => ({ default: Appoinment })));
 
-const mainLayoutRoutings = [
+const MasterLayoutRoutings = [
   {
-    element: <MainLayout />,
+    element: <MasterLayout />,
     children: [
       {
         href: ROUTE_PATHS.Home,
@@ -42,19 +38,6 @@ const mainLayoutRoutings = [
   },
 ];
 
-const authLayoutRoutings = [
-  {
-    element: <AuthLayout />,
-    children: [
-      {
-        href: ROUTE_PATHS.Login,
-        title: '',
-        element: <Login />,
-        loginRequired: false,
-        permissions: [],
-      },
-    ],
-  },
-];
 
-export const routings = [...authLayoutRoutings, ...mainLayoutRoutings];
+
+export default MasterLayoutRoutings; 

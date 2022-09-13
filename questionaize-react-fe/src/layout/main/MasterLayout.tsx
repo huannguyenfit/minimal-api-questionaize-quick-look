@@ -6,7 +6,7 @@ import SideNav from './LeftSideBar';
 import { Box, Toolbar } from '@mui/material';
 import { useSettings } from '@core/contexts/SettingsProvider';
 
-const MainLayout = () => {
+const MasterLayout = () => {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { collapsed, open, toggleDrawer } = useSettings();
 
@@ -32,4 +32,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default MasterLayout;

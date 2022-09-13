@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ConfirmDialog from "@core/components/ConfirmDialog";
 import Calendar from "@core/components/calendar/Calendar";
-import { Event } from "@core/models/appoinment";
+import { Event } from "@core/models/appoinment/appoinment";
 import { Toolbar } from '@mui/material';
 
 export const Appoinment = () => {

@@ -1,12 +1,6 @@
 const API_PATH = {
-  LOGIN: '/connect/token',
-  GRAPHQL: '/api/graphql',
-
-  GET_QUESTION: '/api/questions/getall',
-  ADD_QUESTION: '/api/questions',
-
-
-
+  GET_TOKEN: '/connect/token',
+  GET_FACILITY_DETAIL: '/GetFacilityDetails'
 }
 
 export default API_PATH;

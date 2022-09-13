@@ -18,7 +18,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import EventIcon from "@mui/icons-material/Event";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Event, eventColors } from "@core/models/appoinment";
+import { Event, eventColors } from "@core/models/appoinment/appoinment";
 
 const StyledWrapper = styled("div")(
     ({ theme }) => `

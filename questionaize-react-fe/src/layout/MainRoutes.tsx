@@ -1,3 +1,4 @@
+import AuthRoute from '@core/components/AuthRoute';
 import React, { Suspense } from 'react';
 import cookie from 'react-cookies';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -12,16 +13,12 @@ export interface LayoutProps {
   setAvatar: (value: string) => void;
 }
 
-const RouteLayout = ({ routers, history, ...rest }: any) => {
-  console.log('RouteLayout', routers)
+const MainRoutes = ({ routes, history, ...rest }: any) => {
   return (
-    <>
       <Routes>
         <Route index element={<Navigate to={ROUTE_PATHS.Login} />} />
         <Route path='*' element={<Navigate to={ROUTE_PATHS.Home} />} />
-
-        {routers.map(({ element: Element, children }, index) => {
-          console.log('routingn')
+        {routes.map(({ element: Element, children }, index) => {
           if (children && children.length > 0) {
             return (
               <Route path={'/'} key={index} element={Element}>
@@ -37,7 +34,6 @@ const RouteLayout = ({ routers, history, ...rest }: any) => {
           }
         })}
       </Routes>
-    </>
   );
 };
-export default RouteLayout;
+export default MainRoutes;

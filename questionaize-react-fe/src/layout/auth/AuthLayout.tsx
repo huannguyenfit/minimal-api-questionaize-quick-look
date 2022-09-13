@@ -1,6 +1,5 @@
 import React from "react"
 import { Outlet } from 'react-router-dom';
-import "./AuthLayout.scss"
 const AuthLayout = () => {
 	return (
 		<>
@@ -8,4 +7,4 @@ const AuthLayout = () => {
 		</>
 	)
 }
-export default AuthLayout
+export default AuthLayout;

@@ -31,13 +31,13 @@ const BoxedLayout = ({ children }: BoxedLayoutProps) => {
       <AppBar color="transparent" position="relative">
         <Toolbar>
           <Box sx={{ flexGrow: 1 }} />
-          <IconButton
+          {/* <IconButton
             aria-label="settings"
             component="span"
             onClick={handleSettingsToggle}
           >
             <Settings />
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Container component="main" maxWidth="xs" sx={{ mt: 6 }}>

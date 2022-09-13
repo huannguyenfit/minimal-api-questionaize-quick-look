@@ -13,29 +13,31 @@ import * as Yup from "yup";
 import BoxedLayout from "@core/components/BoxedLayout";
 import { useSnackbar } from "@core/contexts/SnackbarProvider";
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useAuth } from '@core/contexts/AuthProvider';
 
 export const Login = () => {
-  // const { isLoggingIn, login } = useAuth();
+  const { isLoggingIn, login } = useAuth();
+
   const navigate = useNavigate();
   const snackbar = useSnackbar();
   const { t } = useTranslation();
-  const [isLoggingIn, setIsLoggingIn] = React.useState(false)
-  const handleLogin = (email: string, password: string) => {
+  const handleLogin = async (email: string, password: string) => {
     //login 
-    snackbar.success("Succeed")
-    navigate("/home")
+   await login(email, password);
+   // snackbar.success("Succeed")
+   // navigate("/home")
   };
 
   const formik = useFormik({
     initialValues: {
-      username: "hnguyenfit",
-      password: "123456",
+      username: "huanadmin",
+      password: "1",
     },
     validationSchema: Yup.object({
       username: Yup.string()
         .required(t("common.validations.required")),
       password: Yup.string()
-        .min(8, t("common.validations.min", { size: 8 }))
+        .min(1, t("common.validations.min", { size: 1 }))
         .required(t("common.validations.required")),
     }),
     onSubmit: (values) => handleLogin(values.username, values.password),
@@ -49,7 +51,7 @@ export const Login = () => {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: "url(./img/startup.svg)",
+          backgroundImage: "url(https://bamboohealth.com/wp-content/uploads/2022/03/AdobeStock_271209758-scaled.jpeg)",
           backgroundRepeat: "no-repeat",
           bgcolor: "background.default",
           backgroundSize: "cover",

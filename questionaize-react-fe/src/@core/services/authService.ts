@@ -1,27 +1,42 @@
 import cookie from 'react-cookies';
 import API_PATH from '../constants/apiPath';
-import { getAsync, postAsync } from '../utils/httpClient';
+import jwt_decode from 'jwt-decode';
+
 import { AxiosResponse } from 'axios';
+import identityServerService from './base/identityServerService';
 
 class AuthService {
-  getToken = async (payload: any): Promise<AxiosResponse<any[]>> => {
-    const response = await postAsync(`${API_PATH.LOGIN}`, payload);
-    console.log(response);
-    const token = "Token"
-    //set token
-    // cookie.save('ACCESS_TOKEN', token, {
-    //   path: '/',
-    //   expires: new Date(),
-    //   maxAge: 1000,
-    //   domain: 'https://play.bukinoshita.io',
-    //   secure: true,
-    //   httpOnly: true,
-    // });
-    return response;
+  async getToken(payload: any) {
+    const response = await identityServerService.postAsync<any>(API_PATH.GET_TOKEN, payload, 'application/x-www-form-urlencoded');
+    const { data } = response;
+    if (data && data.access_token) {
+      const decodedToken: any = jwt_decode(data.access_token);
+      const newAuthState = {
+        accessToken: data.access_token,
+        isAuthenticated: true,
+        profile: {
+          name: payload.username,
+          apiurl: decodedToken.apiurl,
+        },
+        pkhid: decodedToken.pkhid,
+      };
+      cookie.save('AUTH_DATA', JSON.stringify(newAuthState), {
+        path: '/',
+        expires: new Date(),
+        maxAge: 1000,
+        secure: true,
+        httpOnly: true,
+      });
+      return newAuthState;
+    }
+    return undefined;
+  }
+  getProvider = (payload: any): Promise<AxiosResponse> => {
+    return identityServerService.postAsync<any>(API_PATH.GET_FACILITY_DETAIL, payload, 'application/x-www-form-urlencoded');
   };
-  // getProvider = (payload: any): Promise<AxiosResponse<any[]>> => {
-  //    //Do Something
-  // }
+  signOut = () => {
+    identityServerService.clearAllSession();
+  };
 }
 
 export default new AuthService();

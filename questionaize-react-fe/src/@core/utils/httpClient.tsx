@@ -2,8 +2,8 @@ import axios, { AxiosInstance, AxiosResponse, ResponseType } from 'axios';
 import HttpStatus from 'http-status-codes';
 import qs from 'qs';
 import cookie from 'react-cookies';
-import {  throwError } from 'rxjs';
-import API_URL from '../constants/routeConfig';
+import { throwError } from 'rxjs';
+import { API_URL } from '../constants/routeConfig';
 import { ToggleMessage } from '../models/common/responseMessage';
 import i18n from './i18n';
 import { toggleLoading, toggleMessage } from './loading/Loading';
@@ -62,7 +62,7 @@ const axiosInstance = (
           if (error.response.data.Errors && error.response.data.Errors.length > 0) {
             error.response.data.Errors.forEach((item: any, index: number) => {
               message.message += index + 1 + '. ' + item.Message + '\n';
-              console.log(message.message)
+              console.log(message.message);
             });
           } else {
             message.message = error.response.data.Message;
@@ -92,7 +92,7 @@ export const getAsync = (
     paramsSerializer: function (params) {
       return qs.stringify(params, { arrayFormat: 'repeat' });
     },
-  })
+  });
 };
 
 export const getFileAsync = (
@@ -118,7 +118,10 @@ export const postAsync = (
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
 ): Promise<AxiosResponse> => {
-  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).post(url, json)
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).post(
+    url,
+    json
+  );
 };
 
 export const postXFormAsync = (
@@ -129,8 +132,14 @@ export const postXFormAsync = (
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
 ): Promise<AxiosResponse> => {
-  return axiosInstance(handleErrorAutomatic, successMessage, 'application/x-www-form-urlencoded', 'json', isShowLoading, isShowMessage
-  ).post(url, json)
+  return axiosInstance(
+    handleErrorAutomatic,
+    successMessage,
+    'application/x-www-form-urlencoded',
+    'json',
+    isShowLoading,
+    isShowMessage
+  ).post(url, json);
 };
 
 export const putAsync = (
@@ -141,9 +150,10 @@ export const putAsync = (
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
 ): Promise<AxiosResponse> => {
-  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage)
-    .put(url, json)
-
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).put(
+    url,
+    json
+  );
 };
 
 export const deleteAsync = (
@@ -153,8 +163,9 @@ export const deleteAsync = (
   isShowMessage: boolean = true,
   handleErrorAutomatic: boolean = true
 ): Promise<AxiosResponse> => {
-  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).delete(url)
-
+  return axiosInstance(handleErrorAutomatic, successMessage, 'application/json', 'json', isShowLoading, isShowMessage).delete(
+    url
+  );
 };
 
 export const postWithUrlencoded = (
