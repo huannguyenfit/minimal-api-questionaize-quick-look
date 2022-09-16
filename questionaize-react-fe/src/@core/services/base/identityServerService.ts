@@ -1,13 +1,9 @@
-import {  IDENTITY_SERVER_URL } from '@core/constants/routeConfig';
 import { AxiosInitialize } from './axiosInitialize';
-
-
+const IDENTITY_SERVER_URL = process.env.REACT_APP_IDENTITY_SERVER_ENDPOINT;
 
 class IdentityService extends AxiosInitialize {
   constructor() {
-    super(IDENTITY_SERVER_URL);
-    console.log('====>vô IDENTITY_SERVER_URL', IDENTITY_SERVER_URL)
-
+    super(IDENTITY_SERVER_URL, false);
   }
 }
 

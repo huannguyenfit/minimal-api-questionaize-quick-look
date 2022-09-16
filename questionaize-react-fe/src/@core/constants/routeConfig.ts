@@ -1,12 +1,14 @@
-export const API_URL = process.env.REACT_APP_API_ENDPOINT;
-export const IDENTITY_SERVER_URL = process.env.REACT_APP_IDENTITY_SERVER_ENDPOINT;
+
 enum ROUTE_PATHS {
   Home = '/home',
   Login = '/login',
-  NoPermission = '/no-persission',
-  QuestionList = '/questions',
+  Register = '/register',
+  NoPermission = '/no-permission',
   MyTasks = '/my-task',
-  Appoinment = '/appoinment'
+  PatientAppointment = '/appointment',
+  PatientDashboard = `/patient-dashboard`,
+  PatientRegistration = '/patient-registration'
+  
 }
 
 //this variable is using for params url

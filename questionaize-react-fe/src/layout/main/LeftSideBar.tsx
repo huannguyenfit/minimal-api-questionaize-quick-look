@@ -45,52 +45,52 @@ export default function LeftSideBar({
 
   const renderMenu = (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100%" }}>
-      <Logo sx={{ display: "flex", p: 4 }} />
+      <Logo sx={{ display: "flex", padding: "16px 32px" }} />
       <ProSidebar>
-            <SidebarContent>
-              <PerfectScrollbar style={{ height: '730px' }}>
-                <Menu iconShape='circle'>
-                  {sideBars.map((item, index) => {
-                    return (
-                      <>
-                        {!item.children || item.children.length == 0 ? (
-                          <CustomNavLink key={`menu_${index}`} icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
-                        ) : (
-                          <SubMenu title={item.text} key={`mainSubmenu_${index}`} icon={item.icon ? <item.icon /> : undefined}>
-                            {item.children.map((child, childIndex) => {
-                              return (
-                                <>
-                                  <CustomNavLink
-                                    key={`submenu_${childIndex}`}
-                                    icon={child.icon}
-                                    title={child.text}
-                                    navigateTo={child.navigateTo}
-                                  />
-                                </>
-                              );
-                            })}
-                          </SubMenu>
-                        )}
-                      </>
-                    );
-                  })}
-                </Menu>
-              </PerfectScrollbar>
-            </SidebarContent>
-            <SidebarFooter>
-              <div
-                className='sidebar-btn-wrapper'
-                style={{
-                  padding: '20px 24px',
-                  textAlign: 'center',
-                }}
-              >
-                <Typography mt={2}>
-                  &copy; TD Medical company
-                </Typography>
-              </div>
-            </SidebarFooter>
-          </ProSidebar>
+        <SidebarContent>
+          <PerfectScrollbar style={{ height: '730px' }}>
+            <Menu iconShape='circle'>
+              {sideBars.map((item, index) => {
+                return (
+                  <>
+                    {!item.children || item.children.length == 0 ? (
+                      <CustomNavLink key={`menu_${index}`} icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
+                    ) : (
+                      <SubMenu title={item.text} key={`mainSubmenu_${index}`} icon={item.icon ? <item.icon /> : undefined}>
+                        {item.children.map((child, childIndex) => {
+                          return (
+                            <>
+                              <CustomNavLink
+                                key={`submenu_${childIndex}`}
+                                icon={child.icon}
+                                title={child.text}
+                                navigateTo={child.navigateTo}
+                              />
+                            </>
+                          );
+                        })}
+                      </SubMenu>
+                    )}
+                  </>
+                );
+              })}
+            </Menu>
+          </PerfectScrollbar>
+        </SidebarContent>
+        <SidebarFooter>
+          <div
+            className='sidebar-btn-wrapper'
+            style={{
+              padding: '20px 24px',
+              textAlign: 'center',
+            }}
+          >
+            <Typography mt={2}>
+              &copy; TD Medical company
+            </Typography>
+          </div>
+        </SidebarFooter>
+      </ProSidebar>
       <Box sx={{ flexGrow: 1 }} />
     </Box>
   )
@@ -117,6 +117,9 @@ export default function LeftSideBar({
               boxSizing: "border-box",
               width: width,
             },
+            bgcolor: 'rgb(255, 255, 255) ',
+            boxShadow: 'rgb(113 122 131 / 11%) 0px 7px 30px 0px'
+
           }}
         >
           {renderMenu}
@@ -130,6 +133,8 @@ export default function LeftSideBar({
               boxSizing: "border-box",
               width: width,
             },
+            bgcolor: 'rgb(255, 255, 255) ',
+            boxShadow: 'rgb(113 122 131 / 11%) 0px 7px 30px 0px'
           }}
         >
           {renderMenu}

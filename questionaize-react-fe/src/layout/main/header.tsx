@@ -1,5 +1,5 @@
 import { BehaviorSubject } from "rxjs";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -22,17 +22,56 @@ import { useSettings } from "@core/contexts/SettingsProvider";
 import { drawerCollapsedWidth, drawerWidth } from "@core/components/SettingsDrawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import notifications from './notification.json'
-// handle loading
+import { useAuth } from "@core/contexts/AuthProvider";
+import { styled } from '@mui/material/styles'
+import i18n from '@core/utils/i18n'
+import usaFlag from 'assets/flags/usa.png'
+import vnFlag from 'assets/flags/vi.png'
 export const toggleMenu$ = new BehaviorSubject<boolean>(false);
 
 export const toggleMenu = (value: boolean) => {
     toggleMenu$.next(value);
 };
+const IconWrapper = styled(Box)(() => ({
+    display: "flex",
+    height: 20,
+    width: 20,
+    "& img": {
+        width: "100%",
+        borderRadius: "50%",
+        objectFit: "cover",
+    },
+}));
+
+const languageOptions: {
+    [key: string]: { icon: string; label: string };
+} = {
+    en: {
+        icon: usaFlag,
+        label: "English",
+    },
+    vi: {
+        icon: vnFlag,
+        label: "Vietnam",
+    },
+};
+
+const ItemWrapper = styled(Box)(() => ({
+    display: "flex",
+    "& img": { width: "100%" },
+}));
+
+
 export const Header = () => {
     const [toggleRightPanel, setToggleRightPanel] = useState(false);
+    const anchorRef = useRef(null);
+
+    const selectedLanguage = languageOptions[i18n.language || window.localStorage.i18nextLng || "en"];
+
     const { t } = useTranslation()
+    const { logout } = useAuth();
     const { collapsed } = useSettings();
     const width = collapsed ? drawerCollapsedWidth : drawerWidth;
     const [anchorDropdownMenu, setAnchorDropdownMenu] = React.useState<null | HTMLElement>(null);
@@ -40,6 +79,11 @@ export const Header = () => {
     const [anchorNotification, setAnchorNotification] = useState<null | HTMLElement>(null);
     const openNotification = Boolean(anchorNotification);
     const openDropdown = Boolean(anchorDropdownMenu);
+    const navigate = useNavigate();
+
+    const [openLanguageSwitch, setOpenLanguageSwitch] = useState(false);
+
+
 
     const openDropdownMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorDropdownMenu(event.currentTarget);
@@ -48,12 +92,23 @@ export const Header = () => {
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorNotification(event.currentTarget);
     };
-
+    const onLogout = () => {
+        logout();
+        navigate("/login")
+        handleClose();
+    }
     const handleClose = () => {
         setAnchorNotification(null);
         setAnchorDropdownMenu(null);
     };
 
+    const handleOpenLanguageSwitch = () => setOpenLanguageSwitch(true);
+    const handleCloseLanguageSwitch = () => setOpenLanguageSwitch(false);
+    const handleChangeLanguage = (language) => {
+        i18n.changeLanguage(language);
+        handleCloseLanguageSwitch();
+        window.location.reload();
+    }
     const renderDropdownMenu = () => {
         return (
             <>
@@ -92,8 +147,8 @@ export const Header = () => {
                         <MenuItem sx={{ height: 50 }} onClick={handleClose}>
                             <PermIdentityOutlinedIcon className="mr-3" /> {t('profile')}
                         </MenuItem>
-                        <MenuItem sx={{ height: 50 }} onClick={handleClose}>
-                            <LogoutOutlinedIcon className="mr-3" />  {t('LogOut')}
+                        <MenuItem sx={{ height: 50 }} onClick={onLogout}>
+                            <LogoutOutlinedIcon className="mr-3" />  {t('logout')}
                         </MenuItem>
                     </Menu>
                 </Box>
@@ -181,6 +236,38 @@ export const Header = () => {
             </>
         )
     }
+
+    const renderLanguageSwitch = () => {
+        return (
+            <>
+                <IconButton onClick={handleOpenLanguageSwitch} ref={anchorRef}>
+                    <IconWrapper>
+                        <img alt={selectedLanguage.label} src={selectedLanguage.icon} />
+                    </IconWrapper>
+                </IconButton>
+                <Popover
+                    keepMounted
+                    open={openLanguageSwitch}
+                    onClose={handleCloseLanguageSwitch}
+                    anchorEl={anchorRef.current}
+                    anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+                    PaperProps={{ sx: { width: 150, padding: "0.5rem 0" } }}
+                >
+                    {Object.keys(languageOptions).map((language: string) => (
+                        <MenuItem
+                            key={languageOptions[language].label}
+                            onClick={() => handleChangeLanguage(language)}
+                        >
+                            <ItemWrapper>
+                                <Typography variant="h5" fontWeight={600} ml={1} component="h6" color="text.primary"> {languageOptions[language].label}
+                                </Typography>
+                            </ItemWrapper>
+                        </MenuItem>
+                    ))}
+                </Popover>
+            </>
+        )
+    }
     const toggleDrawer = () => {
 
     }
@@ -192,10 +279,11 @@ export const Header = () => {
                 sx={{
                     width: { lg: `calc(100% - ${width}px)` },
                     marginLeft: { lg: 280 },
+                    bgcolor: 'transparent !important'
                 }}
             >
 
-                <Toolbar sx={{ bgcolor: '#fff', px: { xs: 3, sm: 6 } }}>
+                <Toolbar sx={{ bgcolor: 'transparent' }}>
                     <Box sx={{ display: 'flex', flexGrow: 1 }}>
                         <IconButton
                             color="inherit"
@@ -223,11 +311,15 @@ export const Header = () => {
                         </Paper>
                     </Box>
                     <Box sx={{ display: 'flex', gap: '20px', alignItems: 'center', }}>
-                        <Link href="#" color="inherit" onClick={() => setToggleRightPanel(!toggleRightPanel)} >
+                        {renderLanguageSwitch()}
+
+                        <Link sx={{ display: 'flex', alignItems: 'center', }} href="#" color="inherit" onClick={() => setToggleRightPanel(!toggleRightPanel)} >
                             <SettingsOutlinedIcon />
                         </Link>
-                        {renderNotificationDropdown()}
-                        {renderDropdownMenu()}
+                        <>
+                            {renderNotificationDropdown()}
+                            {renderDropdownMenu()}
+                        </>
                     </Box>
                 </Toolbar>
             </AppBar>

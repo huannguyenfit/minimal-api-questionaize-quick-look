@@ -1,16 +1,27 @@
-import { lazy } from 'react';
-import { ROUTE_PATHS } from '@core/constants/routeConfig';
 import AuthLayout from './AuthLayout'
-const Login = lazy(() => import('pages/login/Login').then(({ Login }) => ({ default: Login })));
+import { lazyMinLoadTime } from '@core/components/LazyLoaderDelay';
+import i18n from '@core/utils/i18n';
+import { ROUTE_PATHS } from '@core/constants/routeConfig';
+const Login = lazyMinLoadTime(() => import('modules/authentication/Login').then(({ Login }) => ({ default: Login })));
+const Register = lazyMinLoadTime(() => import('modules/authentication/Register').then(({ Register }) => ({ default: Register })));
 
-const AuthLayoutRoutings = [
+
+const authLayoutRoutings = [
   {
     element: <AuthLayout />,
+    path: '/',
     children: [
       {
-        href: ROUTE_PATHS.Login,
-        title: '',
+        path: ROUTE_PATHS.Login,
+        title: i18n.t('login'),
         element: <Login />,
+        loginRequired: false,
+        permissions: [],
+      },
+      {
+        path: ROUTE_PATHS.Register,
+        title: i18n.t('register'),
+        element: <Register />,
         loginRequired: false,
         permissions: [],
       },
@@ -18,4 +29,4 @@ const AuthLayoutRoutings = [
   },
 ];
 
-export default AuthLayoutRoutings; 
+export default authLayoutRoutings; 

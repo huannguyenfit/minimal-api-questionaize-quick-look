@@ -1,17 +1,16 @@
-import NoContent from '@core/components/no-content/NoContent';
 
 import React, { useState, useEffect } from 'react';
 import { patients } from './patientsData';
-import './MyTask.scss';
-import { HtmlTooltip } from '@core/components/html-tooltip/HtmlTooltip';
-import { Avatar, Grid, Skeleton } from '@mui/material';
-import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
+import { HtmlTooltip } from '@core/components/HtmlTooltip';
+import { Avatar, Box, Card, CardContent, Grid, IconButton, Skeleton, Toolbar, Typography } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useTranslation } from 'react-i18next';
+import Empty from '@core/components/Empty';
 export const MyTasks = () => {
   const [results, setResults] = useState([...patients]);
   const [loading, setLoading] = useState(false);
-const {t} = useTranslation()
+  const { t } = useTranslation()
   useEffect(() => {
     setTimeout(() => {
       setLoading(true)
@@ -20,162 +19,127 @@ const {t} = useTranslation()
   }, [])
 
 
+  const renderCardItem = (item: any, index: number) => {
+    return (
+      <HtmlTooltip key={`tooltip_${index}`}
+        placement="right"
+        title={
+          <Grid container sx={{ width: '250px' }} spacing={2}>
+            <Grid item md={4}>
+              <Typography variant="body2" color="textSecondary" component="div">
+                Huyết áp
+              </Typography>
+              <Typography component="div" variant="h6">
+                55
+              </Typography>
+            </Grid>
+            <Grid item md={4}>
+              <Typography variant="body2" color="textSecondary" component="div">
+                Mạch
+              </Typography>
+              <Typography component="div" variant="h6">
+                66
+              </Typography>
+            </Grid>
+            <Grid item md={4}>
+              <Typography variant="body2" color="textSecondary" component="div">
+                Cân nặng
+              </Typography>
+              <Typography component="div" variant="h6">
+                676
+              </Typography>
+            </Grid>
+            <Grid item md={12}>
+              <Typography variant="body2" color="textSecondary" component="div">
+                Tiền căng/Bệnh sử/Chẩn đoán trước
+              </Typography>
+              <Typography component="div" variant="h6">
+                Từng điều trị tim
+              </Typography>
+            </Grid>
+          </Grid>
+        }>
+        <Card  sx={{ cursor: 'pointer', marginBottom: "6px", bgcolor: '#f3f3f3', border: '1px solid #e1e1e1' }}>
+          <CardContent sx={{ display: "flex", alignItems: "center", paddingBottom: '10px !important', paddingTop: '10px' }}>
+            <Avatar
+              src={`https://i.pravatar.cc/150?img=${index + 1}`}
+              sx={{ mr: 2 }}
+            />
+            <Box >
+              <Typography component="div" variant="h6">
+                {item.FullName}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="div">
+                10/03/1985 (40 tuổi). Nữ
+              </Typography>
+              <Box sx={{ display: 'flex', alignItems: "center", gap: '5px' }}>
+                <Typography variant="body2" color="textSecondary" component="div">
+                  Lý do khám:
+                </Typography>
+                <Typography variant="h6" component="div">
+                  {item.Symptom}
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
+              <Typography component="div" variant="h6">
+                Giờ vào
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="div">
+                {new Date().toLocaleDateString()}
+              </Typography>
+            </Box>
+            <IconButton>
+              <ChevronRightIcon />
+            </IconButton>
+          </CardContent>
+        </Card>
+      </HtmlTooltip>
+    )
+  }
+
   return (
-    <>
-      {/* <Card>
-      <CardContent sx={{ textAlign: "center" }}>
-        <Typography gutterBottom component="div" variant="h3">
-          {title}
+    <React.Fragment>
+      <Toolbar >
+        <Typography variant="h2" component="h4">
+          {t('myTask.title')}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {description}
-        </Typography>
-      </CardContent>
-    </Card> */}
-     {/* <Grid container spacing={2}>
-
-
-
-     </Grid> */}
-      <div className='pd-ltr-20 xs-pd-20-10'>
-        <div className='row  mb-20'>
-          <div className='col-md-6 col-sm-12'>
-            <div className='title'>
-              <h4>{t('myTask.title')}</h4>
-            </div>
-          </div>
-        </div>
-        <div className='row'>
-
-          <div className="col-md-6 col-lg-5 col-sm-6 col-12" >
-            <div className="card-box pd-30 pt-10 height-100-p">
-              <h2 className="mb-30 h4">{t('myTask.patientAwaitingLabel')}</h2>
-
+      </Toolbar>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={5}>
+          <Card >
+            <CardContent >
+              <Typography gutterBottom component="div" variant="h5">
+                {t('myTask.patientAwaitingLabel')}
+              </Typography>
               <PerfectScrollbar style={{
                 height: '660px'
               }}>
                 {
                   !loading ? (
                     <>
-                      <Skeleton sx={{ height: 100, borderRadius: '6px' }} className="mb-5" animation="wave" variant="rectangular" />
-                      <Skeleton sx={{ height: 100, borderRadius: '6px' }} className="mb-5" animation="wave" variant="rectangular" />
-                      <Skeleton sx={{ height: 100, borderRadius: '6px' }} className="mb-5" animation="wave" variant="rectangular" />
-                      <Skeleton sx={{ height: 100, borderRadius: '6px' }} className="mb-5" animation="wave" variant="rectangular" />
-                      <Skeleton sx={{ height: 100, borderRadius: '6px' }} className="mb-5" animation="wave" variant="rectangular" />
-                      <Skeleton sx={{ height: 100, borderRadius: '6px' }} className="mb-5" animation="wave" variant="rectangular" />
-                    </>
+                      {[1, 2, 3, 4, 5, 6].map((text, index) => (
+                        <Skeleton key={`Skeleton_${index}`} sx={{ height: 100, borderRadius: '6px', marginBottom: "5px" }} animation="wave" variant="rectangular" />
+                      ))}</>
                   ) : <>
                     {results.length ? (
                       <>
-                        <div className='content-div' >
-                          {results.slice(0, 8).map((item: any, index: number) => {
-                            return (
-                              <HtmlTooltip
-                                placement="right"
-                                title={
-                                  <div className='row'>
-                                    <div className='col-4'>
-                                      <span className='text-muted'>Huyết áp</span>
-                                      <p style={{ fontWeight: 600 }}>33</p>
-                                    </div>
-                                    <div className='col-4'>
-                                      <span className='text-muted'>Mạch</span>
-                                      <p style={{ fontWeight: 600 }}>66</p>
-                                    </div>
-                                    <div className='col-4'>
-                                      <span className='text-muted'>Cân nặng</span>
-                                      <p style={{ fontWeight: 600 }}>66</p>
-                                    </div>
-                                    <div className="col-12">
-                                      <span className='text-muted'>Tiền căng/Bệnh sử/Chẩn đoán trước</span>
-                                      <p style={{ fontWeight: 600 }}>Từng điều trị tim</p>
-                                    </div>
-                                  </div>
-                                }
-                              >
-                                <div className='row-card'>
-                                  <div className='d-flex detail  align-items-center' style={{ gap: '10px' }}>
-                                    <div style={{ fontSize: '20px', fontWeight: 600 }}>#{index + 1}</div>
-                                    <Avatar className='avatar' sx={{ width: 56, height: 56 }} src={`https://i.pravatar.cc/150?img=${index + 1}`} />
-                                    <div className='d-flex flex-column w-50' >
-                                      <div style={{ fontWeight: 600 }}>{item.FullName}</div>
-                                      <div>10/03/1985 (40 tuổi). Nữ</div>
-                                      <div>
-                                        Lý do khám: <label style={{ fontWeight: 600 }}>{item.Symptom}</label>
-                                      </div>
-                                    </div>
-                                    <div className='d-flex flex-column'>
-                                      <div>Giờ vào: </div>
-                                      <div>{new Date().toLocaleDateString()}</div>
-                                    </div>
-                                    <div className="arrow-right"><ArrowForwardIosOutlinedIcon /></div>
-                                  </div>
-                                </div>
-                              </HtmlTooltip>
-                            );
-                          })}
-                        </div>
+                        {results.slice(0, 8).map((item: any, index: number) => {
+                          return (
+                            renderCardItem(item, index)
+                          )
+                        }
+                        )}
                       </>
                     ) : (
-                      <NoContent />
+                      <Empty />
                     )}
                   </>}
               </PerfectScrollbar>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </React.Fragment >
   );
 };
-
-
-
-
-
-//design template 2
-// <div className='col-md-12 col-lg-12 col-sm-6 col-12'>
-// <div className='title mb-3'>
-//   <h6>Bệnh nhân chờ khám</h6>
-// </div>
-// {results.length ? (
-//   <>
-//     <div className='content-div' style={{ gap: '20px' }}>
-//       {results.slice(0, 8).map((item: any, index: number) => {
-//         return (
-//           <div className='row-card d-flex ' style={{ width: '200px' }}>
-//             <div className=' detail-2'>
-//               <div className='d-flex  justify-content-between align-items-center'>
-//                 <Avatar
-//                   className='avatar'
-//                   sx={{ width: 56, height: 56 }}
-//                   src={`https://i.pravatar.cc/150?img=${index + 1}`}
-//                 />
-//                 <div style={{ fontSize: '20px', fontWeight: 600 }}>#{index + 1}</div>
-//               </div>
-
-//               <p className='mt-2' style={{ fontWeight: 600 }}>
-//                 {item.FullName}
-//               </p>
-
-//               <div className='row'>
-//                 <div className='col-12'>
-//                   <span className='text-muted'>Năm sinh</span>
-//                   <p>1985 - (40 tuổi)</p>
-//                 </div>
-//                 <div className='col-12'>
-//                   <span className='text-muted'>Lý do khám</span>
-//                   <p style={{ fontWeight: 600 }}>{item.Symptom}</p>
-//                 </div>
-//               </div>
-//               <Link href='#'>Chi tiết</Link>
-//             </div>
-//           </div>
-//         );
-//       })}
-//     </div>
-//   </>
-// ) : (
-//   <NoContent />
-// )}
-// </div>

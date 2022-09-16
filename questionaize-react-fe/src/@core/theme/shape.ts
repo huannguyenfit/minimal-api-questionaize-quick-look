@@ -1,5 +1,5 @@
 const shape = {
-  borderRadius: 16,
+  borderRadius: 6,
 };
 
 export default shape;

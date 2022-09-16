@@ -2,6 +2,7 @@
   "common": {
     "myTask": "Công Việc Của Tôi",
     "patientRegistration": "Đăng Ký Khám Bệnh",
+    "receivingPatient": "Tiếp Nhận Bệnh Nhân",
     "patientAppointment": "Hẹn Bệnh",
     "medicalExamination": "Khám Bệnh",
     "test": "Xét Nghiệm",
@@ -13,7 +14,7 @@
   },
   "myTask": {
     "title": "Công Việc Của Tôi",
-    "patientAwaitingLabel": "Bệnh Nhân Chờ Khám"
+    "patientAwaitingLabel": "Chờ Khám"
   },
   "profile": "Tài khoản",
   "logout": "Đăng xuất",
@@ -26,5 +27,11 @@
       "newAccount": "Bạn chưa có tài khoản?, Đăng ký",
       "forgotPassword": "Quên mật khẩu?"
     }
+  },
+  "calendar" : {
+    "today": "Hôm nay"
+  },
+  "appoinment": {
+    "title": "Hẹn Bệnh"
   }
 }

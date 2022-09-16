@@ -5,17 +5,13 @@ import cookie from 'react-cookies';
 import { throwError } from 'rxjs';
 import { ToggleMessage } from '@core/models/common/responseMessage';
 import i18n from '@core/utils/i18n';
-import { toggleLoading, toggleMessage } from '@core/utils/loading/Loading';
 
 export abstract class AxiosInitialize {
-  constructor(private baseURL: string) {}
-
-   public clearAllSession() {
+  constructor(private _baseURL: string, private _includeToken: boolean) {}
+  public clearAllSession() {
     Object.keys(cookie.loadAll()).forEach((item) => {
       cookie.remove(item);
     });
-
-    localStorage.clear();
     sessionStorage.clear();
     // redirect to sign in page
     if (window.location.href.indexOf('/login') === -1) {
@@ -23,22 +19,17 @@ export abstract class AxiosInitialize {
     }
   }
 
-  private getInstance = (
-    contentType: string = 'application/json',
-    includeToken: boolean = false,
-    responseType: ResponseType = 'json'
-  ): AxiosInstance => {
-
+  private getInstance = (contentType: string = 'application/json', responseType: ResponseType = 'json'): AxiosInstance => {
     const authData: any = cookie.load('AUTH_DATA');
-    if(!authData) {
+    if (!authData) {
       this.clearAllSession();
     }
     const instance = axios.create({
-      baseURL: this.baseURL,
+      baseURL: this._baseURL,
       headers: {
         'Content-Type': contentType,
-        Authorization: includeToken ? `Bearer ${authData.accessToken}` : undefined,
-        'PKHID': includeToken? authData.pkhid ?  authData.pkhid :  '' :  ''
+        Authorization: this._includeToken ? `${authData.tokenType} ${authData.accessToken}` : undefined,
+        'secret-key': 888,
       },
       responseType: responseType,
     });
@@ -77,7 +68,7 @@ export abstract class AxiosInitialize {
           }
         }
         // show error
-        toggleMessage({ message: message.message, type: 'error', code: message.code });
+        // snackbar({ message: message.message, type: 'error', code: message.code });
 
         return throwError(error);
       }
@@ -85,13 +76,8 @@ export abstract class AxiosInitialize {
     return instance;
   };
 
-  public getAsync<T>(
-    url: string,
-    params?: { [key: string]: any },
-    contentType?: string,
-    includeToken?: boolean
-  ): Promise<AxiosResponse<T>> {
-    return this.getInstance(contentType, includeToken).get(url, {
+  public getAsync<T>(url: string, params?: { [key: string]: any }, contentType?: string): Promise<AxiosResponse<T>> {
+    return this.getInstance(contentType).get(url, {
       params: params,
       paramsSerializer: function (params) {
         return qs.stringify(params, { arrayFormat: 'repeat' });
@@ -99,15 +85,16 @@ export abstract class AxiosInitialize {
     });
   }
 
-  public postAsync<T>(url: string, json?: object, contentType?: string, includeToken?: boolean): Promise<AxiosResponse<T>> {
-    return this.getInstance(contentType, includeToken).post(url, json);
+  public postAsync<T>(url: string, json?: any, contentType?: string): Promise<AxiosResponse<T>> {
+    return this.getInstance(contentType).post(url, json);
   }
 
-  public putAsync<T>(url: string, json?: object, contentType?: string, includeToken?: boolean): Promise<AxiosResponse<T>> {
-    return this.getInstance(contentType, includeToken).put(url, json);
+  public putAsync<T>(url: string, json?: any, contentType?: string): Promise<AxiosResponse<T>> {
+    return this.getInstance(contentType).put(url, json);
   }
 
-  public deleteAsync<T>(url: string, contentType?: string, includeToken?: boolean): Promise<AxiosResponse<T>> {
-    return this.getInstance(contentType, includeToken).delete(url);
+  public deleteAsync<T>(url: string, contentType?: string): Promise<AxiosResponse<T>> {
+    return this.getInstance(contentType).delete(url);
   }
+  
 }

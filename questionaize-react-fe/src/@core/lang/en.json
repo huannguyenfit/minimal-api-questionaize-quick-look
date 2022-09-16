@@ -2,6 +2,7 @@
   "common": {
     "myTask": "My Task",
     "patientRegistration": "Patient Registration",
+    "receivingPatient": "Receiving a Patient",
     "patientAppointment": "Patient Appointment",
     "medicalExamination": "Medical Examination",
     "test": "Test",
@@ -26,5 +27,21 @@
       "newAccount": "Don't have an account? Sign Up!",
       "forgotPassword": "Forgot Password?"
     }
+  },  
+  "calendar" : {
+    "today": "Today"
+  },
+  "appoinment": {
+    "title": "Appoinment"
+  },
+  "patientDashboard": {
+    "BeatsPerMinus": "Pulse",
+    "Diastolic":"Diastolic",
+    "Systolic": "Systolic",
+    "BreathingPerMinus": "Breath",
+    "BMI": "BMI",
+    "Height": "Height",
+    "Weight": "Weight"
+
   }
 }

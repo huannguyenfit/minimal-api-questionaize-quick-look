@@ -56,7 +56,7 @@ const SnackbarProvider = ({ children }: SnackbarProviderProps) => {
           horizontal: "right",
         }}
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={1500}
         onClose={handleClose}
       >
         <Alert onClose={handleClose} severity={severity}>

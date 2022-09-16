@@ -10,8 +10,9 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTranslation } from "react-i18next";
-import { useSettings } from "../contexts/SettingsProvider";
 import i18n from '../utils/i18n'
+
+import { useSettings } from "../contexts/SettingsProvider";
 export const drawerCollapsedWidth = 104;
 export const drawerWidth = 280;
 type SettingsDrawerProps = {

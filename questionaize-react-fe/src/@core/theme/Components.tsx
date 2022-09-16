@@ -64,6 +64,9 @@ export const createThemeComponents = (theme: Theme) => ({
       root: {
         padding: "16px 24px",
         textTransform: "none" as any,
+        "&:hover": {
+          backgroundColor:  theme.palette.primary.dark,
+        }
       },
       label: {
         fontWeight: theme.typography.fontWeightMedium,
@@ -76,8 +79,6 @@ export const createThemeComponents = (theme: Theme) => ({
   MuiButtonBase: {
     defaultProps: {
       disableRipple: true, // No more ripple, on the whole application,
-      bgColor:'#217172'
-
     },
   },
   MuiCardActions: {

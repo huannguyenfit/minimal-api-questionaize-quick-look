@@ -2,23 +2,40 @@ import SettingsProvider from '@core/contexts/SettingsProvider';
 import SnackbarProvider from '@core/contexts/SnackbarProvider';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Loading from '@core/utils/loading/Loading';
+import Loading from '@core/components/loading/Loading';
 import AppRoutes from './AppRoutes';
-import  AuthProvider  from '@core/contexts/AuthProvider';
+import AuthProvider from '@core/contexts/AuthProvider';
+import SplashScreen from '@core/components/SplashScreen';
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from '@sentry/tracing';
+
+if (process.env.NODE_ENV === "production") {
+  Sentry.init({
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    integrations: [new BrowserTracing()],
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  });
+}
+
 function App() {
   return (
     <>
       <BrowserRouter>
-        <React.Suspense fallback={'Loading'}>
-          <SettingsProvider>
-            <SnackbarProvider>
-              <Loading />
-              <AuthProvider>
-                <AppRoutes />
-              </AuthProvider>
-            </SnackbarProvider>
-          </SettingsProvider>
-        </React.Suspense>
+        <AuthProvider>
+          <React.Suspense fallback={<SplashScreen />}>
+            <Sentry.ErrorBoundary>
+              <SettingsProvider>
+                <SnackbarProvider>
+                  <Loading />
+                  <AppRoutes />
+                </SnackbarProvider>
+              </SettingsProvider>
+            </Sentry.ErrorBoundary>
+          </React.Suspense>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

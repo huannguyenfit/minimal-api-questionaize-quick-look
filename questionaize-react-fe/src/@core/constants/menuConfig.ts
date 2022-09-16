@@ -10,21 +10,10 @@ import { IMenuItem } from '@core/models/common/menu';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
 const PatientRegistrationMenu: IMenuItem[] = [
   {
-    text: 'Ngoại trú',
-    navigateTo: ROUTE_PATHS.Home,
+    text: i18n.t('common.receivingPatient'),
+    navigateTo: ROUTE_PATHS.PatientRegistration,
   },
-  {
-    text: 'Nội trú',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Báo cáo - Thống kê',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Thu tiền khác',
-    navigateTo: '/empty',
-  },
+  
 ];
 
 const MedicalExaminationMenu: IMenuItem[] = [
@@ -84,7 +73,7 @@ export const MainMenu: IMenuItem[] = [
   {
     moduleId: TDModuleEnum.PatientAppointment,
     text: i18n.t('common.patientAppointment'),
-    navigateTo: ROUTE_PATHS.Appoinment,
+    navigateTo: ROUTE_PATHS.PatientAppointment,
     icon: ScheduleOutlinedIcon,
   },
   {

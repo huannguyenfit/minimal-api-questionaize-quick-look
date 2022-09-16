@@ -1,24 +1,12 @@
-import { Navigate, Route, RouteProps } from 'react-router-dom';
-// import { useAuth } from "../../auth/contexts/AuthProvider";
-import { ROUTE_PATHS } from '@core/constants/routeConfig';
-type PrivateRouteProps = {
-  roles?: string[];
-} & RouteProps;
 
-const AuthRoute = ({ children, roles, ...routeProps }: PrivateRouteProps) => {
-  //const { hasRole, userInfo } = useAuth();
-  const hasRole = ([]) => {
-    return true;
-  };
-  const userInfo = true;
-  if (userInfo) {
-    // if (!hasRole(roles)) {
-    //   return <Navigate to={ROUTE_PATHS.NoPermission} />;
-    // }
-    return <Route {...routeProps} />;
-  } else {
-    return <Navigate to={ROUTE_PATHS.Login} />;
-  }
-};
-
-export default AuthRoute;
+import { useAuth } from '@core/contexts/AuthProvider';
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import cookie from 'react-cookies'
+export const AuthRoute = () => {
+  //  const { isAuthenticated } = useAuth();
+  const isAuthenticated = cookie.load('AUTH_DATA');
+  // If authorized, return an outlet that will render child elements
+  // If not, return element that will navigate to login page
+  return isAuthenticated ? <Outlet/> : <Navigate to="/login" />;
+}

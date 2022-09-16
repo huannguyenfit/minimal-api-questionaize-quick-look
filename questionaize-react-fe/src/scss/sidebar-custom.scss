@@ -19,8 +19,8 @@ $breakpoint-xxl: 1600px !default;
 
 
  .pro-sidebar .pro-menu .pro-menu-item.active {
-    background: linear-gradient(14deg, #3a367b 0%, rgba(23,97,253,0.6));
-    box-shadow: 3px 3px 20px 0 rgb(23 97 253 / 40%);
+    background: rgb(0 104 178);
+    //box-shadow: 3px 3px 20px 0 rgb(23 97 253 / 40%);
 }
 
 .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:hover, .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus{

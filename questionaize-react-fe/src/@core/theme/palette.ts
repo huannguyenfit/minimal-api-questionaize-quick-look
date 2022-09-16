@@ -65,7 +65,7 @@ export const lightPalette = {
     main: "#00B0FF",
   },
   primary: {
-    main: "#2962FF",
+    main: "rgb(0 104 178)", //#2962FF", 
     contrastText: "#FFF",
   },
   secondary: {
