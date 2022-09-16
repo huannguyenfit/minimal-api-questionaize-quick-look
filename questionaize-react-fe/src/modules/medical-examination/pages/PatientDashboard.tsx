@@ -1,6 +1,9 @@
 import FlexBox from "@core/components/FlexBox"
-import { Toolbar, Typography, Grid, Breadcrumbs, Link, Card, CardContent, Avatar, Icon, IconButton, Badge, Divider, Box, Chip, Button } from "@mui/material"
+import { Toolbar, Typography, Grid, Breadcrumbs, Link, Card, CardContent, Avatar, Icon, IconButton, Badge, Divider, Box,  Button } from "@mui/material"
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import ChipDelete from '@mui/joy/ChipDelete';
+import Chip from '@mui/joy/Chip';
+
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { Apps } from "@mui/icons-material";
@@ -11,6 +14,7 @@ import LabelIcon from '@mui/icons-material/Label';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined';
 import authService from "@core/services/authService";
+
 export const PatientDashboard = () => {
     const { t } = useTranslation()
 
@@ -25,7 +29,7 @@ export const PatientDashboard = () => {
             height: '50px'
         }
         return (
-            <FlexBox display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+            <FlexBox  flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
                 <Typography component="h6" color="text.primary">{t('patientDashboard.Systolic')}</Typography>
                 <GaugeChart id="gauge-chart1"
                     style={chartStyle}
@@ -160,7 +164,7 @@ export const PatientDashboard = () => {
             height: '50px'
         }
         return (
-            <FlexBox display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
+            <FlexBox flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
                 <Typography component="h6" color="text.primary">{t('patientDashboard.Diastolic')}</Typography>
                 <GaugeChart id="gauge-chart2"
                     style={chartStyle}
@@ -258,9 +262,7 @@ export const PatientDashboard = () => {
                     <Card sx={{ width: '100%' }}>
                         <CardContent sx={{ paddingTop: '10px', paddingBottom: '10px !important' }}>
                             <Typography gutterBottom component="div" variant="h5">Risk</Typography>
-
                             <Grid container spacing={2}>
-
                                 <Grid item xs={12}>
                                     <FlexBox flexWrap={"wrap"} gap={'5px'} alignItems={'center'}>
                                         <IconButton >
@@ -268,9 +270,9 @@ export const PatientDashboard = () => {
                                                 <LabelOutlinedIcon sx={{ color: "text.disabled", fontSize: '1.3rem' }} />
                                             </Badge>
                                         </IconButton>
-                                        <Chip size="small" label="affects diabetes" variant="outlined" />
-                                        <Chip size="small" label="high blood pressure" variant="outlined" />
-                                        <Chip size="small" label="effects of stroke" variant="outlined" />
+                                        <Chip size="sm" label="affects diabetes" sx={{ textOverflow: 'ellipsis' }} endDecorator={<ChipDelete variant="plain" />} variant="outlined" />
+                                        <Chip size="sm" label="high blood pressure" sx={{ textOverflow: 'ellipsis' }} endDecorator={<ChipDelete variant="plain" />} variant="outlined" />
+                                        <Chip size="sm" label="effects of stroke" sx={{ textOverflow: 'ellipsis' }} endDecorator={<ChipDelete variant="plain" />} variant="outlined" />
 
                                     </FlexBox>
                                 </Grid>
@@ -282,8 +284,8 @@ export const PatientDashboard = () => {
                                                 <LabelOutlinedIcon sx={{ color: "text.disabled", fontSize: '1.3rem' }} />
                                             </Badge>
                                         </IconButton>
-                                        <Chip size="small" label="smoke" variant="outlined" />
-                                        <Chip size="small" label="drink alcohol" variant="outlined" />
+                                        <Chip size="sm" label="smoke" sx={{ textOverflow: 'ellipsis' }} endDecorator={<ChipDelete variant="plain" />} variant="outlined" />
+                                        <Chip size="sm" label="drink alcohol" sx={{ textOverflow: 'ellipsis' }} endDecorator={<ChipDelete variant="plain" />}  variant="outlined" />
                                     </FlexBox>
                                 </Grid>
 
@@ -294,7 +296,7 @@ export const PatientDashboard = () => {
                                                 <LabelOutlinedIcon sx={{ color: "text.disabled", fontSize: '1.3rem' }} />
                                             </Badge>
                                         </IconButton>
-                                        <Chip size="small" label="ffamily cancer syndromes" variant="outlined" />
+                                        <Chip size="sm" label="ffamily cancer syndromes" sx={{ textOverflow: 'ellipsis' }} endDecorator={<ChipDelete variant="plain" />} variant="outlined" />
                                     </FlexBox>
                                 </Grid>
 
@@ -305,8 +307,6 @@ export const PatientDashboard = () => {
                 </Grid>
             </Grid>
 
-            <Button onClick={test}>sdf sdfsd f
-            </Button>
         </React.Fragment>
     )
 

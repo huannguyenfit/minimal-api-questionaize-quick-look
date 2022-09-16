@@ -1,11 +1,11 @@
 import { Outlet, useRoutes } from 'react-router-dom';
 import { default as React, useState } from 'react';
-import { Header, toggleMenu$ } from './Header';
 
 import SideNav from './LeftSideBar';
 import { Box, Toolbar } from '@mui/material';
 import { useSettings } from '@core/contexts/SettingsProvider';
 import masterLayoutRoutings from './MasterLayoutRoutings';
+import { Header } from './Header';
 
 const MasterLayout = () => {
 	const mainRoles = useRoutes(masterLayoutRoutings)

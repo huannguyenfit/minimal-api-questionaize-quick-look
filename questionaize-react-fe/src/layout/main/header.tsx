@@ -29,11 +29,13 @@ import { styled } from '@mui/material/styles'
 import i18n from '@core/utils/i18n'
 import usaFlag from 'assets/flags/usa.png'
 import vnFlag from 'assets/flags/vi.png'
+
 export const toggleMenu$ = new BehaviorSubject<boolean>(false);
 
 export const toggleMenu = (value: boolean) => {
     toggleMenu$.next(value);
 };
+
 const IconWrapper = styled(Box)(() => ({
     display: "flex",
     height: 20,
