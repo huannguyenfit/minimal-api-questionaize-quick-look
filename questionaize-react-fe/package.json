@@ -23,6 +23,7 @@
     "@mui/joy": "^5.0.0-alpha.45",
     "@mui/lab": "^5.0.0-alpha.99",
     "@mui/material": "^5.10.4",
+    "@mui/styles": "^5.10.3",
     "@reduxjs/toolkit": "^1.8.5",
     "@sentry/react": "^7.12.1",
     "@sentry/tracing": "^7.12.1",
