@@ -231,6 +231,11 @@ export const createThemeComponents = (theme: Theme) => ({
   },
   MuiOutlinedInput: {
     styleOverrides: {
+      root: {
+        '& .MuiInputBase-inputSizeSmall': {
+          fontSize: '0.8125rem'
+        }
+      },
       input: {
         "&:-webkit-autofill": {
           WebkitBoxShadow: `0 0 0 30px ${theme.palette.background.paper} inset`,

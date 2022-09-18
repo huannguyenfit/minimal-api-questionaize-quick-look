@@ -29,6 +29,7 @@ import { styled } from '@mui/material/styles'
 import i18n from '@core/utils/i18n'
 import usaFlag from 'assets/flags/usa.png'
 import vnFlag from 'assets/flags/vi.png'
+import { ROUTE_PATHS } from "@core/constants/routeConfig";
 
 export const toggleMenu$ = new BehaviorSubject<boolean>(false);
 
@@ -304,6 +305,7 @@ export const Header = () => {
                         >
                             <InputBase
                                 sx={{ ml: 1, flex: 1, }}
+                                onKeyDown={()=> navigate(ROUTE_PATHS.PatientDashboard)}
                                 placeholder={t('common.search')}
                                 inputProps={{ 'aria-label': t('common.search') }}
                             />

@@ -128,3 +128,212 @@ export const top100Films = [
   { title: '3 Idiots', year: 2009 },
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
+
+
+
+
+
+
+
+export const patientData = {
+  Code: 'KB2200001192',
+  Content: 'Health check service',
+  Status: 'Inprocessing',
+  FullName: 'Jillayne Pettus',
+  Gender: 'Nữ',
+  DOB: 1985,
+  Age: 40,
+  Phone: '0988.256688',
+  PhysicalCondition: {
+    Height: "170 cm",
+    Weight: "46 kg",
+    BMI: '25.6',
+    Systolic: '122',
+    Diastolic: '89',
+    Pulse: 90,
+    Breath: 30,
+    SpO2: 45,
+    Temperature: 32,
+  },
+  Allergies: [
+    {
+      Id: 0,
+      Name: 'Pencicilin',
+      Note: 'More details ...',
+      Piority: 'High'
+    },
+    {
+      Id: 1,
+      Name: 'Tilorone',
+      Note: 'More details ...',
+      Piority: 'Medium'
+    }
+  ],
+  Histories: [
+    {
+      Id: 1,
+      Name: 'Medical history 2',
+      DoctorName: 'Dr. Tommy',
+      CreatedOn: '10/02/2022'
+    },
+    {
+      Id: 2,
+      Name: 'Medical history 1',
+      DoctorName: 'Dr. Christina Lopez',
+      CreatedOn: '10/02/2022'
+    },
+  ],
+  Risks: {
+    Group: [{Id: 1, Content: 'affects diabetes'},{Id: 2, Content: 'high blood pressure'}],
+    Group1: [{Id: 1, Content: 'smoke'}, {Id: 2, Content: 'drink alcohol'}],
+    Group2: [{Id: 1, Content: 'family cancel syndronmes'}],
+  },
+  Symptoms: 'Chóng mặt, hoa mắt, đau vai gáy',
+  DiseaseProgression: 'Ngày trước có ăn bậy, thức khuya, có uống bia',
+  Diagnosis: [{
+    Id: 1,
+    IcdName: 'Disorders of choroid and retina',
+    IcdCode: 'H30-H36',
+    FreeText: '',
+    Checked: false,
+    Checked2: true,
+  },
+  {
+    Id: 2,
+    IcdName: 'Cystic fibrosis',
+    IcdCode: 'E84',
+    FreeText: '',
+    Checked: false,
+    Checked2: true,
+  },
+  {
+    Id: 3,
+    IcdName: 'Disorders of sphingolipid metabolism and other lipid storage disorders',
+    IcdCode: 'E75',
+    FreeText: '',
+    Checked: false,
+    Checked2: true,
+  },
+  {
+    Id: 4,
+    IcdName: '',
+    IcdCode: '',
+    FreeText: 'Freetext more and more and more ...',
+    Checked: false,
+    Checked2: true,
+  }, 
+  {
+    Id: 5,
+    IcdName: '',
+    IcdCode: '',
+    FreeText: 'Freetext 1',
+    Checked: false,
+    Checked2: true,
+  }, 
+  {
+    Id: 6,
+    IcdName: '',
+    IcdCode: '',
+    FreeText: 'Freetext 2',
+    Checked: false,
+    Checked2: true,
+  }, 
+  {
+    Id: 7,
+    IcdName: '',
+    IcdCode: '',
+    FreeText: 'Freetext 2 more and more and more and more and more and more and more and more and more and more and more and more and more and more ',
+    Checked: false,
+    Checked2: true,
+  }],
+  Prescription: [{
+    Id: 1,
+    DrugName:'Aspirin',
+    Strength: '4mg',
+    DispenseUnit: 'tablets',
+    Directions: 'Ngày 1 viên - Sáng',
+  },
+  {
+    Id: 2,
+    DrugName:'Telanol',
+    Strength: '4ml',
+    DispenseUnit: 'capsules',
+    Directions: 'Ngày 1 viên - Sáng',
+  },
+  {
+    Id: 3,
+    DrugName:'Vitamin C',
+    Strength: '1000mg',
+    DispenseUnit: 'oral',
+    Directions: 'Ngày 2 viên - Sáng 1 - Tối 1 (Sau ăn)',
+  }]
+}
+
+
+
+
+
+export const icd10s = [{
+  Id: 1,
+  Name:'Viêm gan virus',
+  NameEnglish : 'Viral hepatitis',
+  Code: 'B15-B19'
+},
+{
+  Id: 7,
+  Name:'Sốt virus và sốt xuất huyết virus do tiết túc truyền',
+  NameEnglish : 'Arthropod-borne viral fevers and viral haemorrhagic fevers',
+  Code: 'A92-A99'
+},
+{
+  Id: 8,
+  Name:'Nhiễm virus ở hệ thần kinh trung ương',
+  NameEnglish : 'Viral infections of the central nervous system',
+  Code: 'A80-A89'
+},
+{
+  Id: 9,
+  Name:'Bệnh do Rickettsia',
+  NameEnglish : 'Rickettsioses',
+  Code: ' A75-A79'
+},
+{
+  Id: 10,
+  Name:'Các bệnh khác do Chlamydia',
+  NameEnglish : 'Other diseases caused by chlamydiae',
+  Code: 'A70-A74',
+},
+{
+  Id: 11,
+  Name:'Bệnh do xoắn trùng khác' ,
+  NameEnglish : 'Other spirochaetal diseases',
+  Code: 'A65-A69'
+},
+{
+  
+  Id: 12,
+  Name:'Bệnh nhiễm trùng lây truyền chủ yếu qua đường tình dục',
+  NameEnglish : 'Infections with a predominantly sexual mode of transmission',
+  Code: 'A50-A64'
+},
+{
+  Id: 13,
+  Name:'Bệnh nhiễm trùng đường ruột',
+  NameEnglish : 'Intestinal infectious diseases',
+  Code: 'A00-A09'
+},
+{
+  Id: 14,
+  Name:'Bệnh nhiễm khuẩn do động vật truyền sang người',
+  NameEnglish : 'Certain zoonotic bacterial diseases',
+  Code: 'A20-A28'
+},
+{
+  Id: 15,
+  Name:'Bệnh lao',
+  NameEnglish : 'Tuberculosis',
+  Code: 'A15-A19'
+}
+
+]
+

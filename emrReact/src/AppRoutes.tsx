@@ -1,8 +1,6 @@
 import React, { lazy } from 'react';
 import { Navigate, Route, Routes, useRoutes } from 'react-router-dom';
 import { ROUTE_PATHS } from '@core/constants/routeConfig';
-import AuthLayoutRoutings from 'layout/auth/AuthLayoutRoutings';
-import MasterLayoutRoutings from 'layout/main/MasterLayoutRoutings';
 import { AuthRoute } from '@core/components/AuthRoute';
 import masterLayoutRoutings from 'layout/main/MasterLayoutRoutings';
 import authLayoutRoutings from 'layout/auth/AuthLayoutRoutings';

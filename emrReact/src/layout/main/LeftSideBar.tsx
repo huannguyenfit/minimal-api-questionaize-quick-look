@@ -47,7 +47,7 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
       <ProSidebar>
         <SidebarContent>
           <ModuleItem/>
-          <PerfectScrollbar style={{ height: '730px' }}>
+          <PerfectScrollbar style={{ height: '550px' }}>
             <Menu iconShape='circle'>
               {sideBars.map((item, index) => {
                 return (

@@ -1,7 +1,7 @@
 {
   "common": {
     "myTask": "My Task",
-    "nothing": "There's nothing here",
+    "nothing": "No data",
     "patientRegistration": "Patient Registration",
     "receivingPatient": "Receiving a Patient",
     "patientAppointment": "Patient Appointment",
@@ -10,10 +10,13 @@
     "diagnostic": "Diagnostic",
     "subclinical": "Subclinical",
     "generalHealthCheck": "General Health Check",
+    "selectModule": "Select a Module",
     "validations": {
       "required": "Required",
       "min": "Must be greater than "
-    }
+    },
+    "cancel": "Cancel",
+    "submit": "Submit"
   },
   "myTask": {
     "title": "My Task",
@@ -29,6 +32,16 @@
       "submit": "Submit",
       "newAccount": "Don't have an account? Sign Up!",
       "forgotPassword": "Forgot Password?"
+    },
+    "register": {
+      "title": "Request a Demo",
+      "requestADemo": "Request a Demo",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "yourEmail": "Your Email",
+      "phoneNumber": "Phone Number",
+      "content": "Content",
+      "newAccount": "Don't have an account? Sign Up!"
     }
   },
   "calendar": {
@@ -45,15 +58,53 @@
     "BMI": "BMI",
     "Height": "Height",
     "Weight": "Weight",
-    "physicalCondition": "Physical Condition",
-    "risk": "Risks",
     "medicalHistory": "Medical History",
     "diagnose": "Diagnosis",
     "prescription": "Prescription",
     "diseaseProgression": "Disease Progression",
     "symptom": "Symptom",
-    "allergies": "Allergies",
     "subclinical": "Service Designation",
-    "subclinicalResult": "Service Designation Result"
+    "subclinicalResult": "Service Designation Result",
+    "allergies": {
+      "title": "Allergies",
+      "type": "Type",
+      "byDrug": "Drugs",
+      "byGroupDrug": "Groups",
+      "byOther": "Others",
+      "effect": "Effect"
+    },
+    "risk": {
+      "title": "Risks",
+      "smoke": "Smoke",
+      "alcohol": "Alcohol",
+      "diabetes": "Diabetes",
+      "hypertension": "Hypertension",
+      "other": "Other"
+    },
+    "physicalCondition": {
+      "title": "Physical Condition",
+      "weight": "Weight",
+      "height": "Height (cm)",
+      "BMI": "BMI",
+      "pulse": "Pulse",
+      "breath": "Breath",
+      "spO2": "SpO2",
+      "temperature": "Temperature",
+      "chestMeasurements":"Chest Measurements",
+      "chestMeasurementType": "Type"
+    }
+  },
+  "patientInfo": {
+    "title": "Update Patient",
+    "fullName": "Full Name",
+    "DOBYear": "Year",
+    "Age": "Age",
+    "DOBMonth": "Month",
+    "DOB": "Date of Birth",
+    "gender": "Gender",
+    "materialStatus": "Material Status",
+    "address": "Address",
+    "city": "City",
+    "district": "District"
   }
 }

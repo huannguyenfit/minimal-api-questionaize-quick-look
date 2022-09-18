@@ -10,6 +10,7 @@ import Settings from '@mui/icons-material/Settings'
 import React, { useState } from "react";
 import Logo from "./Logo";
 import SettingsDrawer from "./SettingsDrawer";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 type BoxedLayoutProps = {
   children: React.ReactNode;

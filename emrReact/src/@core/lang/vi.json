@@ -8,12 +8,15 @@
     "medicalExamination": "Khám Bệnh",
     "test": "Xét Nghiệm",
     "diagnostic": "Chẩn Đoán",
+    "selectModule": "Chọn chức năng",
     "validations": {
       "required": "Yêu cầu nhập",
       "min": "Cần nhập lớn hơn "
     },
     "subclinical": "Cận lâm sàn",
-    "generalHealthCheck": "Khám sức khỏe"
+    "generalHealthCheck": "Khám sức khỏe",
+    "cancel": "Hủy",
+    "submit": "Xác nhận"
   },
   "myTask": {
     "title": "Công Việc Của Tôi",
@@ -29,6 +32,16 @@
       "submit": "Xác nhận",
       "newAccount": "Bạn chưa có tài khoản?, Đăng ký",
       "forgotPassword": "Quên mật khẩu?"
+    },
+     "register": {
+      "title": "Đăng ký dùng thử",
+      "requestADemo": "Đăng ký dùng thử",
+      "firstName": "Họ",
+      "lastName": "Tên",
+      "yourEmail": "Email",
+      "phoneNumber": "Số điện thoại",
+      "content": "Nội dung",
+      "newAccount": "Don't have an account? Sign Up!"
     }
   },
   "calendar" : {
@@ -45,18 +58,56 @@
     "BMI": "BMI",
     "Height": "Chiều cao",
     "Weight": "Cân nặng",
-    "physicalCondition": "Tình trạng thê chât",
-    "risk": "Yếu tố nguy cơ",
     "medicalHistory": "Lịch sử khám",
     "diagnose": "Chẩn đoán ",
     "prescription": "Toa thuốc",
       "diseaseProgression": "Bệnh sử",
     "symptom": "Triệu chứng",
-    "allergies": "Dị ứng",
     "subclinical": "Chỉ định dịch vụ",
-    "subclinicalResult": "Kết quả CLS"
+    "subclinicalResult": "Kết quả CLS",
+    "allergies": {
+      "type":"Phân loại",
+      "title": "Dị ứng",
+      "byDrug": "Theo thuốc",
+      "byGroupDrug": "Theo nhóm thuốc",
+      "byOther": "Khác",
+      "effect": "Phản ứng"
+    },
+    "risk": {
+      "title": "Yếu tố nguy cơ",
+      "smoke": "Hút thuốc",
+      "alcohol": "Uống rượu",
+      "diabetes": "Đái tháo đường",
+      "hypertension": "Cao huyết áp",
+      "other": "Khác"
+    },
+    "physicalCondition": {
+      "title": "Tình trạng thể chất",
+      "weight": "Cân nặng",
+      "height": "Chiều cao (cm)",
+      "BMI": "BMI",
+      "pulse": "Nhịp tim",
+      "breath": "Nhịp thở",
+      "spO2": "SpO2",
+      "temperature": "Nhiệt độ",
+      "chestMeasurements":"Vòng ngực",
+      "chestMeasurementType": "Phân loại"
+    }
 
 
-
+  },
+  "patientInfo": {
+    "title": "Cập nhật thông tin bệnh nhân",
+    "fullName": "Họ tên",
+    "DOBYear": "Năm sinh",
+    "Age": "Tuổi",
+    "DOBMonth": "Tháng",
+    "DOB": "Ngày sinh",
+    "gender": "Giới tính",
+    "materialStatus": "Tình trạng hôn nhân",
+    "address":"Địa chỉ",
+    "city":"Thành phố",
+    "district":"Quận"
   }
+
 }

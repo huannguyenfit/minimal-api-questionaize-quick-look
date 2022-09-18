@@ -1,13 +1,14 @@
-import SettingsProvider from '@core/contexts/SettingsProvider';
-import SnackbarProvider from '@core/contexts/SnackbarProvider';
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Loading from '@core/components/loading/Loading';
-import AppRoutes from './AppRoutes';
-import AuthProvider from '@core/contexts/AuthProvider';
-import SplashScreen from '@core/components/SplashScreen';
+import SettingsProvider from "@core/contexts/SettingsProvider";
+import SnackbarProvider from "@core/contexts/SnackbarProvider";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Loading from "@core/components/loading/Loading";
+import AppRoutes from "./AppRoutes";
+import AuthProvider from "@core/contexts/AuthProvider";
+import SplashScreen from "@core/components/SplashScreen";
 import * as Sentry from "@sentry/react";
-import { BrowserTracing } from '@sentry/tracing';
+import { BrowserTracing } from "@sentry/tracing";
+import { HotKeys } from "react-hotkeys";
 
 if (process.env.NODE_ENV === "production") {
   Sentry.init({
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+
 function App() {
   return (
     <>
@@ -27,12 +29,14 @@ function App() {
         <AuthProvider>
           <React.Suspense fallback={<SplashScreen />}>
             <Sentry.ErrorBoundary>
-              <SettingsProvider>
-                <SnackbarProvider>
-                  <Loading />
-                  <AppRoutes />
-                </SnackbarProvider>
-              </SettingsProvider>
+              <HotKeys>
+                <SettingsProvider>
+                  <SnackbarProvider>
+                    <Loading />
+                    <AppRoutes />
+                  </SnackbarProvider>
+                </SettingsProvider>
+              </HotKeys>
             </Sentry.ErrorBoundary>
           </React.Suspense>
         </AuthProvider>
