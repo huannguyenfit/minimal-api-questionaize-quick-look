@@ -1,0 +1,59 @@
+{
+  "common": {
+    "myTask": "My Task",
+    "nothing": "There's nothing here",
+    "patientRegistration": "Patient Registration",
+    "receivingPatient": "Receiving a Patient",
+    "patientAppointment": "Patient Appointment",
+    "medicalExamination": "Medical Examination",
+    "test": "Test",
+    "diagnostic": "Diagnostic",
+    "subclinical": "Subclinical",
+    "generalHealthCheck": "General Health Check",
+    "validations": {
+      "required": "Required",
+      "min": "Must be greater than "
+    }
+  },
+  "myTask": {
+    "title": "My Task",
+    "patientAwaitingLabel": "Patient Queue"
+  },
+  "profile": "My Profile",
+  "logout": "Log Out",
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Submit",
+      "newAccount": "Don't have an account? Sign Up!",
+      "forgotPassword": "Forgot Password?"
+    }
+  },
+  "calendar": {
+    "today": "Today"
+  },
+  "appoinment": {
+    "title": "Appoinment"
+  },
+  "patientDashboard": {
+    "BeatsPerMinus": "Pulse",
+    "Diastolic": "Diastolic",
+    "Systolic": "Systolic",
+    "BreathingPerMinus": "Breath",
+    "BMI": "BMI",
+    "Height": "Height",
+    "Weight": "Weight",
+    "physicalCondition": "Physical Condition",
+    "risk": "Risks",
+    "medicalHistory": "Medical History",
+    "diagnose": "Diagnosis",
+    "prescription": "Prescription",
+    "diseaseProgression": "Disease Progression",
+    "symptom": "Symptom",
+    "allergies": "Allergies",
+    "subclinical": "Service Designation",
+    "subclinicalResult": "Service Designation Result"
+  }
+}

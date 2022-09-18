@@ -1,0 +1,62 @@
+{
+  "common": {
+    "myTask": "Công Việc Của Tôi",
+    "nothing": "Chưa có dữ liệu ",
+    "patientRegistration": "Đăng Ký Khám Bệnh",
+    "receivingPatient": "Tiếp Nhận Bệnh Nhân",
+    "patientAppointment": "Hẹn Bệnh",
+    "medicalExamination": "Khám Bệnh",
+    "test": "Xét Nghiệm",
+    "diagnostic": "Chẩn Đoán",
+    "validations": {
+      "required": "Yêu cầu nhập",
+      "min": "Cần nhập lớn hơn "
+    },
+    "subclinical": "Cận lâm sàn",
+    "generalHealthCheck": "Khám sức khỏe"
+  },
+  "myTask": {
+    "title": "Công Việc Của Tôi",
+    "patientAwaitingLabel": "Chờ Khám"
+  },
+  "profile": "Tài khoản",
+  "logout": "Đăng xuất",
+  "auth": {
+    "login": {
+      "title": "Đăng nhập vào hệ thống",
+      "username": "Tên tài khoản",
+      "password": "Mật khẩu",
+      "submit": "Xác nhận",
+      "newAccount": "Bạn chưa có tài khoản?, Đăng ký",
+      "forgotPassword": "Quên mật khẩu?"
+    }
+  },
+  "calendar" : {
+    "today": "Hôm nay"
+  },
+  "appoinment": {
+    "title": "Hẹn Bệnh"
+  },
+  "patientDashboard": {
+    "BeatsPerMinus": "Nhịp tim",
+    "Diastolic":"Tâm trương",
+    "Systolic": "Tâm thu",
+    "BreathingPerMinus": "Nhịp thở",
+    "BMI": "BMI",
+    "Height": "Chiều cao",
+    "Weight": "Cân nặng",
+    "physicalCondition": "Tình trạng thê chât",
+    "risk": "Yếu tố nguy cơ",
+    "medicalHistory": "Lịch sử khám",
+    "diagnose": "Chẩn đoán ",
+    "prescription": "Toa thuốc",
+      "diseaseProgression": "Bệnh sử",
+    "symptom": "Triệu chứng",
+    "allergies": "Dị ứng",
+    "subclinical": "Chỉ định dịch vụ",
+    "subclinicalResult": "Kết quả CLS"
+
+
+
+  }
+}
