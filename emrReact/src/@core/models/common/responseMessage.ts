@@ -17,12 +17,11 @@ export interface ValidationError {
   Message: string;
 }
 
-
 export class ApiError {
-	constructor(
-	  public Message?: string,
-	  public Status?: any,
-	  public Detail?: string,
-	  public ValidationErrors?: ValidationError[]) {
-	}
-  }
+  constructor(
+    public Message?: string,
+    public Status?: any,
+    public Detail?: string,
+    public ValidationErrors?: ValidationError[]
+  ) {}
+}

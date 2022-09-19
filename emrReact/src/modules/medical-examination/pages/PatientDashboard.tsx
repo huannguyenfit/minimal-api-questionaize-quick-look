@@ -23,24 +23,27 @@ import { useTranslation } from "react-i18next";
 import { MoreVert } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Close";
 import { Box } from "@mui/system";
-import { makeStyles } from "@mui/styles";
+
 import { styled } from "@mui/material/styles";
 import UpdateOutlinedIcon from "@mui/icons-material/UpdateOutlined";
 import AddIcon from "@mui/icons-material/Add";
-import { icd10s, patientData } from "./mocks";
+import { icd10s, patientData } from "../mocks";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { PatientDashboardAllergies } from "../components/PatientDashboardAllergies";
-import { PatientDashboardProfile } from "../components/PatientDashboardProfile";
-import { PatientDashboardMedicalHistory } from "../components/PatientDashboardMedicalHistory";
-import { PatientDashboardRisk } from "../components/PatientDashboardRisk";
-import { PatientDashboardSymptom } from "../components/PatientDashboardSymptom";
+import { PatientDashboardAllergies } from "../components/patient-dashboard/PatientDashboardAllergies";
+import { PatientDashboardProfile } from "../components/patient-dashboard/PatientDashboardProfile";
+import { PatientDashboardMedicalHistory } from "../components/patient-dashboard/PatientDashboardMedicalHistory";
+import { PatientDashboardRisk } from "../components/patient-dashboard/PatientDashboardRisk";
+import { PatientDashboardSymptom } from "../components/patient-dashboard/PatientDashboardSymptom";
 import Empty from "@core/components/Empty";
 import { createFilterOptions } from "@mui/material/Autocomplete";
+import { makeStyles } from "@mui/styles";
+import { toggleLoading } from "@core/components/loading/Loading";
 
 const filter = createFilterOptions<any>();
+
 export const usePatientDashboardStyles = makeStyles({
   profileCard: {
     borderRadius: 12,
@@ -103,7 +106,9 @@ const IcdInfoWrapper = styled(Avatar)`
   padding: 0 3px;
 `;
 
-export const ChipSmall = styled(Chip)(({}) => ({
+export const ChipSmall = styled(Chip)(({ }) => ({
+  //fontWeight: "bold",
+  //...
   "& .MuiChip-labelSmall": {
     fontWeight: 500,
   },
@@ -113,50 +118,56 @@ export const PatientDashboard = () => {
   const { t } = useTranslation();
   const [tabIndex, setTabIndex] = React.useState("1");
   const [patient, setPatient] = React.useState({ ...patientData });
-  const [icdValue, setIcdValue] = React.useState();
+  const [icdValue, setIcdValue] = React.useState<string>("");
+  const [searchICDValue, setSearchICDValue] = React.useState<string>("");
   const [icdInputValue, setIcdInputValue] = React.useState("");
 
   const tabIndexChanged = (event: React.SyntheticEvent, newValue: string) => {
     setIcdInputValue(newValue);
   };
+
   const styles = usePatientDashboardStyles();
   const dignosisFreeTextDoubleClick = (item) => {
-    setIcdValue(item.FreeText);
     setIcdValue(item.FreeText);
   };
 
   const icd10OnChange = (event, newValue) => {
-    let newPatient = { ...patient };
+    if (event.keyCode == 13) {
 
-    if (typeof newValue === "string") {
-      // timeout to avoid instant validation of the dialog's form.
-      newPatient.Diagnosis.push({
-        Id: newPatient.Diagnosis.length,
-        FreeText: newValue,
-        IcdName: "",
-        Checked: false,
-        Checked2: false,
-        IcdCode: "",
-      });
-      setPatient(newPatient);
-      setIcdValue(undefined);
-    } else if (newValue && newValue.inputValue) {
-      console.log(newValue.inputValue);
-    } else {
-      if(newValue) {
+      let newPatient = { ...patient };
+      if (typeof newValue === "string") {
+        // timeout to avoid instant validation of the dialog's form.
         newPatient.Diagnosis.push({
           Id: newPatient.Diagnosis.length,
-          FreeText: "",
-          IcdName: newValue.NameEnglish,
+          FreeText: newValue,
+          IcdName: "",
           Checked: false,
           Checked2: false,
-          IcdCode: newValue.Code,
+          IcdCode: "",
         });
         setPatient(newPatient);
-        setIcdValue(undefined);
+        setIcdValue("");
+        setSearchICDValue("");
+      } else if (newValue && newValue.inputValue) {
+        console.log(newValue.inputValue);
+      } else {
+        if (newValue) {
+          newPatient.Diagnosis.push({
+            Id: newPatient.Diagnosis.length,
+            FreeText: "",
+            IcdName: newValue.NameEnglish,
+            Checked: false,
+            Checked2: false,
+            IcdCode: newValue.Code,
+          });
+          setPatient(newPatient);
+          setIcdValue('');
+          setSearchICDValue("");
+        }
+
       }
-    
     }
+
   };
   const renderDiagnose = () => {
     return (
@@ -181,20 +192,20 @@ export const PatientDashboard = () => {
                   onChange={(event, newValue) => {
                     icd10OnChange(event, newValue);
                   }}
-                  filterOptions={(options, params) => {
-                    const filtered = filter(options, params);
-                    console.log(options);
-                    console.log(params);
-                    console.log(filtered);
-                    if (params.inputValue !== "") {
-                      filtered.push({
-                        inputValue: params.inputValue,
-                        title: `Add "${params.inputValue}"`,
-                      });
-                    }
+                  // filterOptions={(options, params) => {
+                  //   const filtered = filter(options, params);
+                  //   console.log(options);
+                  //   console.log(params);
+                  //   console.log(filtered);
+                  //   if (params.inputValue !== "") {
+                  //     filtered.push({
+                  //       inputValue: params.inputValue,
+                  //       title: `Add "${params.inputValue}"`,
+                  //     });
+                  //   }
 
-                    return filtered;
-                  }}
+                  //   return filtered;
+                  // }}
                   id='free-solo-dialog-demo'
                   options={icd10s}
                   size='small'
@@ -209,15 +220,19 @@ export const PatientDashboard = () => {
                   selectOnFocus
                   clearOnBlur
                   handleHomeEndKeys
-                  renderOption={(props, option) => (
-                    <li {...props}>
-                      {option.Code} - {option.NameEnglish}
-                    </li>
-                  )}
+                  renderOption={(props, option) => {
+                    return (
+                      <li {...props}>
+                        {option.Code} - {option.NameEnglish}
+                      </li>
+                    )
+                  }}
                   freeSolo
                   renderInput={(params) => (
                     <TextField
                       {...params}
+                      defaultValue={searchICDValue}
+                      value={searchICDValue}
                       placeholder='Quick search ICD-10 or Free text'
                     />
                   )}

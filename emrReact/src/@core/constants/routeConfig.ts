@@ -7,8 +7,11 @@ enum ROUTE_PATHS {
   MyTasks = '/my-task',
   PatientAppointment = '/appointment',
   PatientDashboard = `/patient-dashboard`,
-  PatientRegistration = '/patient-registration'
-  
+  PatientRegistration = '/patient-registration',
+  PatientAppointmentList = '/list',
+  PatientAppointmentPatientList = '/patient/list',
+  PatientAppointmentPatientCreate = '/patient/create',
+  PharmacyManagement = '/pharmacy-management',
 }
 
 //this variable is using for params url

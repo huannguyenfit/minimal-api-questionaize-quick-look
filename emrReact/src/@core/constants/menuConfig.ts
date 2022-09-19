@@ -3,16 +3,28 @@ import CloudQueueOutlinedIcon from '@mui/icons-material/CloudQueueOutlined';
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
-import ImageSearchOutlinedIcon from '@mui/icons-material/ImageSearchOutlined';
 import { TDModuleEnum } from '@core/models/enums/moduleEnums';
 import { IMenuItem } from '@core/models/common/menu';
 import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
+import ListIcon from '@mui/icons-material/List';
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
+import EventIcon from '@mui/icons-material/Event';
+import SettingsIcon from '@mui/icons-material/Settings';
+
 const PatientRegistrationMenu: IMenuItem[] = [
   {
     text: 'common.receivingPatient',
     navigateTo: ROUTE_PATHS.PatientRegistration,
+    icon: ''
   },
   
+];
+const MasterDataMenu: IMenuItem[] = [
+  {
+    text: 'common.pharmacyManagement',
+    navigateTo: ROUTE_PATHS.PharmacyManagement,
+    icon: ''
+  },
 ];
 
 
@@ -49,12 +61,19 @@ const MedicalExaminationMenu: IMenuItem[] = [
 
 const PatientAppointmentMenu: IMenuItem[] = [
   {
-    text: 'Quản lý hẹn bệnh',
-    navigateTo: '/empty',
+    text: 'patientAppointment.list',
+    navigateTo: ROUTE_PATHS.PatientAppointmentList,
+    icon: ListIcon,
   },
   {
-    text: 'Khám sức khỏe',
-    navigateTo: '/empty',
+    text: 'patientAppointment.patientList',
+    navigateTo: ROUTE_PATHS.PatientAppointmentPatientList,
+    icon: PermContactCalendarIcon,
+  },
+  {
+    text: 'patientAppointment.appointmentCreate',
+    navigateTo: ROUTE_PATHS.PatientAppointmentPatientCreate,
+    icon: EventIcon
   },
 ];
 
@@ -62,7 +81,6 @@ export const MainMenu: IMenuItem[] = [
   {
     text: 'common.myTask',
     icon: CloudQueueOutlinedIcon,
-    navigateTo: ROUTE_PATHS.MyTasks,
   },
   {
     moduleId: TDModuleEnum.PatientRegistration,
@@ -73,28 +91,24 @@ export const MainMenu: IMenuItem[] = [
   {
     moduleId: TDModuleEnum.PatientAppointment,
     text: 'common.patientAppointment',
-    navigateTo: ROUTE_PATHS.PatientAppointment,
     icon: ScheduleOutlinedIcon,
+    children: PatientAppointmentMenu,
   },
   {
     moduleId: TDModuleEnum.MedicalExamination,
     text: 'common.medicalExamination',
-    navigateTo: '#',
     icon: LocalHospitalOutlinedIcon,
     children: MedicalExaminationMenu,
   },
   {
     moduleId: TDModuleEnum.Tests,
     text: 'common.test',
-    navigateTo: 'test',
     icon: ScienceOutlinedIcon,
-    children: PatientAppointmentMenu,
   },
-  // {
-  //   moduleId: TDModuleEnum.Diagnostic,
-  //   text: 'common.diagnostic',
-  //   navigateTo: 'diagnostic',
-  //   icon: ImageSearchOutlinedIcon,
-  //   children: [],
-  // },
+   {
+    moduleId: TDModuleEnum.SystemConfig,
+    text: 'common.SystemConfig',
+    icon: SettingsIcon,
+    children: MasterDataMenu
+  },
 ]

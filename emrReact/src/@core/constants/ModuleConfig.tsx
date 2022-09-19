@@ -4,6 +4,7 @@ import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import LocalHospitalOutlinedIcon from '@mui/icons-material/LocalHospitalOutlined';
 import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
 import EventIcon from '@mui/icons-material/Event';
+import SettingsIcon from '@mui/icons-material/Settings';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 export const modules = [
   {
@@ -37,10 +38,10 @@ export const modules = [
     icon: <ScienceOutlinedIcon/>
   },
   {
-    id: TDModuleEnum.Tests,
-    name: 'common.test',
+    id: TDModuleEnum.SystemConfig,
+    name: 'common.masterData',
     description: '',
-    icon: <ScienceOutlinedIcon/>
+    icon: <SettingsIcon/>
   }
 ] as Module[];
 

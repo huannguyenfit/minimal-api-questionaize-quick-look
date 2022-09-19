@@ -294,6 +294,7 @@ export const Header = () => {
                             edge="start"
                             onClick={toggleDrawer}
                             sx={{
+                                display: { lg: "none" },
                                 marginRight: 2,
                             }}
                         >

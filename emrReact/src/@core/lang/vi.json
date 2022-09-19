@@ -6,6 +6,7 @@
     "receivingPatient": "Tiếp Nhận Bệnh Nhân",
     "patientAppointment": "Hẹn Bệnh",
     "medicalExamination": "Khám Bệnh",
+    "pharmacyManagement": "Quản lý nhà thuốc",
     "test": "Xét Nghiệm",
     "diagnostic": "Chẩn Đoán",
     "selectModule": "Chọn chức năng",
@@ -16,7 +17,8 @@
     "subclinical": "Cận lâm sàn",
     "generalHealthCheck": "Khám sức khỏe",
     "cancel": "Hủy",
-    "submit": "Xác nhận"
+    "submit": "Xác nhận",
+    "masterData":"Cấu hình hệ thống"
   },
   "myTask": {
     "title": "Công Việc Của Tôi",
@@ -33,7 +35,7 @@
       "newAccount": "Bạn chưa có tài khoản?, Đăng ký",
       "forgotPassword": "Quên mật khẩu?"
     },
-     "register": {
+    "register": {
       "title": "Đăng ký dùng thử",
       "requestADemo": "Đăng ký dùng thử",
       "firstName": "Họ",
@@ -44,7 +46,7 @@
       "newAccount": "Don't have an account? Sign Up!"
     }
   },
-  "calendar" : {
+  "calendar": {
     "today": "Hôm nay"
   },
   "appoinment": {
@@ -52,7 +54,7 @@
   },
   "patientDashboard": {
     "BeatsPerMinus": "Nhịp tim",
-    "Diastolic":"Tâm trương",
+    "Diastolic": "Tâm trương",
     "Systolic": "Tâm thu",
     "BreathingPerMinus": "Nhịp thở",
     "BMI": "BMI",
@@ -61,12 +63,12 @@
     "medicalHistory": "Lịch sử khám",
     "diagnose": "Chẩn đoán ",
     "prescription": "Toa thuốc",
-      "diseaseProgression": "Bệnh sử",
-    "symptom": "Triệu chứng",
+    "diseaseProgression": "Bệnh sử / Diễn tiến bệnh",
+    "symptom": "Lý do khám / Triệu chứng",
     "subclinical": "Chỉ định dịch vụ",
     "subclinicalResult": "Kết quả CLS",
     "allergies": {
-      "type":"Phân loại",
+      "type": "Phân loại",
       "title": "Dị ứng",
       "byDrug": "Theo thuốc",
       "byGroupDrug": "Theo nhóm thuốc",
@@ -90,11 +92,9 @@
       "breath": "Nhịp thở",
       "spO2": "SpO2",
       "temperature": "Nhiệt độ",
-      "chestMeasurements":"Vòng ngực",
+      "chestMeasurements": "Vòng ngực",
       "chestMeasurementType": "Phân loại"
     }
-
-
   },
   "patientInfo": {
     "title": "Cập nhật thông tin bệnh nhân",
@@ -105,9 +105,8 @@
     "DOB": "Ngày sinh",
     "gender": "Giới tính",
     "materialStatus": "Tình trạng hôn nhân",
-    "address":"Địa chỉ",
-    "city":"Thành phố",
-    "district":"Quận"
+    "address": "Địa chỉ",
+    "city": "Thành phố",
+    "district": "Quận"
   }
-
 }

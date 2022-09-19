@@ -1,8 +1,7 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
-// import LoadingLogo from 'assets/images/logo.svg';
-import './Loading.scss';
+import { styled } from "@mui/material/styles";
 
 // handle loading
 const loadingSubject = new BehaviorSubject<boolean>(false);
@@ -11,11 +10,35 @@ export const toggleLoading = (value: boolean) => {
   loadingSubject.next(value);
 };
 
+const BoxOverlay = styled(Box)`
+    background-color: grey;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2002;
+    top: 0px;
+    left: 0px;
+    opacity: 0.2;
+    /* in FireFox */
+    filter: alpha(opacity=0.2);
+`;
+const LoadingCustom = styled(CircularProgress)`
+    position: absolute;
+    top: 45%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    z-index: 2003;
+`;
+
+
+
+
 const Loading = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(0);
 
   const toggleLoading = (value: boolean) => {
+    console.log('vô', value)
     if (value) {
       setCount((previous) => previous + 1);
     } else {
@@ -27,7 +50,6 @@ const Loading = () => {
     setIsLoading(count > 0)
   }, [count]);
 
-  //#region Subscribe Loading
   useEffect(() => {
     const subscribe = loadingSubject.subscribe((value) => {
       toggleLoading(value);
@@ -36,12 +58,19 @@ const Loading = () => {
       subscribe.unsubscribe();
     };
   }, []);
-  //#endregion Subscribe Loading
 
   return isLoading ? (
-    <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>
+    <Box sx={{
+      width: '100%',
+      height: '100vh',
+      position: 'fixed',
+      zIndex: '2001',
+      maxWidth: '100%'
+    }}>
+      <BoxOverlay />
+      <LoadingCustom />
+    </Box >
+
   ) : null;
 };
 

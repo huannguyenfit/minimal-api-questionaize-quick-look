@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
@@ -25,6 +25,10 @@ import { useTheme } from "@mui/material/styles";
 import { modules } from "@core/constants/ModuleConfig";
 import Paper, { PaperProps } from "@mui/material/Paper";
 import { Transition } from "@core/components/features/Transition";
+import moduleService, { MODULE_KEY } from "@core/services/moduleService";
+import { toggleLoading } from "@core/components/loading/Loading";
+import { TDModuleEnum } from "@core/models/enums/moduleEnums";
+import localStorageService from "@core/services/localStorageService";
 
 
 
@@ -72,12 +76,29 @@ const ModuleLogo = styled(Avatar)(({ theme }) => ({
 export default function ModuleItem() {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
+  const [moduleName, setModuleName] = useState<string>('');
+
+
+  useEffect(() => {
+    const getCurrentModule = modules.filter(o => o.id == (localStorageService.get(MODULE_KEY) || TDModuleEnum.MedicalExamination))[0]
+    setModuleName(t(`${getCurrentModule.name}`))
+  }, [])
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const switchModule = (module) => {
+    toggleLoading(true);
+    setTimeout(() => {
+      setModuleName(t(`${module.name}`))
+      moduleService.setModule(module.id)
+      toggleLoading(false);
+      setOpen(false);
+    }, 1000)
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -96,9 +117,9 @@ export default function ModuleItem() {
           variant='contained'
           onClick={handleClickOpen}
         >
-            <Apps sx={{ position: "absolute", left: "12px" }}/>
-          {t("common.medicalExamination")}
-            <UnfoldMoreIcon sx={{ position: "absolute", right: "12px" }}/>
+          <Apps sx={{ position: "absolute", left: "12px" }} />
+          {moduleName}
+          <UnfoldMoreIcon sx={{ position: "absolute", right: "12px" }} />
         </Button>
       </Box>
       <Dialog
@@ -135,17 +156,17 @@ export default function ModuleItem() {
                   flexDirection={"column"}
                   gap={"10px"}
                 >
-                  <Item
+                  <Item onClick={() => switchModule(modules[0])}
                     avatar={<ModuleLogo>{modules[0].icon}</ModuleLogo>}
                     title={t(`${modules[0].name}`)}
                     subheader={t(`${modules[0].description}`)}
                   />
-                  <Item
+                  <Item onClick={() => switchModule(modules[1])}
                     avatar={<ModuleLogo>{modules[1].icon}</ModuleLogo>}
                     title={t(`${modules[1].name}`)}
                     subheader={t(`${modules[1].description}`)}
                   />
-                  <Item
+                  <Item onClick={() => switchModule(modules[2])}
                     avatar={<ModuleLogo>{modules[2].icon}</ModuleLogo>}
                     title={t(`${modules[2].name}`)}
                     subheader={t(`${modules[2].description}`)}
@@ -158,17 +179,19 @@ export default function ModuleItem() {
                   flexDirection={"column"}
                   gap={"10px"}
                 >
-                  <Item
+                  <Item onClick={() => switchModule(modules[3])}
                     avatar={<ModuleLogo>{modules[3].icon}</ModuleLogo>}
                     title={t(`${modules[3].name}`)}
                     subheader={t(`${modules[3].description}`)}
                   />
                   <Item
+                    onClick={() => switchModule(modules[4])}
                     avatar={<ModuleLogo>{modules[4].icon}</ModuleLogo>}
                     title={t(`${modules[4].name}`)}
                     subheader={t(`${modules[4].description}`)}
                   />
                   <Item
+                    onClick={() => switchModule(modules[5])}
                     avatar={<ModuleLogo>{modules[5].icon}</ModuleLogo>}
                     title={t(`${modules[5].name}`)}
                     subheader={t(`${modules[5].description}`)}

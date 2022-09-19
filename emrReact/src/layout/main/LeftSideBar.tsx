@@ -8,6 +8,8 @@ import { MainMenu } from '@core/constants/menuConfig';
 import Logo from '@core/components/Logo';
 import { useTranslation } from 'react-i18next';
 import ModuleItem from './ModuleItem';
+import moduleService from '@core/services/moduleService';
+import axios from 'axios';
 
 type LeftSideBarProps = {
   collapsed: boolean;
@@ -19,7 +21,16 @@ type LeftSideBarProps = {
 export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onSettingsToggle }: LeftSideBarProps) {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { t } = useTranslation();
-  const [sideBars, setSideBars] = useState([...MainMenu] as any);
+  const [sideBars, setSideBars] = useState([] as any);
+  useEffect(() => {
+    const subscribe = moduleService.moduleChanged$().subscribe((moduleId) => {
+      const menu = MainMenu.filter(item=> item.moduleId == moduleId)[0];
+      setSideBars(menu?.children ?? undefined);
+    });
+    return () => {
+      subscribe.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
     const subscribe = toggleMenu$.subscribe((value) => {
@@ -46,17 +57,17 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
 
       <ProSidebar>
         <SidebarContent>
-          <ModuleItem/>
+          <ModuleItem />
           <PerfectScrollbar style={{ height: '550px' }}>
             <Menu iconShape='circle'>
-              {sideBars.map((item, index) => {
+              {sideBars && sideBars.map((item, index) => {
                 return (
                   <>
                     {!item.children || item.children.length == 0 ? (
                       <CustomNavLink key={`menu_${index}`} icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
                     ) : (
                       <SubMenu title={t(`${item.text}`)} key={`mainSubmenu_${index}`} icon={item.icon ? <item.icon /> : undefined}>
-                        {item.children.map((child, childIndex) => {
+                        {item.children && item.children.map((child, childIndex) => {
                           return (
                             <>
                               <CustomNavLink

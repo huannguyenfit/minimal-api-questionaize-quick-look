@@ -5,7 +5,6 @@ import moment from 'moment';
 import { AxiosResponse } from 'axios';
 import identityServerService from './base/identityServerService';
 import { getFormUrlEncoded, HTTP_CONTENT_TYPE } from '@core/utils/httpHelper';
-import apiService from './base/apiService';
 
 class AuthService {
   async getToken(payload: any) {
@@ -26,10 +25,8 @@ class AuthService {
         pkhid: decodedToken.pkhid,
         tokenType: data.token_type,
       };
-
       const expire = moment().add(data.expires_in + 1000000, 's').toDate();
       cookie.save('AUTH_DATA', newAuthState, { expires: expire });
-
       return newAuthState;
     }
     return undefined;
@@ -43,10 +40,6 @@ class AuthService {
   };
   signOut = () => {
     identityServerService.clearAllSession();
-  };
-
-  test = (payload) => {
-    return apiService.getAsync('/Patient/GetAllClassifications');
   };
 }
 

@@ -5,6 +5,7 @@
     "patientRegistration": "Patient Registration",
     "receivingPatient": "Receiving a Patient",
     "patientAppointment": "Patient Appointment",
+    "pharmacyManagement": "Pharmacy Management",
     "medicalExamination": "Medical Examination",
     "test": "Test",
     "diagnostic": "Diagnostic",
@@ -16,7 +17,8 @@
       "min": "Must be greater than "
     },
     "cancel": "Cancel",
-    "submit": "Submit"
+    "submit": "Submit",
+    "masterData":"Master Data"
   },
   "myTask": {
     "title": "My Task",

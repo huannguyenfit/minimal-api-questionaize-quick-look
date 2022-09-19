@@ -8,6 +8,7 @@ import i18n from '@core/utils/i18n';
 
 export abstract class AxiosInitialize {
   constructor(private _baseURL: string, private _includeToken: boolean) {}
+  
   public clearAllSession() {
     Object.keys(cookie.loadAll()).forEach((item) => {
       cookie.remove(item);
