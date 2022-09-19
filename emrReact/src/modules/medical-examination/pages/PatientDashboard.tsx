@@ -165,6 +165,7 @@ export const PatientDashboard = () => {
           setSearchICDValue("");
         }
 
+        
       }
     }
 

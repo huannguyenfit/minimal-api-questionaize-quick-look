@@ -1,5 +1,5 @@
 
-Một số quy tắc trung.
+Một số quy tắc chung.
 
 #PascalCase:
 	- Component (.tsx): PatientDashboard.tsx, UserManagement.tsx

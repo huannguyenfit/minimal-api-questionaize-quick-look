@@ -127,7 +127,7 @@ export const Header = () => {
                         onClick={(e: any) => openDropdownMenu(e)}
                     >
                         <Avatar src={`https://i.pravatar.cc/150?img=44`} />
-                        <span>Trần Thị Ngọc Ánh</span>
+                        <span>Administrator</span>
                         <KeyboardArrowDownOutlinedIcon />
                     </Link>
                     <Menu id="basic-menu"
