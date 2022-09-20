@@ -113,5 +113,27 @@
     "city": "Thành phố",
     "district": "Quận",
     "prescriptionByDoctor":"Bác sỹ kê"
+  },
+  "patientRegistration": {
+    "title": "Tiếp nhận",
+    "service": "Dịch vụ",
+    "serviceLabel": "Dịch vụ",
+    "imageLabel": "Cận lâm sàn",
+    "testService": "Xét nghiệm",
+    "serviceNewLabel": "Dịch vụ mới",
+    "servicePaidLabel": "Đã trả phí",
+    "medicalExaminationSection": "Dịch vụ KCB",
+    "subclinicalSection": "Dịch vụ CLS",
+    "registerPatient": "Tạo mới",
+    "searchPatient": "Tìm bệnh nhân",
+    "physicalConditionTitle":"Tình trạng thể chất",
+    "roomLabel": "Phòng",
+    "serviceTypeLabel": "Loại DV",
+    "imageTypeLabel": "Nhóm",
+    "subClinicalLabel": "CLS",
+    "testTypeLabel": "Loại XN",
+    "testComboLabel": "Combo",
+    "testNameLabel": "Tên XN"
+
   }
 }

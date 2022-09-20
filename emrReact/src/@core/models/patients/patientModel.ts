@@ -7,6 +7,8 @@ export interface IPatientDashboard {
   DOB?: number;
   Age?: number;
   Phone?: string;
+  Address?:string;
+  Note?:string,
   PhysicalCondition: {
     Height?: string;
     Weight?: string;

@@ -1,4 +1,4 @@
-import { NavLink, useMatch, useResolvedPath } from 'react-router-dom';
+import { NavLink, useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Menu, MenuItem, ProSidebar, SidebarContent, SidebarFooter, SubMenu } from 'react-pro-sidebar';
 import { toggleMenu$ } from './Header';
@@ -22,10 +22,15 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
   const [toggleMenu, setToggleMenu] = useState(false);
   const { t } = useTranslation();
   const [sideBars, setSideBars] = useState([] as any);
+  const navigate = useNavigate()
   useEffect(() => {
     const subscribe = moduleService.moduleChanged$().subscribe((moduleId) => {
-      const menu = MainMenu.filter(item => item.moduleId == moduleId)[0];
+      const menu = MainMenu.filter((item) => item.moduleId == moduleId)[0];
       setSideBars(menu?.children ?? undefined);
+      const routeDefault = menu?.children.find((o) => o.index == true);
+      if (routeDefault) {
+        navigate(routeDefault.navigateTo);
+      }
     });
     return () => {
       subscribe.unsubscribe();
@@ -60,29 +65,27 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
           <ModuleItem />
           <PerfectScrollbar style={{ height: '550px' }}>
             <Menu iconShape='circle'>
-              {sideBars && sideBars.map((item, index) => {
-                return (
-                  <div key={`menu_${index}`}>
-                    {!item.children || item.children.length == 0 ? (
-                      <CustomNavLink icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
-                    ) : (
-                      <SubMenu title={t(`${item.text}`)} icon={item.icon ? <item.icon /> : undefined}>
-                        {item.children && item.children.map((child, childIndex) => {
-                          return (
-                            <>
-                              <CustomNavLink
-                                icon={child.icon}
-                                title={child.text}
-                                navigateTo={child.navigateTo}
-                              />
-                            </>
-                          );
-                        })}
-                      </SubMenu>
-                    )}
-                  </div>
-                );
-              })}
+              {sideBars &&
+                sideBars.map((item, index) => {
+                  return (
+                    <div key={`menu_${index}`}>
+                      {!item.children || item.children.length == 0 ? (
+                        <CustomNavLink icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
+                      ) : (
+                        <SubMenu title={t(`${item.text}`)} icon={item.icon ? <item.icon /> : undefined}>
+                          {item.children &&
+                            item.children.map((child, childIndex) => {
+                              return (
+                                <>
+                                  <CustomNavLink icon={child.icon} title={child.text} navigateTo={child.navigateTo} />
+                                </>
+                              );
+                            })}
+                        </SubMenu>
+                      )}
+                    </div>
+                  );
+                })}
             </Menu>
           </PerfectScrollbar>
         </SidebarContent>

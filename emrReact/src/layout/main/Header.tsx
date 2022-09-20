@@ -300,7 +300,7 @@ export const Header = () => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Paper
+                        {/* <Paper
                             component="form"
                             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', border: '1px solid #d4d4d4', width: 250 }}
                         >
@@ -313,7 +313,7 @@ export const Header = () => {
                             <IconButton type="button" sx={{ p: '4px' }} aria-label="search">
                                 <SearchIcon />
                             </IconButton>
-                        </Paper>
+                        </Paper> */}
                     </Box>
                     <Box sx={{ display: 'flex', gap: '20px', alignItems: 'center', }}>
                         {renderLanguageSwitch()}

@@ -113,5 +113,27 @@
     "city": "City",
     "district": "District",
     "prescriptionByDoctor": "By doctor"
+  },
+  "patientRegistration": {
+    "title": "Registration",
+    "service": "Service",
+    "serviceLabel": "Service",
+    "imageLabel": "Subclinical",
+    "testService": "Test",
+    "serviceNewLabel": "New Service",
+    "servicePaidLabel": "Service Paid",
+    "medicalExaminationSection": "Medical Examination Service",
+    "subclinicalSection": "Subclinical Service",
+    "registerPatient": "Create New",
+    "searchPatient": "Search by Name",
+    "physicalConditionTitle": "Physical Condition",
+    "roomLabel": "Room",
+    "serviceTypeLabel": "Service Type",
+    "imageTypeLabel": "Group Name",
+    "subClinicalLabel": "Subclinical Name",
+    "testTypeLabel": "Test Type",
+    "testComboLabel": "Combo",
+    "testNameLabel": "Test Name"
+    
   }
 }

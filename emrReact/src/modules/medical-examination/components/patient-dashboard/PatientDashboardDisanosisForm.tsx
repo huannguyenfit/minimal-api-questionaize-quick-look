@@ -253,7 +253,7 @@ export const PatientDashboardDiagnosisForm = (props: PatientInfoProps) => {
                         value={searchICDValue}
                         placeholder='Quick search ICD-10 or Free text'
                       />
-                    )}
+                    )}></Autocomplete>
                 </CardContent>
               </Card>
             </Grid>

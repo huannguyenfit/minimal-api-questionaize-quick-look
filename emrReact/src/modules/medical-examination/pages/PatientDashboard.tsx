@@ -193,7 +193,6 @@ export const PatientDashboard = () => {
         <CardHeader
           action={
             patient && <PatientDashboardDiagnosisForm data={patient} />
-
           }
           title={t("patientDashboard.diagnose")}
         />

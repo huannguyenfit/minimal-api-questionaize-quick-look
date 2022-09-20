@@ -3,5 +3,6 @@ export interface IMenuItem {
     text: string, 
     icon?: any,
     navigateTo?: string,
-    children?: IMenuItem[]
+    children?: IMenuItem[],
+    index?: boolean
 }

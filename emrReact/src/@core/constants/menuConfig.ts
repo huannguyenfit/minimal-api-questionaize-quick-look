@@ -15,7 +15,8 @@ const PatientRegistrationMenu: IMenuItem[] = [
   {
     text: 'common.receivingPatient',
     navigateTo: ROUTE_PATHS.PatientRegistration,
-    icon: ''
+    icon: '',
+    index: true
   },
   
 ];
@@ -30,32 +31,9 @@ const MasterDataMenu: IMenuItem[] = [
 
 const MedicalExaminationMenu: IMenuItem[] = [
   {
-    text: 'Khám bệnh',
-    navigateTo: ROUTE_PATHS.Home,
-  },
-  {
-    text: 'Hẹn bệnh',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Thống kê',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Quản lý tình hình khoa',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Giấy chuyển tuyến',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Hội chuẩn',
-    navigateTo: '/empty',
-  },
-  {
-    text: 'Phác đồ điều trị',
-    navigateTo: '/empty',
+    text: 'comon.patientDashboard',
+    navigateTo: ROUTE_PATHS.PatientDashboard,
+    index: true
   },
 ];
 

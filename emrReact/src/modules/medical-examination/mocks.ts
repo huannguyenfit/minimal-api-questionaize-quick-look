@@ -136,6 +136,7 @@ export const patientData: IPatientDashboard = {
   FullName: 'Jillayne Pettus',
   Gender: 'Nữ',
   DOB: 1985,
+  Address: 'Q7, Ho Chi Minh',
   Age: 40,
   Phone: '0988.256688',
   PhysicalCondition: {

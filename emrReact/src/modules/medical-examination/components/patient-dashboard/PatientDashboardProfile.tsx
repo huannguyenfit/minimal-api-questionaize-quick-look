@@ -138,7 +138,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
       <Card className={styles.profileCard}>
         <CardHeader
           action={
-            <PatientInfoForm data={data}/>
+            <PatientInfoForm isCreate={false} data={data}/>
             // <IconButton>
             //   <Badge color='error' badgeContent={0}>
             //     <EditIcon sx={{ color: "text.disabled", fontSize: "1.3rem" }} />
