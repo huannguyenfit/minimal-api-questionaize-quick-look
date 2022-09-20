@@ -23,6 +23,8 @@ import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import FlexBox from "@core/components/FlexBox";
+import { TdSelect } from "@core/components/controls/TdSelect";
+import { chestMeasurements } from "modules/medical-examination/mocks";
 
 type PatientInfoProps = {
   data: any;
@@ -36,7 +38,7 @@ export const PatientDashboardProfileForm = (props: PatientInfoProps) => {
   const showDrawer = () => {
     setVisible(true);
   };
-  const handleLogin = () => {};
+  const handleLogin = () => { };
   const formik = useFormik({
     initialValues: {
       username: "kietadmin",
@@ -53,7 +55,9 @@ export const PatientDashboardProfileForm = (props: PatientInfoProps) => {
   const onClose = () => {
     setVisible(false);
   };
-
+  const chestMeasurementChange = (e) => {
+    console.log(e)
+  }
   return (
     <>
       <IconButton onClick={showDrawer}>
@@ -82,7 +86,7 @@ export const PatientDashboardProfileForm = (props: PatientInfoProps) => {
               marginBottom: "0.875em",
             }}
           >
-            {data.Code}
+            {data?.Code}
           </Typography>
         </Toolbar>
         <Grid container sx={{ height: "100vh" }}>
@@ -168,32 +172,14 @@ export const PatientDashboardProfileForm = (props: PatientInfoProps) => {
                     id='chestMeasurements'
                     margin='normal'
                     fullWidth
-
-                    label={t(
-                      "patientDashoard.physicalCondition.chestMeasurements"
-                    )}
+                    label={t("patientDashoard.physicalCondition.chestMeasurements")}
                     type='number'
                   />
 
-                    
-                  <FormControl fullWidth sx={{ marginTop: "16px", marginBottom: "8px" }}>
-                    <InputLabel id='chestMeasurementTypeLabel'>
-                      {t(
-                        "patientDashoard.physicalCondition.chestMeasurementType"
-                      )}
-                    </InputLabel>
-                    <Select
-                      labelId='chestMeasurementTypeLabel'
-                      id='chestMeasurementType'
-                      label={t(
-                        "patientDashoard.physicalCondition.chestMeasurementType"
-                      )}
-                    >
-                      <MenuItem value={10}>I</MenuItem>
-                      <MenuItem value={20}>II</MenuItem>
-                      <MenuItem value={30}>III</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <TdSelect onChange={chestMeasurementChange} data={chestMeasurements}
+                    sx={{ marginTop: "16px", marginBottom: "8px" }}
+                    labelI18nKey={'patientDashoard.physicalCondition.chestMeasurementType'}
+                  />
                 </FlexBox>
               </Box>
             </Container>

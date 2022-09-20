@@ -18,7 +18,7 @@ import {
   TextField,
   Tab,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { MoreVert } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Close";
@@ -38,11 +38,13 @@ import { PatientDashboardMedicalHistory } from "../components/patient-dashboard/
 import { PatientDashboardRisk } from "../components/patient-dashboard/PatientDashboardRisk";
 import { PatientDashboardSymptom } from "../components/patient-dashboard/PatientDashboardSymptom";
 import Empty from "@core/components/Empty";
-import { createFilterOptions } from "@mui/material/Autocomplete";
 import { makeStyles } from "@mui/styles";
 import { toggleLoading } from "@core/components/loading/Loading";
-
-const filter = createFilterOptions<any>();
+import { PatientDashboardDiagnosisForm } from "../components/patient-dashboard/PatientDashboardDisanosisForm";
+import medicationExaminationService from "@core/services/medicationExaminationService";
+import { IPatientDashboard } from "@core/models/patients/patientModel";
+import { TdSelect } from "@core/components/controls/TdSelect";
+const service = medicationExaminationService;
 
 export const usePatientDashboardStyles = makeStyles({
   profileCard: {
@@ -96,7 +98,7 @@ export const usePatientDashboardStyles = makeStyles({
   },
 });
 
-const IcdInfoWrapper = styled(Avatar)`
+export const ChipIcdInfoWrapper = styled(Avatar)`
   border: 1px solid #b7e2ff;
   background: #c3e6ff;
   width: fit-content !important;
@@ -104,6 +106,18 @@ const IcdInfoWrapper = styled(Avatar)`
   color: #13104b !important;
   font-weight: bold;
   padding: 0 3px;
+`;
+
+export const IcdInfoWrapper = styled(Avatar)`
+  border: 1px solid #b7e2ff;
+  background: #c3e6ff;
+  width: fit-content !important;
+  border-radius: 7px;
+  color: #13104b !important;
+  font-weight: bold;
+  padding: 0 3px;
+  font-size: 0.857rem;
+  height: 20px;
 `;
 
 export const ChipSmall = styled(Chip)(({ }) => ({
@@ -117,13 +131,16 @@ export const ChipSmall = styled(Chip)(({ }) => ({
 export const PatientDashboard = () => {
   const { t } = useTranslation();
   const [tabIndex, setTabIndex] = React.useState("1");
-  const [patient, setPatient] = React.useState({ ...patientData });
+  const [patient, setPatient] = React.useState<IPatientDashboard>(undefined);
   const [icdValue, setIcdValue] = React.useState<string>("");
   const [searchICDValue, setSearchICDValue] = React.useState<string>("");
-  const [icdInputValue, setIcdInputValue] = React.useState("");
+
+  useEffect(() => {
+    setPatient(service.getPatient())
+  }, [])
 
   const tabIndexChanged = (event: React.SyntheticEvent, newValue: string) => {
-    setIcdInputValue(newValue);
+    setTabIndex(newValue);
   };
 
   const styles = usePatientDashboardStyles();
@@ -171,12 +188,11 @@ export const PatientDashboard = () => {
   };
   const renderDiagnose = () => {
     return (
-      <Card sx={{ marginBottom: "16px", width: "100%", minHeight: "300px" }}>
+      <Card sx={{ marginBottom: "16px", width: "100%", minHeight: "340px" }}>
         <CardHeader
           action={
-            <IconButton aria-label='settings'>
-              <MoreVert />
-            </IconButton>
+            patient && <PatientDashboardDiagnosisForm data={patient} />
+
           }
           title={t("patientDashboard.diagnose")}
         />
@@ -192,20 +208,6 @@ export const PatientDashboard = () => {
                   onChange={(event, newValue) => {
                     icd10OnChange(event, newValue);
                   }}
-                  // filterOptions={(options, params) => {
-                  //   const filtered = filter(options, params);
-                  //   console.log(options);
-                  //   console.log(params);
-                  //   console.log(filtered);
-                  //   if (params.inputValue !== "") {
-                  //     filtered.push({
-                  //       inputValue: params.inputValue,
-                  //       title: `Add "${params.inputValue}"`,
-                  //     });
-                  //   }
-
-                  //   return filtered;
-                  // }}
                   id='free-solo-dialog-demo'
                   options={icd10s}
                   size='small'
@@ -231,7 +233,6 @@ export const PatientDashboard = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      defaultValue={searchICDValue}
                       value={searchICDValue}
                       placeholder='Quick search ICD-10 or Free text'
                     />
@@ -240,43 +241,36 @@ export const PatientDashboard = () => {
 
                 {patient &&
                   patient.Diagnosis.map((item, index) => {
+                    if (!item.FreeText) {
+                      return (
+                        <Tooltip key={`chip_${index}`} title={`${item.IcdCode} - ${item.IcdName}`}>
+                          <ChipSmall
+                            size='small'
+                            avatar={
+                              <ChipIcdInfoWrapper>{item.IcdCode}</ChipIcdInfoWrapper>
+                            }
+                            label={item.IcdName}
+                            sx={{ textOverflow: "ellipsis" }}
+                            onDelete={() => handleRemoveDiagnosis(item)}
+                            deleteIcon={<DeleteIcon />}
+                            variant='outlined'
+                          />
+                        </Tooltip>
+                      )
+                    }
                     return (
-                      <>
-                        {!item.FreeText ? (
-                          <Tooltip
-                            key={`diagnosis_${index}`}
-                            title={`${item.IcdCode} - ${item.IcdName}`}
-                          >
-                            <ChipSmall
-                              size='small'
-                              avatar={
-                                <IcdInfoWrapper>{item.IcdCode}</IcdInfoWrapper>
-                              }
-                              label={item.IcdName}
-                              sx={{ textOverflow: "ellipsis" }}
-                              onDelete={() => handleRemoveDiagnosis(item)}
-                              deleteIcon={<DeleteIcon />}
-                              variant='outlined'
-                            />
-                          </Tooltip>
-                        ) : (
-                          <Tooltip
-                            key={`diagnosis_${index}`}
-                            title={item.FreeText}
-                          >
-                            <ChipSmall
-                              size='small'
-                              label={item.FreeText}
-                              sx={{ textOverflow: "ellipsis" }}
-                              onDelete={() => handleRemoveDiagnosis(item)}
-                              onClick={() => dignosisFreeTextDoubleClick(item)}
-                              deleteIcon={<DeleteIcon />}
-                              variant='outlined'
-                            />
-                          </Tooltip>
-                        )}
-                      </>
-                    );
+                      <Tooltip key={`chip_${index}`}  title={item.FreeText}>
+                        <ChipSmall
+                          size='small'
+                          label={item.FreeText}
+                          sx={{ textOverflow: "ellipsis" }}
+                          onDelete={() => handleRemoveDiagnosis(item)}
+                          onClick={() => dignosisFreeTextDoubleClick(item)}
+                          deleteIcon={<DeleteIcon />}
+                          variant='outlined'
+                        />
+                      </Tooltip>
+                    )
                   })}
 
                 {(!patient || patient.Diagnosis.length == 0) && <Empty />}
@@ -294,13 +288,15 @@ export const PatientDashboard = () => {
         <CardHeader
           title={t("patientDashboard.prescription")}
           action={
-            <IconButton aria-label='settings'>
-              <AddIcon />
-            </IconButton>
+            patient && <PatientDashboardDiagnosisForm data={patient} />
           }
         />
 
-        <CardContent>
+        <CardContent sx={{ paddingTop: '0px' }}>
+          <TdSelect size={"small"} data={[{ Id: 1, Text: "Toa Bs 1" }, { Id: 2, Text: "Toa Bs 2" }, { Id: 3, Text: "Toa Bs 3" }]}
+            sx={{ marginTop: "16px", marginBottom: "8px" }} labelI18nKey={'patientInfo.prescriptionByDoctor'}
+          />
+
           <PerfectScrollbar
             style={{
               height: "200px",
@@ -420,18 +416,18 @@ export const PatientDashboard = () => {
       </Toolbar>
       <Grid mb={3} container spacing={2}>
         <Grid item md={3} lg={3}>
-          <PatientDashboardProfile data={patient} />
-          <PatientDashboardAllergies data={patient} />
-          <PatientDashboardMedicalHistory data={patient} />
+          {patient && <PatientDashboardProfile data={patient} />}
+          {patient && <PatientDashboardAllergies data={patient} />}
+          {patient && <PatientDashboardMedicalHistory data={patient} />}
         </Grid>
 
         <Grid item md={9} lg={9}>
           <Grid container spacing={2}>
             <Grid item md={5} lg={5}>
-              <PatientDashboardRisk data={patient} />
+              {patient && <PatientDashboardRisk data={patient} />}
             </Grid>
             <Grid item md={7} lg={7}>
-              <PatientDashboardSymptom data={patient} />
+              {patient && <PatientDashboardSymptom data={patient} />}
             </Grid>
           </Grid>
 

@@ -22,7 +22,7 @@ export const PatientDashboardAllergies = ({ data }: AllergiesBlockProps) => {
       <CardContent>
         <Grid container>
           {data &&
-            data.Allergies.map((allergies, index) => {
+            data?.Allergies.map((allergies, index) => {
               return (
                 <Grid key={`allergies_${index}`} item xs={12}>
                   <FlexBox

@@ -16,7 +16,7 @@ export const PatientDashboardMedicalHistory = ({ data }: MedicalHistoryBlockProp
         <CardContent>
           <Grid container spacing={2}>
             {data &&
-              data.Histories.map((history, index) => {
+              data?.Histories.map((history, index) => {
                 return (
                   <Grid key={`medicals_${index}`} item xs={12}>
                     <FlexBox

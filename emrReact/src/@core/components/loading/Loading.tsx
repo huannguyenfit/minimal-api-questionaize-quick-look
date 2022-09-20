@@ -38,7 +38,6 @@ const Loading = () => {
   const [count, setCount] = useState(0);
 
   const toggleLoading = (value: boolean) => {
-    console.log('vô', value)
     if (value) {
       setCount((previous) => previous + 1);
     } else {

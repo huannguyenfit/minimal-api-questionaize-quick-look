@@ -94,6 +94,10 @@
       "temperature": "Nhiệt độ",
       "chestMeasurements": "Vòng ngực",
       "chestMeasurementType": "Phân loại"
+    },
+    "diagnosisForm": {
+      "title": "Chẩn đoán",
+      "prescriptionTitle": "Toa thuốc"
     }
   },
   "patientInfo": {
@@ -107,6 +111,7 @@
     "materialStatus": "Tình trạng hôn nhân",
     "address": "Địa chỉ",
     "city": "Thành phố",
-    "district": "Quận"
+    "district": "Quận",
+    "prescriptionByDoctor":"Bác sỹ kê"
   }
 }

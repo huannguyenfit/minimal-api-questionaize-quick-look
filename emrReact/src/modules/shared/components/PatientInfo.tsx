@@ -25,6 +25,7 @@ import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import FlexBox from "@core/components/FlexBox";
+import { TdSelect } from "@core/components/controls/TdSelect";
 
 type PatientInfoProps = {
   data: any;
@@ -38,7 +39,7 @@ export const PatientInfoForm = (props: PatientInfoProps) => {
   const showDrawer = () => {
     setVisible(true);
   };
-  const handleLogin = () => {};
+  const handleLogin = () => { };
   const formik = useFormik({
     initialValues: {
       username: "kietadmin",
@@ -84,7 +85,7 @@ export const PatientInfoForm = (props: PatientInfoProps) => {
               marginBottom: "0.875em",
             }}
           >
-            {data.Code}
+            {data?.Code}
           </Typography>
         </Toolbar>
         <Grid container sx={{ height: "100vh" }}>
@@ -135,40 +136,14 @@ export const PatientInfoForm = (props: PatientInfoProps) => {
                   />
                 </FlexBox>
                 <FlexBox gap={"20px"}>
-                  <FormControl
-                    fullWidth
-                    sx={{ marginTop: "16px", marginBottom: "8px" }}
-                  >
-                    <InputLabel id='demo-simple-select-label'>
-                      {t("patientInfo.gender")}
-                    </InputLabel>
-                    <Select
-                      labelId='demo-simple-select-label'
-                      id='demo-simple-select'
-                      label={t("patientInfo.gender")}
-                    >
-                      <MenuItem value={10}>Female</MenuItem>
-                      <MenuItem value={20}>Male</MenuItem>
-                      <MenuItem value={30}>Other</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <FormControl
-                    fullWidth
-                    sx={{ marginTop: "16px", marginBottom: "8px" }}
-                  >
-                    <InputLabel id='demo-simple-select-label'>
-                      {t("patientInfo.materialStatus")}
-                    </InputLabel>
-                    <Select
-                      labelId='demo-simple-select-label'
-                      id='demo-simple-select'
-                      label={t("patientInfo.materialStatus")}
-                    >
-                      <MenuItem value={10}>Single</MenuItem>
-                      <MenuItem value={20}>Marriged</MenuItem>
-                      <MenuItem value={30}>Unknown</MenuItem>
-                    </Select>
-                  </FormControl>
+                  <TdSelect data={[{ Id: 1, Text: "Female" }, { Id: 2, Text: "Male" }, { Id: 3, Text: "Other" }]}
+                    sx={{ marginTop: "16px", marginBottom: "8px" }} labelI18nKey={'patientInfo.materialStatus'}
+                     />
+
+                  <TdSelect data={[{ Id: 1, Text: "Single" }, { Id: 2, Text: "Marriage" }, { Id: 3, Text: "Unknown" }]}
+                    sx={{ marginTop: "16px", marginBottom: "8px" }} labelI18nKey={'patientInfo.materialStatus'}
+                    />
+                 
                 </FlexBox>
 
                 <FlexBox>

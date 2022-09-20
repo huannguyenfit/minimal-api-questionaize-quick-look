@@ -48,11 +48,11 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
           arcWidth={0.3}
           arcsLength={[110, 120, 130, 140]}
           colors={['#ffbc31', '#137e1b', '#EA4228']}
-         percent={data.PhysicalCondition.Systolic / (110 + 140)}
+         percent={data?.PhysicalCondition.Systolic / (110 + 140)}
           formatTextValue={() => ''}
         />
         <Typography component='span' className={styles.profileStatValue} fontWeight={600} color='text.primary'>
-          {data.PhysicalCondition.Systolic} mmHg
+          {data?.PhysicalCondition.Systolic} mmHg
         </Typography>
       </FlexBox>
     );
@@ -75,12 +75,12 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
           nrOfLevels={20}
           arcWidth={0.3}
           colors={['#5BE12C', '#137e1b', '#EA4228']}
-          percent={data.PhysicalCondition.Diastolic / (75 + 90)}
+          percent={data?.PhysicalCondition.Diastolic / (75 + 90)}
           formatTextValue={() => ''}
           textColor={'#161b22'}
         />
         <Typography component='span' className={styles.profileStatValue}  fontWeight={600} color='text.primary'>
-          {data.PhysicalCondition.Diastolic} mmHg
+          {data?.PhysicalCondition.Diastolic} mmHg
         </Typography>
       </FlexBox>
     );
@@ -101,7 +101,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
           <FlexBox alignItems={'center'} justifyContent={'flex-start'} gap={'8px'}>
             <Badge color='error' badgeContent={0}>
               <Typography component='span' className={styles.profileStatValue}  color='text.primary'>
-                {data.PhysicalCondition.Pulse}
+                {data?.PhysicalCondition.Pulse}
               </Typography>
             </Badge>
             <Typography component='span' className={styles.profileStatValue}  color='text.primary'>
@@ -121,7 +121,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
           <FlexBox alignItems={'center'} justifyContent={'flex-start'} gap={'8px'}>
             <Badge color='error' badgeContent={0}>
               <Typography component='span' className={styles.profileStatValue} color='text.primary'>
-              {data.PhysicalCondition.Breath}
+              {data?.PhysicalCondition.Breath}
               </Typography>
             </Badge>
             <Typography component='span' className={styles.profileStatValue}  color='text.primary'>
@@ -150,7 +150,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
           <Avatar
             sx={{ width: 80, height: 80 }}
             className={`${styles.profileAvatar} shadow`}
-            src={"https://i.pravatar.cc/300"}
+            src={"https://i.pravatar.cc/300?img=26"}
           />
           <Typography
             className={styles.profileHeading}
@@ -158,11 +158,11 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
             component='h6'
             color='text.primary'
           >
-            {data.FullName}
+            {data?.FullName}
           </Typography>
           {/* <h3 className={styles.profileHeading}>Alan Podemski</h3> */}
           <Typography component='span' className={styles.profileSubheader}>
-            {data.DOB} ({data.Age}). {data.Gender}
+            {data?.DOB} ({data?.Age}). {data?.Gender}
           </Typography>
           <FlexBox justifyContent='center' className={styles.profileSubheader}>
             <Badge color='error' badgeContent={0}>
@@ -170,7 +170,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
                 sx={{ color: "text.disabled", fontSize: "1.3rem" }}
               />
             </Badge>
-            <Typography component='span'  className={styles.profileSubheader}>{data.Phone} </Typography>
+            <Typography component='span'  className={styles.profileSubheader}>{data?.Phone} </Typography>
           </FlexBox>
         </CardContent>
         <Divider sx={{ borderColor: "#f5f5f5" }} />
@@ -181,7 +181,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
               {t("patientDashboard.Height")}
             </Typography>
             <Typography component='p' className={styles.profileStatValue}>
-              {data.PhysicalCondition?.Height}
+              {data?.PhysicalCondition?.Height}
             </Typography>
           </Box>
           <Divider
@@ -194,7 +194,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
               {t("patientDashboard.Weight")}
             </Typography>
             <Typography component='p' className={styles.profileStatValue}>
-              {data.PhysicalCondition?.Weight}
+              {data?.PhysicalCondition?.Weight}
             </Typography>
           </Box>
           <Divider
@@ -208,7 +208,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
               {t("patientDashboard.BMI")}
             </Typography>
             <Typography component='p' className={styles.profileStatValue}>
-              {data.PhysicalCondition?.BMI}
+              {data?.PhysicalCondition?.BMI}
             </Typography>
           </Box>
         </FlexBox>
@@ -235,7 +235,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
             >
               <Slider
                 aria-label='SpO2'
-                defaultValue= {data.PhysicalCondition?.SpO2}
+                defaultValue= {data?.PhysicalCondition?.SpO2}
                 valueLabelDisplay='auto'
                 step={10}
                 marks
@@ -244,7 +244,7 @@ export const PatientDashboardProfile = ({ data }: PatientBlockProps) => {
               />
               <Slider
                 aria-label='Temp'
-                defaultValue={data.PhysicalCondition?.Temperature}
+                defaultValue={data?.PhysicalCondition?.Temperature}
                 valueLabelDisplay='auto'
                 step={10}
                 marks
