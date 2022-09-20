@@ -52,6 +52,32 @@ https://github.com/airbnb/javascript/tree/master/react#naming
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+1 số extension visual Code NÊN có:
+    - indent-rainbow: tô màu để group các đoạn code đoạn html cho dễ nhìn
+    - Prettier: format code.
+    - SVN (Chris Johnston) - cài svn phải cài chức năng command line, thì tool nó mới work.
+    - Debugger for Chrome
+    - ES7+ React/Redux/React-Native snippets: gợi ý mã trong react, code cho nhanh.
+    - Bracket Pair Colorizer  (vscode tự có, enable chức năng này trong setting) 
+        dùng để đánh highlight group cái dấu { } trong code để dễ nhìn hơn.
+
+Khác:
+    - Code Spell Checker: check chính tả tên biến tiếng anh
+    - Polacode: dùng screenshot đoạn code mà k cần xài sniping tool của micrsoft, thì có thể xài.
+    - Quokka.js (Wallaby.js) tự động print kết quả của 1 số đoạn code trên visual code mà mình k cần phải xài console.log để coi ngoài trình duyệt
+
 ----------------------------------------------------------
 Quy tắc về source control. 
 

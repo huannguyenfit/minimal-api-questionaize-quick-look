@@ -24,7 +24,7 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
   const [sideBars, setSideBars] = useState([] as any);
   useEffect(() => {
     const subscribe = moduleService.moduleChanged$().subscribe((moduleId) => {
-      const menu = MainMenu.filter(item=> item.moduleId == moduleId)[0];
+      const menu = MainMenu.filter(item => item.moduleId == moduleId)[0];
       setSideBars(menu?.children ?? undefined);
     });
     return () => {
@@ -62,16 +62,15 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
             <Menu iconShape='circle'>
               {sideBars && sideBars.map((item, index) => {
                 return (
-                  <>
+                  <div key={`menu_${index}`}>
                     {!item.children || item.children.length == 0 ? (
-                      <CustomNavLink key={`menu_${index}`} icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
+                      <CustomNavLink icon={item.icon} title={item.text} navigateTo={item.navigateTo} />
                     ) : (
-                      <SubMenu title={t(`${item.text}`)} key={`mainSubmenu_${index}`} icon={item.icon ? <item.icon /> : undefined}>
+                      <SubMenu title={t(`${item.text}`)} icon={item.icon ? <item.icon /> : undefined}>
                         {item.children && item.children.map((child, childIndex) => {
                           return (
                             <>
                               <CustomNavLink
-                                key={`submenu_${childIndex}`}
                                 icon={child.icon}
                                 title={child.text}
                                 navigateTo={child.navigateTo}
@@ -81,7 +80,7 @@ export default function LeftSideBar({ collapsed, mobileOpen, onDrawerToggle, onS
                         })}
                       </SubMenu>
                     )}
-                  </>
+                  </div>
                 );
               })}
             </Menu>

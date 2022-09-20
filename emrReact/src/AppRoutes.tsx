@@ -16,8 +16,6 @@ const Forbidden = lazy(() => import('modules/others/Forbidden').then(({ Forbidde
 
 const AppRoutes = () => {
   const routes = [...authLayoutRoutings, ...masterLayoutRoutings]
-  console.log('routes')
-
   return (
     <>
       <Routes>
@@ -28,21 +26,18 @@ const AppRoutes = () => {
         {routes.map(({ element: Element, children, path }, index) => {
           if (children && children.length > 0) {
             return (
-              <Route path={path} key={index} element={Element}>
-                <Route path='*' element={<Navigate to={'/not-found'} />} />
-
+              <Route path={path} key={`route_${index}`} element={Element}>
                 {children.map(({ path, element: ChildElement, loginRequired, permissions }, childIndex: number) => {
+                  if (loginRequired) {
+                    return (
+
+                      <Route key={`childRouteAuth_${childIndex}`} path='/' element={<AuthRoute key={`childRouteAuth4_${childIndex}`} />}>
+                        <Route key={`childRouteAuth1_${childIndex}`} path={path} element={ChildElement} />
+                      </Route>
+                    )
+                  }
                   return (
-                    <>
-                      {loginRequired
-                        ? (
-                          <Route key={`childRouteAuth_${childIndex}`} path='/' element={<AuthRoute />}>
-                            <Route path={path} element={ChildElement} />
-                          </Route>
-                        )
-                        : <Route key={`childRoute_${childIndex}`} path={path} element={ChildElement} />
-                      }
-                    </>
+                    <Route key={`childRoute_${childIndex}`} path={path} element={ChildElement} />
                   )
                 })}
               </Route>

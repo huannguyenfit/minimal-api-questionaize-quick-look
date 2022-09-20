@@ -59,13 +59,13 @@ export const PatientDashboardRisk = ({ data }: RiskBlockProps) => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            {data.Risks.Group.length == 0 &&
-              data.Risks.Group1.length == 0 &&
-              data.Risks.Group2.length == 0 && <Empty />}
+            {data?.Risks.Group.length == 0 &&
+              data?.Risks.Group1.length == 0 &&
+              data?.Risks.Group2.length == 0 && <Empty />}
           </Grid>
           <Grid item xs={12}>
             <FlexBox flexWrap={"wrap"} gap={"5px"} alignItems={"center"}>
-              {data && data.Risks?.Group?.length > 0 && (
+              {data && data?.Risks?.Group?.length > 0 && (
                 <IconButton>
                   <Badge color='error' badgeContent={0}>
                     <LabelIcon
@@ -76,7 +76,7 @@ export const PatientDashboardRisk = ({ data }: RiskBlockProps) => {
               )}
 
               {data &&
-                data.Risks.Group?.map((item, index) => {
+                data?.Risks.Group?.map((item, index) => {
                   return (
                     <ChipSmall
                       key={`risk1_${index}`}
@@ -93,7 +93,7 @@ export const PatientDashboardRisk = ({ data }: RiskBlockProps) => {
           </Grid>
           <Grid sx={{ paddingTop: "0px !important" }} item xs={12}>
             <FlexBox flexWrap={"wrap"} gap={"5px"} alignItems={"center"}>
-              {data && data.Risks?.Group1?.length > 0 && (
+              {data && data?.Risks?.Group1?.length > 0 && (
                 <IconButton>
                   <Badge color='error' badgeContent={0}>
                     <LabelIcon
@@ -104,7 +104,7 @@ export const PatientDashboardRisk = ({ data }: RiskBlockProps) => {
               )}
 
               {data &&
-                data.Risks.Group1?.map((item, index) => {
+                data?.Risks.Group1?.map((item, index) => {
                   return (
                     <ChipSmall
                       key={`risk2_${index}`}
@@ -122,7 +122,7 @@ export const PatientDashboardRisk = ({ data }: RiskBlockProps) => {
 
           <Grid sx={{ paddingTop: "0px !important" }} item xs={12}>
             <FlexBox flexWrap={"wrap"} gap={"5px"} alignItems={"center"}>
-              {data && data.Risks?.Group2?.length > 0 && (
+              {data && data?.Risks?.Group2?.length > 0 && (
                 <IconButton>
                   <Badge color='error' badgeContent={0}>
                     <LabelIcon
@@ -132,7 +132,7 @@ export const PatientDashboardRisk = ({ data }: RiskBlockProps) => {
                 </IconButton>
               )}
               {data &&
-                data.Risks.Group2?.map((item, index) => {
+                data?.Risks.Group2?.map((item, index) => {
                   return (
                     <ChipSmall
                       key={`risk3_${index}`}

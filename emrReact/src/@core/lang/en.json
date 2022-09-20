@@ -18,7 +18,7 @@
     },
     "cancel": "Cancel",
     "submit": "Submit",
-    "masterData":"Master Data"
+    "masterData": "Master Data"
   },
   "myTask": {
     "title": "My Task",
@@ -92,8 +92,12 @@
       "breath": "Breath",
       "spO2": "SpO2",
       "temperature": "Temperature",
-      "chestMeasurements":"Chest Measurements",
+      "chestMeasurements": "Chest Measurements",
       "chestMeasurementType": "Type"
+    },
+    "diagnosisForm": {
+      "title": "Diagnose",
+      "prescriptionTitle": "Prescription"
     }
   },
   "patientInfo": {
@@ -107,6 +111,7 @@
     "materialStatus": "Material Status",
     "address": "Address",
     "city": "City",
-    "district": "District"
+    "district": "District",
+    "prescriptionByDoctor": "By doctor"
   }
 }
